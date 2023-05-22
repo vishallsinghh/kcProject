@@ -1,0 +1,361 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background-color: #fafbfc;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.main-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  height: 60px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.08);
+}
+.header-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: 130px;
+}
+
+.contact-button {
+  text-decoration: none;
+  cursor: pointer;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid #2b6cb0;
+  color: #2b6cb0;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+.contact-button:hover {
+  background-color: #2b6bb018;
+}
+
+article {
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
+  min-height: calc(100vh - 200px);
+  padding: 20px;
+  padding-top: 80px;
+  display: flex;
+  gap: 20px;
+  color: rgb(36, 36, 36);
+  flex-direction: column;
+}
+section {
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+  display: flex;
+  gap: 20px;
+  color: rgb(36, 36, 36);
+  flex-direction: column;
+}
+section p {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+article em {
+  font-style: italic;
+  font-size: 16px;
+}
+
+.article-header {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+.tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+  align-items: center;
+}
+.tag {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #e1f2fa;
+  color: rgb(70, 70, 70);
+  font-size: 14px;
+  font-weight: 500;
+}
+.stop {
+  height: 100%;
+  padding: 0px 10px;
+  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+.publish-date {
+  height: 100%;
+  color: #7a7a7a;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 300;
+}
+.read-time {
+  color: #7a7a7a;
+  height: 100%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+.paragraph-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+figcaption {
+  margin-top: 10px;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 300;
+  color: #7a7a7a;
+}
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.support-image {
+  max-width: 100%;
+}
+footer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lets-talk {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+}
+.talk-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.talk-left {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.talk-text {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.talk-text h3 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.footer-button {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 20px;
+}
+
+.social-wrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-container {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3182ce;
+  align-items: center;
+}
+.social-text {
+  color: white;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.social-icon-container {
+  height: 100%;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.social-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 1000px) {
+  .image-gallery {
+    width: 600px;
+  }
+  .talk-icon {
+    display: none;
+  }
+}
+@media only screen and (max-width: 800px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .talk-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .talk-text {
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .header {
+    height: 50px;
+  }
+  .logo {
+    width: 100px;
+  }
+  article {
+    padding-top: 70px;
+  }
+  .tags {
+    gap: 5px;
+  }
+  .tag {
+    padding: 3px 8px;
+    font-size: 12px;
+  }
+  .stop {
+    padding: 5px 5px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .publish-date {
+    font-size: 12px;
+  }
+  .read-time {
+    width: 75px;
+    font-size: 12px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  .talk-text {
+    font-size: 14px;
+  }
+  .talk-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .footer-button {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 18px;
+  }
+  .social-wrapper {
+    justify-content: center;
+  }
+  .social-text {
+    display: none;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .article-header {
+    height: 70px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .stop {
+    display: none;
+  }
+}

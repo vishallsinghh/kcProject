@@ -1,0 +1,197 @@
+{% extends 'pages/blog_detail_base.html' %} {% load social_share %}
+
+{%block title %} {{article.heading}} {% endblock %}
+
+<!-- Basic meta tags -->
+{%block title_meta %}{{article.heading}}{% endblock %}
+{%block description_meta %}{{article.description}}{% endblock %}
+
+<!-- Facebook meta Tags -->
+{%block title_meta_facebook %}{{article.heading}}{% endblock %}
+{%block description_meta_facebook %}{{article.description}}{% endblock %}
+{%block image_meta_facebook %}{{article.header_image.url}}{% endblock %}
+
+<!-- Twitter meta Tags -->
+{%block title_meta_twitter %}{{article.heading}}{% endblock %}
+{%block description_meta_twitter %}{{article.description}}{% endblock %}
+{%block image_meta_twitter %}{{article.header_image.url}}{% endblock %}
+
+
+
+{% block start %}
+<!-- Main Article -->
+<article>
+  <header class="article-header">
+    <div class="tags">
+      {% for tag in article.tags.all %}
+      <div class="tag">{{tag.tag_name}}</div>
+      {% endfor %}
+    </div>
+    <span class="stop" aria-hidden="true"> . </span>
+    <div class="publish-date">
+      <p>{{article.datepublished}}</p>
+    </div>
+    <span class="stop" aria-hidden="true"> . </span>
+    <div class="read-time">
+      <p>{{article.read_time}}</p>
+    </div>
+  </header>
+  <section id="content">
+    <!-- Main heading of blog -->
+    <h1>{{article.heading}}</h1>
+
+    <!-- Main image of blog -->
+    <figure class="paragraph-image">
+      <img class="image" loading="lazy" src="{{article.header_image.url}}" alt="{{article.heading}}"
+        role="presentation" />
+    </figure>
+  </section>
+</article>
+
+{% comment %} to access django variable in js {% endcomment %}
+<input type="hidden" id="myVar" name="variable" value="{{article.content}}" />
+
+<!-- discuss section starts here -->
+<section id="discuss" class="flex flex-col items-center px-4 mt-5 justify-center w-full">
+  <div class="flex flex-col mx-2 lg:mx-24 gap-5 items-center relative h-full w-full max-w-inner-content">
+    <div class="flex flex-col gap-3 sm:flex-row w-full justify-center">
+      <div class="flex flex-col items-center gap-1">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center">
+          Discuss with Techneith's Technical Team
+        </h2>
+        <h2 class="text-xl md:text-2xl lg:text-2xl py-2 font-light text-center">
+          Techneith welcomes all comments and willing to discuss any query
+          you have
+        </h2>
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-center items-center w-full">
+      <div class="rounded overflow-hidden shadow-lg mt-4 discussPanel w-4/5 " style="width:80%;">
+        {% for i in article.get_comments %}
+        <div class="border-b-2 px-4 py-4 bg-white px-8 py-4">
+          {% comment %}
+          <div class="font-bold text-xl ml-4 text-extrabold capitalize">
+            <span>Q: </span>{{i.title}}
+          </div>
+          {% endcomment %}
+          <div class="flex flex-col md:flex-row fit-content mb-2">
+            <p class="font-bold">Comment:</p>
+
+            <div>
+              <div class="flex flex-col">
+                <p class="font-bold text-md text-[#1a3454] ml-4 capitalize">
+                  {{i.title}}
+                </p>
+                <p class="text-md ml-4">{{i.content}}</p>
+              </div>
+              <div class="ml-4 text-gray-500 flex flex-row text-black items-center mt-4 text-sm">
+                <span class="font-bold"> {{i.author}} </span>
+
+                <p class="px-2">On {{i.created_at}} GMT</p>
+              </div>
+            </div>
+          </div>
+          {% for r in i.replies%}
+
+          <div class="flex flex-col md:flex-row relative items-center mt-4">
+            <p class="font-semibold self-start">Reply:</p>
+
+            <div class="flex flex-col pl-8 ml-6 w-full bg-[#efefef] px-2 py-4 rounded-xl replyBox">
+              <p class="text-black text-md px-2">{{r.content}}</p>
+              <div class="flex flex-col md:flex-row mt-2 items-center">
+                <span
+                  class="inline-block bg-[#3b659c] rounded-xl py-1 w-fit px-3 text-sm font-bold text-white mr-2 justify-center items-center flex">
+                  Techneith
+                </span>
+                <p class="font-semibold text-sm">On {{r.created_at}} GMT</p>
+              </div>
+            </div>
+
+            {% comment %}
+            <img class="img-responsive absolute left-0" src="{%  static 'favicon.ico' %}" alt="techneith-logo" />
+            {% endcomment %}
+          </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+      {% if article.get_comments|length > 3 %}
+      <div class="gradientback"></div>
+      <div class="viewPanel">
+        <p class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full cursor-pointer" onclick="showPanel(true)">
+          View More
+        </p>
+        <p class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full cursor-pointer" onclick="showPanel(false)">
+          View Less
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="flex flex-col w-full justify-center items-center mt-6">
+    <div class="flex flex-col gap-3 sm:flex-row w-full justify-center">
+      <div class="flex flex-col items-center gap-1">
+        <h2 class="text-xl md:text-2xl lg:text-2xl py-4 font-light text-center">
+          Leave us a comment down
+          here
+        </h2>
+      </div>
+    </div>
+    <div class="flex flex-col justify-center items-center discuss-card " style="width:80%">
+      <form onsubmit="commentbuttonclicked()" class="bg-white rounded w-full p-4 discussForm" method="post"
+        action="/comments/comment/{{article.slug}}/">
+        {% csrf_token %}
+        <div class="mb-4">
+          <label class="block text-black text-sm font-medium mb-2" for="username">
+            Name / Email
+          </label>
+          <input id="id_display" style="display: none" name="product_id" value="{{article.id}}" />
+          <input name="author"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="username" type="text" placeholder="Name/Email" />
+        </div>
+        <div class="mb-4">
+          <label class="block text-black text-sm font-medium mb-2" for="username">
+            Title of your comment
+          </label>
+          <input name="title"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="username" type="text" placeholder="Title" />
+        </div>
+        <div class="mb-6">
+          <label class="block text-black text-sm font-medium mb-2" for="password">
+            Write your comment here
+          </label>
+          <textarea name="content" required
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Write your comment here"></textarea>
+        </div>
+        <div class="flex items-end justify-end" style="justify-content:end;">
+          <button id="comment_button"
+            class="text-white hover:scale-105 transition-all bg-[#3b82f6] font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit" style="background:#3b82f6;">
+            Comment
+          </button>
+          <button id="processing_button1" disabled
+            class="hidden cursor-not-allowed items-center p-2 bg-[#3182CE] px-4 text-white rounded-md">
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+              </path>
+            </svg>
+            &nbsp;Processing...
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<script>
+  var content = document.getElementById('myVar').value
+  document.getElementById('content').innerHTML += content
+</script>
+
+{% endblock %}

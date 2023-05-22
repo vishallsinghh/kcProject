@@ -1,0 +1,327 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Basic meta tags -->
+    <meta name="title" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="Techneith" />
+    <meta property="image" content="{% static 'images/blogs/mizunodashboard.png' %}" />
+
+
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src='https://www.googletagmanager.com/gtag/js?id=G-47QLHS22VC'></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-47QLHS22VC');
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Mizuno Case study</title>
+</head>
+
+<body class="w-full">
+
+    <style>
+        .media-image {
+    display: inline-block;
+    width: auto;
+  }
+  .media-image img {
+    display: block;
+  }
+  .media-image:hover .label {
+    padding-left: 1em;
+  }
+  
+  .image-frame {
+    position: relative;
+    padding: 5px;
+    background-color: #FFF;
+    -moz-box-shadow: 0 1px 2px rgba(31, 41, 51, 0.5);
+    -webkit-box-shadow: 0 1px 2px rgba(31, 41, 51, 0.5);
+    box-shadow: 0 1px 2px rgba(31, 41, 51, 0.5);
+  }
+  .image-frame:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    -moz-box-shadow: 0 0 30px rgba(31, 41, 51, 0.25) inset;
+    -webkit-box-shadow: 0 0 30px rgba(31, 41, 51, 0.25) inset;
+    box-shadow: 0 0 30px rgba(31, 41, 51, 0.25) inset;
+    z-index: 10;
+  }
+  
+  .label {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    display: inline-block;
+    padding: 0 0.75em;
+    border-radius: 5px 2px 2px 0;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: 12px;
+    font-size: 0.75rem;
+    line-height: 2.35em;
+    font-weight: bold;
+    color: #6b4e00;
+    background-color: #ffc938;
+    z-index: 11;
+    -moz-border-radius: 5px 2px 2px 0;
+    -webkit-border-radius: 5px;
+    border-radius: 5px 2px 2px 0;
+    -moz-box-shadow: 0px 2px 0 rgba(31, 41, 51, 0.1);
+    -webkit-box-shadow: 0px 2px 0 rgba(31, 41, 51, 0.1);
+    box-shadow: 0px 2px 0 rgba(31, 41, 51, 0.1);
+    -moz-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+  }
+  .label:before {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 5px;
+    height: 4px;
+    left: 0;
+    bottom: -4px;
+    background-color: #ffc938;
+  }
+  .label:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 5px;
+    height: 6px;
+    bottom: -6px;
+    left: 0;
+    background-color: #9e7300;
+    -moz-border-radius: 5px 0 0 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px 0 0 5px;
+  }
+    </style>
+
+    <!-- navbar starts -->
+    <header
+        class="bg-transparent border border-b-1 backdrop-blur-lg w-full md:px-10 lg:px-64 z-10 h-16 flex justify-center"
+        style="top: 0">
+        <div id="headerbar" class="h-full w-full flex justify-center transition">
+            <div class="h-full w-full max-w-inner-content relative px-6 px-sm-16 flex justify-between items-center">
+                <div onclick="window.location='/#home'" class="w-32 lg:w-40 cursor-pointer">
+                    <img src="{% static 'images/toplogo.png' %}" alt="techneith" />
+                </div>
+
+                <div class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-auto text-sm">
+                    <a class="bg-white font-medium py-2 px-5 buttonshadow rounded-full text-[#2F7FB8]"
+                        href="/#contacts">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- navbar ends -->
+
+
+    <header class="mt-[40px] px-6 sm:px-16 md:px-64 lg:px-40 xl:px-72 w-full font-bold">
+        <div class="flex flex-col gap-3 sm:flex-row">
+            <div class="tags flex gap-2">
+
+                <div class="bg-[#e1f2fa] px-6 py-1/2 text-[#464646] rounded-md font-normal">Mizuno</div>
+
+                <div class="bg-[#e1f2fa] px-6 py-1/2 text-[#464646] rounded-md font-normal">Power BI</div>
+
+                <div class="bg-[#e1f2fa] px-6 py-1/2 text-[#464646] rounded-md font-normal">Drill down</div>
+
+            </div>
+            <div class="flex">
+                <span class="mx-2 hidden sm:block" aria-hidden="true"> . </span>
+                <div class="font-light">
+                    <p>April 1, 2023</p>
+                </div>
+                <span class="mx-2" aria-hidden="true"> . </span>
+                <div class="font-light">
+                    <p>5 min Read</p>
+                </div>
+            </div>
+        </div>
+        <h1 class="text-4xl sm:text-4xl lg:text-6xl mt-10  text-black">Mizuno Case study </h1>
+    </header>
+
+    <section class="lg:mt-[10px]" id="hero">
+        <div class="w-full">
+            <div class="wrapper px-6 sm:px-16 md:px-64 lg:px-40 xl:px-72 container-fluid h-full">
+                <div class="image w-full flex pt-6">
+                    <div class="media-image">
+                        <div class="image-frame">
+                          <div class="image-ratio">
+                            <img class="" height="" width="" src="{% static 'images/blogs/mizunodashboard.png' %}"
+                            alt="mizuno dashboard">
+                          </div>
+                          <span class="label label-new">
+                            Mizuno dashboard
+                          </span>
+                        </div>
+                      </div>
+                </div>
+                <div class="content pt-10 ">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl  mb-6 text-[#1A3454] font-bold">The Power-BI Challenge by the Mizuno Corp :-</h2>
+                    <p class="text-lg text-[#2E475D]">Mizuno Inc. proposed a sales dashboard that would highlight various key insights. The dashboard's accuracy had to be precise down to the last cent, and  it had to reflect and analyse more than 4 Million + Volume data. The dataset available in the ODDO system was in a complete disarray and had to be rectified . Drill down Hierarchy , Automatic refresh and periodic automatic sharing were the key features required for the corporation.</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-10" id="insight_to_odoo">
+        <div class="w-full ">
+            <div class="px-6 sm:px-16 md:px-64 lg:px-40 xl:px-72">
+                <div class="content flex flex-col justify-center">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl  my-6 text-[#1A3454] font-bold">Solution :- Techneith’s Power-BI Dashboard</h2>  
+                    <p class="text-lg text-[#2E475D]">At Technith, we began the process by designing the dashboard's design and ensuring that its user interface (UI) is both very intuitive for users and pleasant on all fronts. We provided a direct connection between Odoo and Power BI using our Odoo Power BI direct connector (link) . With the use of this functionality, we integrated the data and were able to organize the disarrayed data. We used Sale.order, Sale.order.line , product.template, Stock.picking.value & many other major tables that had over 3+ million records.</p>
+                    <p class="text-lg text-[#2E475D]">The dashboard provided to Mizuno featured a single-page visualisation with numerous views and different KPIs with the built in functionality of Drill - Down feature that highlighted items such as Net sales, Cost of goods sold (COGS), Net margin, top-selling product, date slicers, and many more. Although there were more than 3+ million entries in the data being fetched for the Mizuno dashboard, the efficient Techenieth dashboard made sure that it only took 5 to 10 minutes to dynamically refresh the data in a real-time scenario.</p>
+                    <p class="text-lg text-[#2E475D]">The dashboard provided to Mizuno featured a single-page visualisation with numerous views and different KPIs with the built in functionality of Drill - Down feature that highlighted items such as Net sales, Cost of goods sold (COGS), Net margin, top-selling product, date slicers, and many more. Although there were more than 3+ million entries in the data being fetched for the Mizuno dashboard, the efficient Techenieth dashboard made sure that it only took 5 to 10 minutes to dynamically refresh the data in a real-time scenario.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-10">
+        <div class="flex flex-col md:flex-row items-center gap-6 mx-6 sm:mx-16 md:mx-24 lg:mx-40 xl:mx-72">
+            <div class="media-image">
+                <div class="image-frame">
+                  <div class="image-ratio">
+                    <img src="{% static 'images/blogs/mizunostats.png' %}" alt="last refresh date,month, year,country,invoce status,division">
+                  </div>
+                </div>
+              </div>
+              <div class="media-image">
+                <div class="image-frame">
+                  <div class="image-ratio">
+                    <img src="{% static 'images/blogs/mizunodetails.png' %}" alt="total amount,cogs $,margin $, margin %">
+                  </div>
+                </div>
+              </div>
+
+
+        </div>
+    </section>
+
+    <section class="mt-12 lg:mt-16" id="insight_in_powerbi">
+        <div class="w-full ">
+            <div class="px-6 sm:px-16 md:px-64 lg:px-40 xl:px-72">
+                <div class=" flex flex-col justify-center">
+                    <p class="text-lg text-[#2E475D]">Clients can cross-check their report to the last detail using the drill down functionality. When it came to Mizuno, the bar graph showed the product that sold the most over the course of the year. By drilling down, the customer could see which quarter was the most profitable, which month was the most profitable, and which day of the month was the most profitable.</p>
+                    <p class="text-lg text-[#2E475D]">The total sales by amount with respect to the product category and customer category have been shown in two ways one in the form of a bar chart in descending order and on with  respect to a tabular table format , both the KPI’s have an Amazing drill down feature which allows user to to examine the the data source from starch .</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-14 lg:mt-20" id="problems_while_connectng">
+        <div class="w-full ">
+            <div class="px-6 sm:px-16 md:px-64 lg:px-40 xl:px-72 flex flex-col">
+                <div class=" flex flex-col mb-10">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl leading-none  my-6 text-black font-bold">The description of the KPIs which are visible in the dashboard image can be understood below :- </h2>
+
+                    
+                    <ul role="list" class="flex flex-col gap-3">
+
+                        <li class="text-lg text-[#2E475D]">➤ Total Sales :
+                            It reflects the total sales completed by the firm in a given time interval.
+                            </li>
+
+
+                        <li class="text-lg text-[#2E475D]">
+                            ➤ Margin :
+Margin is the amount of Accounting profit a company has left over after paying all its expenses.
+                        </li>
+
+                        <li class="text-lg text-[#2E475D]">
+                            ➤ COGS:
+Cost of Goods Sold (COGS) also known as “Cost of Sales” is the cost of acquiring or manufacturing the products that a company sells during a period.
+
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+   
+    <footer class="mt-16">
+        <div class="bg-[#3182CE] text-white">
+            <div class="p-5 flex mx-16 flex-col md:flex-row md:items-center md:justify-between">
+                <p class="text-center md:text-lg">Get connected with us on Social networks!</p>
+
+                <div class="flex gap-2 pt-2 justify-center">
+                    <a class="p-1 border border-white rounded-md" href="mailto:info@techneith.com" rel="noopener"
+                        aria-label="email" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"
+                            stroke="currentColor" stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20"
+                            width="20" aria-hidden="true" focusable="false">
+                            <path d="M0 0h24v24H0V0z" fill="none"></path>
+                            <path
+                                d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z">
+                            </path>
+                        </svg></a><a class="p-1 border border-white rounded-md"
+                        href="https://www.instagram.com/techneith" aria-label="techneith" rel="noopener"
+                        target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor"
+                            stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20" width="20"
+                            aria-hidden="true" focusable="false" baseProfile="tiny" version="1.2">
+                            <path
+                                d="M18 3h-12c-1.7 0-3 1.3-3 3v12c0 1.7 1.3 3 3 3h12c1.7 0 3-1.3 3-3v-12c0-1.7-1.3-3-3-3zm-6 6c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3zm3.8-2c0-.7.6-1.2 1.2-1.2s1.2.6 1.2 1.2-.5 1.2-1.2 1.2-1.2-.5-1.2-1.2zm2.2 12h-12c-.6 0-1-.4-1-1v-6h2c0 2.8 2.2 5 5 5s5-2.2 5-5h2v6c0 .6-.4 1-1 1z">
+                            </path>
+                        </svg></a><a class="p-1 border border-white rounded-md" href="https://twitter.com/techneith"
+                        rel="noopener" aria-label="twitter" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"
+                            stroke="currentColor" stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20"
+                            width="20" aria-hidden="true" focusable="false" baseProfile="tiny" version="1.2">
+                            <path
+                                d="M18.89 7.012c.808-.496 1.343-1.173 1.605-2.034-.786.417-1.569.703-2.351.861-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078-.715.717-1.076 1.588-1.076 2.605 0 .309.039.585.117.819-3.076-.105-5.622-1.221-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.228.549.676 1.254 1.107 2.115 1.291-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841.625.472 1.344.721 2.152.743-1.332 1.045-2.855 1.562-4.578 1.562-.422 0-.721-.006-.902-.022 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974.784-1.564 1.172-3.192 1.172-4.892v-.468c.758-.57 1.371-1.212 1.84-1.921-.68.293-1.223.492-2.11.593z">
+                            </path>
+                        </svg></a><a class="p-1 border border-white rounded-md"
+                        href="https://www.linkedin.com/company/techneith/" aria-label="linkedin" rel="noopener"
+                        target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor"
+                            stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20" width="20"
+                            aria-hidden="true" focusable="false" baseProfile="tiny" version="1.2">
+                            <path
+                                d="M8 19h-3v-10h3v10zm11 0h-3v-5.342c0-1.392-.496-2.085-1.479-2.085-.779 0-1.273.228-1.521 1.165v6.262h-3s.04-9 0-10h2.368l.183 2h.062c.615-1 1.598-1.678 2.946-1.678 1.025 0 1.854.285 2.487 1.001.637.717.954 1.679.954 3.03v5.647z">
+                            </path>
+                            <ellipse cx="6.5" cy="6.5" rx="1.55" ry="1.5"></ellipse>
+                        </svg></a><a class="p-1 border border-white rounded-md"
+                        href="https://www.facebook.com/techneith" aria-label="facebook" rel="noopener"
+                        target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor"
+                            stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20" width="20"
+                            aria-hidden="true" focusable="false" baseProfile="tiny" version="1.2">
+                            <path
+                                d="M13 10h3v3h-3v7h-3v-7h-3v-3h3v-1.255c0-1.189.374-2.691 1.118-3.512.744-.823 1.673-1.233 2.786-1.233h2.096v3h-2.1c-.498 0-.9.402-.9.899v2.101z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>

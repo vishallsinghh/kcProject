@@ -1,0 +1,1569 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta content="Profit and loss Dashboard" property="og:title">
+  <meta name="og:description" content="Plug 'n' Play — Profit and loss Power BI dashboard for your Odoo" />
+  <meta name="og:description"
+    content="Power BI dashboard shows important data in multiple interactive KPIs. Dashboards can be of multiple pages, allows user to get detailed intuitive understanding of the data." />
+  <meta name="og:description"
+    content="Power BI Dashboards concentrate on building insights into the data by using attractive visuals, graphs, charts, etc." />
+  <meta name="og:author" content="Techneith" />
+  <meta property="og:image" content="{% static 'images/dashboards/image2.png' %}" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BenchNine:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/flowbite.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="{% static 'css/dashboards/pldashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'css/techneith/megamenu.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dashboards/output.css' %}">
+
+  <!-- tailwindElement by vishal -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+
+  <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
+  <!-- Google tag (gtag.js) -->
+  <script async src='https://www.googletagmanager.com/gtag/js?id=G-47QLHS22VC'></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.2/flowbite.min.js"></script>
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-47QLHS22VC');
+  </script>
+  <title>Profit & Loss Dashboard | Techneith</title>
+</head>
+
+<body>
+  <!-- Sidenav -->
+  <nav id="sidenav-5"
+    class="fixed left-0 top-0 z-[1035] h-screen w-60 -translate-x-full overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
+    data-te-sidenav-init data-te-sidenav-hidden="true" data-te-sidenav-accordion="true">
+    <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
+      <li class="relative">
+        <a href="/" class="flexcursor-pointer 
+            items-center truncate rounded-[5px] w-full py-4 px-6 text-center
+            text-[1.8rem] text-white outline-none transition cursor-pointer
+            duration-300 ease-linear hover:bg-slate-50 hover:text-inherit
+             " data-te-sidenav-link-ref>
+          <span>
+            TECHNEITH
+          </span>
+        </a>
+      </li>
+      <li class="relative">
+        <a class="flex h-12 cursor-pointer items-center 
+            truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+            text-white outline-none transition duration-300 ease-linear 
+            " data-te-sidenav-link-ref>
+          <span>Connectors</span>
+          <span
+            class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+            data-te-sidenav-rotate-icon-ref>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+              <path fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd" />
+            </svg>
+          </span>
+        </a>
+        <ul class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+          data-te-sidenav-collapse-ref>
+          <li class="relative py-2">
+            <a href="/products/odoo_power_bi_direct_connector/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-6 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+              data-te-sidenav-link-ref>PowerBI Odoo <br> Direct Connector</a>
+          </li>
+          <li class="relative py-2">
+            <a href="/products/tableau_direct_connector/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-6 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+              data-te-sidenav-link-ref>Tableau Odoo <br> Direct Connector</a>
+          </li>
+          <li class="relative py-2">
+            <a href="/dashboards/budget-dashboard/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-6 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+              data-te-sidenav-link-ref>Advanced PowerBI <br> Direct Connector</a>
+          </li>
+        </ul>
+      </li>
+      <li class="relative">
+        <a class="flex h-12 cursor-pointer items-center 
+            truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+            text-white outline-none transition duration-300 ease-linear 
+            " data-te-sidenav-link-ref>
+          <span>Services</span>
+          <span
+            class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+            data-te-sidenav-rotate-icon-ref>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+              <path fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd" />
+            </svg>
+          </span>
+        </a>
+        <ul class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+          data-te-sidenav-collapse-ref>
+          <li class="relative py-2">
+            <a href="/#dashboards" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+              data-te-sidenav-link-ref>Dashboard Services</a>
+          </li>
+          <li class="relative py-2">
+            <a href="/#contacts" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+              data-te-sidenav-link-ref>Odoo Services</a>
+          </li>
+          <li class="relative py-2">
+            <a href="/products/docket/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+              data-te-sidenav-link-ref>React Applications</a>
+          </li>
+        </ul>
+      </li>
+      <li class="relative">
+        <a href="/products/" class="flex h-12 cursor-pointer items-center 
+            truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+            text-white outline-none transition duration-300 ease-linear 
+            data-[te-sidenav-state-active]:text-inherit 
+            data-[te-sidenav-state-focus]:outline-none" data-te-sidenav-link-ref>
+          <span>All Products</span>
+        </a>
+      </li>
+      <li class="relative">
+        <a href="/blogs" class="flex h-12 cursor-pointer items-center 
+            truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+            text-white outline-none transition duration-300 ease-linear 
+            data-[te-sidenav-state-active]:text-inherit 
+            data-[te-sidenav-state-focus]:outline-none" data-te-sidenav-link-ref>
+          <span>Blogs</span>
+        </a>
+      </li>
+      <li class="relative">
+        <a href="/about" class="flex h-12 cursor-pointer items-center 
+            truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+            text-white outline-none transition duration-300 ease-linear 
+            data-[te-sidenav-state-active]:text-inherit 
+            data-[te-sidenav-state-focus]:outline-none" data-te-sidenav-link-ref>
+          <span>About Us</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div id="main-wrapper">
+    <!-- Header -->
+    <header
+      class="z-50 fixed bg-[#ffffff2e] justify-between md:justify-evenly shadow-md backdrop-blur-lg top-0 flex items-center w-full">
+      <div onclick="window.location='/#home'" class="cursor-pointer logo ml-6 w-auto flex justify-center items-center">
+        <img src="{%static 'images/techneith-logo.png'%}" alt="techneithLogo" width="180px" />
+      </div>
+      <nav class="hidden lg:flex items-center justify-center w-full relative">
+        <div class="flex w-full justify-center mx-2 px-2 rounded-md block backdrop-blur-sm sm:backdrop-blur-none">
+          <ul class="flex flex-row gap-2 sm:mt-0 sm:pl-5">
+            <li class="px-[20px] py-[20px]">
+              <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                href="/products">Products
+              </a>
+              <div class="megamenu">
+                <div class="bg-white flex flex-col justify-center py-4 px-6 rounded-lg">
+                  <div class="flex w-full">
+                    <h2 class="text-[#1a3454] text-2xl w-full font-semibold py-2 my-2 border-b-2">Featured Categories
+                    </h2>
+                  </div>
+                  <div class="flex justify-center gap-8">
+                    <div class="megamenuitems bg-[#1a3454] border-r-2 p-4 max-w-[310px] rounded-lg">
+                      <div class="pb-3 border-b-2 flex justify-between">
+                        <h3 class="text-lg text-white font-semibold ">Connectors</h3>
+                        <div class="bg-white rounded-lg p-[4px]">
+                          <img src="{% static '/images/plug.png'%}" alt="connector png" width="24px" />
+                        </div>
+
+                      </div>
+                      <ul class="text-white pl-4 ">
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a href="/products/odoo_power_bi_direct_connector/" class="cursor-pointer ">PowerBI Odoo
+                            Direct Connector</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a href="/products/tableau_direct_connector/" class="cursor-pointer ">Tableau Odoo
+                            Direct Connector</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a href="/products/odoo_power_bi_advanced_connector/" class="cursor-pointer ">PowerBI Advanced
+                            Odoo Connector</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a href="/products/inventory_planning_forecasting_odoo/" class="cursor-pointer ">Inventory
+                            Forecasting</a>
+                        </li>
+                        <li class="relative w-fit border-b-2 text-[#808080] !pl-0">
+                          <a href="/products/" class="cursor-pointer">See All Connectors →</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="megamenuitems p-4 max-w-[310px] rounded-lg">
+                      <div class="pb-3 border-b-2 border-[#1a3454] flex justify-between">
+                        <h3 class="text-lg text-[#1a3454] font-semibold">Dashboards</h3>
+                        <div class="bg-white rounded-lg p-[4px]">
+                          <img src="{% static '/images/dashboard.png'%}" alt="connector png" width="24px" />
+                        </div>
+
+                      </div>
+                      <ul class="text-[#333333] pl-4 ">
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/dashboards/budget-dashboard/">Budget Dashboard</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/dashboards/sale_dashboard/">Sale Dashboard</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/dashboards/odoo-profit-loss-dashboard-power-bi/">Profit &
+                            Loss Dashboard</a>
+                        </li>
+                        <li class="relative w-fit border-b-2 text-[#808080] !pl-0">
+                          <a class="cursor-pointer" href="/#dashboards">See All Dashboards →</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="megamenuitems border-r-2 p-4 max-w-[310px] rounded-lg">
+                      <h3 class="text-lg text-[#1a3454] font-semibold pb-3 border-[#1a3454] border-b-2">Resources
+                      </h3>
+                      <ul class="text-[#333333] pl-4 ">
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/resources/odoo-power-bi-connector-installation-guide/">Odoo
+                            PowerBI Connector Manual</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="{%static 'images/manual/Tableau-Manual.pdf'%}" download>Odoo
+                            Tableau Connector Manual</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/#contacts">Free Trial</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="megamenuitems flex flex-col justify-center 
+                        items-center mx-4 rounded-lg">
+                      <h3 class="text-lg font-semibold pb-3">Want to book a personal meeting?</h3>
+                      <img class="img-responsive mt-2" src="{% static 'images/chat.png' %}"
+                        alt="want to know more about us?" width="80px" />
+                      <a class="bg-[#1a3454] text-white py-2 px-4 rounded-full mt-2 shadow-lg" href="/#contacts">Contact
+                        Us</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+            <li class="px-[20px] py-[20px]">
+              <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                href="/" aria-current="page">Services</a>
+              <div class="megamenu">
+                <div class="bg-white flex flex-col justify-center py-4 px-6 rounded-lg">
+                  <div class="flex w-full">
+                    <h2 class="text-[#1a3454] text-2xl w-full font-semibold py-2 my-2 border-b-2">Top Services
+                    </h2>
+                  </div>
+                  <div class="flex justify-center gap-8 flex-wrap">
+                    {% comment %} <div class="megamenuitems flex flex-col justify-evenly items-center
+                        shadow-lg border-r-2 my-4 py-4 px-3 max-w-[290px] rounded-lg shadow-lg
+                        
+                        ">
+                      <img src="{% static 'images/service.png' %}" alt="connectorillustrator" width="50px" />
+                      <h2 class=" text-lg text-center py-3">5+ years of trustworthy service</h2>
+                      <a href="/about" class="bg-[#1a3454] rounded-lg py-2 px-4 text-white">Check all Services →</a>
+                    </div> {% endcomment %}
+                    <div class="megamenuitems p-4 max-w-[310px] rounded-lg">
+                      <div class="pb-3 border-b-2 border-[#1a3454] flex justify-between">
+                        <h3 class="text-lg text-[#1a3454] font-semibold ">Dashboard Services</h3>
+                      </div>
+                      <ul class="text-[#333333] pl-4 ">
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/#dashboards">Plug & Play Dashboards</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/#dashboards">Custom Power BI Dashboards</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/#contacts">Odoo Power BI Connection</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="megamenuitems p-4 max-w-[310px] rounded-lg">
+                      <h3 class="text-lg text-[#1a3454] font-semibold pb-3 border-[#1a3454] border-b-2">Odoo Services
+                      </h3>
+                      <ul class="text-[#333333] pl-4 ">
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/#contacts">Odoo Implementation</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/#contacts">Odoo Customization</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/products/">Odoo Connectors</a>
+                        </li>
+                        <li class="relative w-fit border-b-2 text-[#808080] !pl-0">
+                          <a class="cursor-pointer" href="/about/">Explore →</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="megamenuitems p-4 max-w-[310px] rounded-lg">
+                      <h3 class="text-lg text-[#1a3454] font-semibold pb-3 border-[#1a3454] border-b-2">React
+                      </h3>
+                      <ul class="text-[#333333] pl-4 ">
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/blogs/can-we-add-react-in-odoo/">React Applications on
+                            Odoo</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/products/docket/">React Projects</a>
+                        </li>
+                        <li class="relative w-fit border-b-2 text-[#808080] !pl-0">
+                          <a class="cursor-pointer" href="/#contacts/">Contact Us</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="flex justify-center items-center">
+                    <h3 class="text-lg font-semibold pr-4">Our Expertise </h3>
+                    <div class="flex justify-center items-center">
+                      <img class="img-responsive mr-4" src="{% static 'images/nav/odoo_logo.png' %}"
+                        alt="want to know more about us?" width="80px" />
+                      <img class="img-responsive mr-4" src="{% static 'images/nav/powerBi.png' %}"
+                        alt="want to know more about us?" width="80px" />
+                      <img class="img-responsive mr-4" src="{% static 'images/nav/tableauLogo.png' %}"
+                        alt="want to know more about us?" width="80px" />
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+            <li class="px-[20px] py-[20px]">
+              <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                href="/blogs">Blogs</a>
+              <div class="megamenu">
+                <div class="bg-white flex flex-col py-4 px-6 rounded-lg">
+                  <div class="flex w-full">
+                    <h2 class="text-[#1a3454] text-2xl w-full font-semibold py-2 my-2 border-b-2">Popular Blogs
+                    </h2>
+                  </div>
+                  <div class="justify-center gap-8 flex blogDiv">
+                    <a href="/blogs/how-to-connect-odoo-with-power-bi/">
+                      <div class="megamenuitems flex flex-col justify-evenly items-center
+                          shadow-lg border-r-2 my-4 py-4 px-3 max-w-[290px] rounded-lg shadow-lg
+                          hover:shadow-2xl navBlogCard
+                          ">
+                        <img src="{% static 'images/power_bi_connector/biconnectorillustration.jpeg' %}"
+                          alt="connectorillustrator" width="150px" />
+                        <h2 class=" text-lg text-center py-3">How to connect PowerBI with Odoo?</h2>
+                        <div class="bg-[#1a3454] rounded-lg py-2 px-4 text-white">Read Blog →</div>
+                      </div>
+                    </a>
+                    <a href="/blogs/can-we-add-react-in-odoo/">
+                      <div class="megamenuitems flex flex-col justify-evenly items-center
+                          shadow-lg border-r-2 my-4 py-4 px-3 max-w-[290px] rounded-lg shadow-lg
+                          hover:shadow-2xl navBlogCard
+                          ">
+                        <img src="{% static 'images/react.png' %}" alt="connectorillustrator" width="150px" />
+                        <h2 class=" text-lg text-center py-3">How to connect Odoo with React?</h2>
+                        <div class="bg-[#1a3454] rounded-lg py-2 px-4 text-white">Read
+                          Blog →</div>
+                      </div>
+                    </a>
+                    <a href="/blogs/business-intelligence-for-odoo-erp/">
+                      <div class="megamenuitems flex flex-col justify-evenly items-center
+                          shadow-lg border-r-2 my-4 py-4 px-3 max-w-[290px] rounded-lg shadow-lg
+                          hover:shadow-2xl navBlogCard
+                          ">
+                        <img src="https://www.techneith.com/media/images/Power_BI_Desktop_0TsHvb0.png"
+                          alt="connectorillustrator" width="150px" />
+                        <h2 class="text-lg text-center py-3">Business Intelligence for Odoo ERP</h2>
+                        <div class="bg-[#1a3454] rounded-lg py-2 px-4 text-white">Read Blog →</div>
+                      </div>
+                    </a>
+
+                    <div class="flex flex-col justify-center
+                         items-center mx-4">
+                      <!-- <h3 class="text-lg font-semibold pb-3">Read All Blogs</h3> -->
+                      <!-- <img class="img-responsive mt-2" src="{% static 'images/blog.png' %}"
+                            alt="want to know more about us?" width="80px" /> -->
+                      <a class="bg-[#1a3454] text-white py-2 px-4 rounded-md mt-2 shadow-lg" href="/blogs/">All
+                        Blogs →</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+            <li class="px-[20px] py-[20px]">
+              <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                href="/about">About&nbsp;Us</a>
+              <div class="dropdownMenu rounded-lg shadow-lg bg-white
+                    hover:shadow-2xl border-[#1a3454] hover:border-[#1a3454]
+                     hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6]">
+                <div class="justify-center flex flex-wrap rounded-lg">
+                  <div class="flex flex-col justify-evenly items-center
+                         py-4 px-5">
+                    <ul class="text-[#333333]">
+                      <li class="relative w-fit menulistBorder py-2 !pl-0">
+                        <a class="cursor-pointer " href="/about/#ceonote">Team</a>
+                      </li>
+                      <li class="relative w-fit menulistBorder py-2 !pl-0">
+                        <a class="cursor-pointer " href="/about/#slider">Our Clients</a>
+                      </li>
+                      <li class="relative w-fit menulistBorder py-2 !pl-0">
+                        <a class="cursor-pointer " href="/about/#different">Our Goals</a>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+            <li class="px-[20px] py-[20px]">
+              <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                href="/#contacts">Contact Us</a>
+            </li>
+            <li class="px-[20px] py-[20px]">
+              <a class="text-lg bg-slate-400 text-white rounded-md hover:text-gray-100 p-2 text-center sm:hidden"
+                href="/#contacts">Get In Touch</a>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
+      <div
+        class="invisible px-3 py-2 mr-2 rounded-full bg-gradient-to-r w-fit cursor-pointer from-[#F61B04] to-[#F58702] hover:bg-none ease-in transition-[1s] hover:bg-white text-white hover:text-[#184E73] w-[300px] hidden sm:flex relative">
+        <a class="flex h-full w-full items-center justify-center" href="/products/odoo_power_bi_direct_connector/">
+          <h3 id="typewriter-nav" class="text-center text-bold tracking-wide">Sale&nbsp;Ending&nbsp;Soon<h3
+              class="font-bold animate-bounce">&nbsp;↓</h3>
+          </h3>
+          <div class="absolute top-[0px] right-[0px]">
+            <span class="relative flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#184E73] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+            </span>
+          </div>
+        </a>
+      </div>
+      <section class="lg:hidden mr-6 relative flex min-h-full items-start justify-center overflow-y-hidden">
+
+
+        <!-- Toggler -->
+        <button class="inline-block rounded bg-[#1a3454] px-6 py-2.5 text-xs font-medium uppercase 
+              leading-tight text-white shadow-md transition duration-150 ease-in-out 
+              hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+          data-te-sidenav-toggle-ref data-te-target="#sidenav-5" aria-controls="#sidenav-5" aria-haspopup="true">
+          <span class="block [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+              <path fill-rule="evenodd"
+                d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                clip-rule="evenodd" />
+            </svg>
+          </span>
+        </button>
+        <!-- Toggler -->
+      </section>
+    </header>
+
+    <!--form modal-->
+    <div id="authentication-modal" tabindex="-1" aria-hidden="true" style="z-index: 100 !important;" class="fixed backdrop-blur-md top-0 py-1 left-0 right-0 z-50 hidden
+  w-full h-full px-1 overflow-x-hidden overflow-y-auto lg:inset-0
+  h-modal lg:h-full">
+      <div class="relative w-full h-full max-w-md lg:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div class="px-6 flex items-center pb-3 pt-6">
+            <h3 class=" text-xl font-medium text-gray-900 dark:text-white">We
+              will get back to you</h3>
+            <button id="modalhidebutton" type="button" class=" text-gray-400 bg-transparent hover:bg-gray-200
+          hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto
+          inline-flex items-center dark:hover:bg-gray-800
+          dark:hover:text-white" data-modal-hide="authentication-modal">
+              <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0
+              111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414
+              1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10
+              4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+
+          <div class="px-6 pb-6 lg:px-8">
+
+
+            <form id="buyformid" method="post" class="space-y-6">
+              {% csrf_token %}
+              <div>
+                <label for="odoo_product" class="block mb-2 text-sm font-medium text-gray-900
+              dark:text-white">Dashboard</label>
+                <input type="text" name="odoo_product" id="odoo_product" value="Profit and Loss Dashboard" class="bg-gray-50 font-bold border border-gray-300
+              text-gray-900 text-sm rounded-lg focus:ring-blue-500
+              focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600
+              dark:border-gray-500 dark:placeholder-gray-400
+              dark:text-white" readonly>
+              </div>
+              <div>
+                <label for="name" class="block mb-2 text-sm font-medium
+              text-gray-900 dark:text-white">Customer
+                  Name</label>
+                <input type="text" name="name" id="name" placeholder="Name" class="bg-gray-50 border border-gray-300 text-gray-900
+              text-sm rounded-lg focus:ring-blue-500
+              focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600
+              dark:border-gray-500 dark:placeholder-gray-400
+              dark:text-white">
+              </div>
+              <div>
+                <label for="email" class="block mb-2 text-sm font-medium
+              text-gray-900 dark:text-white">Customer
+                  Email</label>
+                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900
+              text-sm rounded-lg focus:ring-blue-500
+              focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600
+              dark:border-gray-500 dark:placeholder-gray-400
+              dark:text-white" placeholder="name@company.com" required>
+              </div>
+              <div>
+                <label for="odoo_version" class="block mb-2 text-sm
+              font-medium text-gray-900 dark:text-white">Company
+                  Name</label>
+                <input class="bg-gray-50 border border-gray-300 text-gray-900
+              text-sm rounded-lg focus:ring-blue-500
+              focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600
+              dark:border-gray-500 dark:placeholder-gray-400
+              dark:text-white" placeholder="Company Name" type="text" name="odoo_version" id="odoo_version">
+              </div>
+              <button type="submit" id="submit" class="w-full text-white bg-blue-500 hover:bg-blue-800
+            focus:ring-4 focus:outline-none focus:ring-blue-300
+            font-medium rounded-lg text-sm px-5 py-2.5 text-center
+            dark:bg-blue-600 dark:hover:bg-blue-700
+            dark:focus:ring-blue-80 tracking-widest">Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- form modal ends -->
+
+
+    <section class="mt-[65px] relative overflow-hidden">
+      <div class="absolute -z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svgjs="http://svgjs.com/svgjs" width="1920" height="1080" preserveAspectRatio="none"
+          viewBox="0 0 1920 1080">
+          <g mask="url(&quot;#SvgjsMask1028&quot;)" fill="none">
+            <path
+              d="M238.99198237729752 311.34947979542966L189.99482242146507 563.4180158173472 442.0633584433825 612.4151757731795 491.06051839921497 360.3466397512621z"
+              fill="rgba(28, 83, 142, 0.4)" class="triangle-float1"></path>
+            <path
+              d="M532.237,1113.147C618.056,1113.413,707.737,1092.236,753.499,1019.636C801.953,942.766,798.333,843.167,751.493,765.303C706.026,689.721,620.439,652.186,532.237,651.821C443.324,651.453,355.411,687.143,309.814,763.475C263.127,841.632,264.477,941.456,313.339,1018.272C359.085,1090.19,447.003,1112.883,532.237,1113.147"
+              fill="rgba(28, 83, 142, 0.4)" class="triangle-float3"></path>
+            <path
+              d="M747.374391750758 372.3146342421605L926.3086957928924 300.02048270757643 854.0145442583084 121.08617866544205 675.0802402161739 193.3803302000261z"
+              fill="rgba(28, 83, 142, 0.4)" class="triangle-float2"></path>
+            <path d="M1342.21 809.51 a333.64 333.64 0 1 0 667.28 0 a333.64 333.64 0 1 0 -667.28 0z"
+              fill="rgba(28, 83, 142, 0.4)" class="triangle-float1"></path>
+            <path d="M753.37 208.89 a241.98 241.98 0 1 0 483.96 0 a241.98 241.98 0 1 0 -483.96 0z"
+              fill="rgba(28, 83, 142, 0.4)" class="triangle-float2"></path>
+            <path
+              d="M1438.58,1150.091C1519.779,1151.814,1608.989,1141.877,1652.559,1073.336C1698.56,1000.97,1688.763,904.007,1639.723,833.665C1596.389,771.507,1514.242,762.313,1438.58,766.407C1371.481,770.038,1309.184,797.658,1271.907,853.567C1229.605,917.013,1202.412,998.101,1239.776,1064.575C1277.661,1131.975,1361.279,1148.45,1438.58,1150.091"
+              fill="rgba(28, 83, 142, 0.4)" class="triangle-float1"></path>
+            <path d="M-175.74 433.15 a347.57 347.57 0 1 0 695.14 0 a347.57 347.57 0 1 0 -695.14 0z"
+              fill="rgba(28, 83, 142, 0.4)" class="triangle-float3"></path>
+            <path d="M27.6 505.15 a216.09 216.09 0 1 0 432.18 0 a216.09 216.09 0 1 0 -432.18 0z"
+              fill="rgba(28, 83, 142, 0.4)" class="triangle-float3"></path>
+            <path
+              d="M549.598,557.362C653.07,562.082,741.919,488.521,791.53,397.595C839,310.594,843.476,202.415,788.12,120.206C737.796,45.47,639.697,38.82,549.598,38.3C458.184,37.773,353.837,39.364,306.263,117.426C257.493,197.451,297.739,295.133,343.098,377.139C390.493,462.826,451.779,552.9,549.598,557.362"
+              fill="rgba(28, 83, 142, 0.4)" class="triangle-float1"></path>
+          </g>
+          <defs>
+            <mask id="SvgjsMask1028">
+              <rect width="1920" height="1080" fill="#ffffff"></rect>
+            </mask>
+            <style>
+              @keyframes float1 {
+                0% {
+                  transform: translate(0, 0)
+                }
+
+                50% {
+                  transform: translate(-10px, 0)
+                }
+
+                100% {
+                  transform: translate(0, 0)
+                }
+              }
+
+              .triangle-float1 {
+                animation: float1 5s infinite;
+              }
+
+              @keyframes float2 {
+                0% {
+                  transform: translate(0, 0)
+                }
+
+                50% {
+                  transform: translate(-5px, -5px)
+                }
+
+                100% {
+                  transform: translate(0, 0)
+                }
+              }
+
+              .triangle-float2 {
+                animation: float2 4s infinite;
+              }
+
+              @keyframes float3 {
+                0% {
+                  transform: translate(0, 0)
+                }
+
+                50% {
+                  transform: translate(0, -10px)
+                }
+
+                100% {
+                  transform: translate(0, 0)
+                }
+              }
+
+              .triangle-float3 {
+                animation: float3 6s infinite;
+              }
+            </style>
+          </defs>
+        </svg>
+      </div>
+      <div
+        class="w-full justify-center items-center grid grid-cols-1 lg:grid-cols-7 xl:grid-cols-3  py-6 gap-6 xl:px-10 h-full">
+        <div class="lg:col-span-4 xl:col-span-2 space-y-8">
+          <div class="space-y-3 px-5">
+            <h1 class="text-center text-3xl lg:text-5xl text-[#1a3454] text-bold">Profit & Loss Dashboard</h1>
+            <p style="font-family: 'Advent Pro', sans-serif;" class="text-md lg:text-lg tracking-wider text-center">Plug
+              'n' Play — Profit and loss Power BI dashboard for your Odoo</p>
+          </div>
+          <div class="px-3 xl:px-20">
+            <div class="flex items-center justify-center flex-col w-full relative border-sm">
+              <div class="flex items-center flex-row rounded-t-md border w-full bg-white min-h-[20px] py-1.5 px-3">
+                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-red-500"></div>
+                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-yellow-500"></div>
+                <div class="w-[12px] h-[12px] rounded-full bg-green-500"></div>
+                <div class="flex-1 place-delf-stretch"></div>
+              </div>
+              <div class="border border-t-0 border-gray-200 relative w-full rounded-b-sm">
+                <div class="image-frame">
+                  <video preload="none" autoplay="true" playsinline loop muted autoplay>
+                    <source src="{% static 'images/dashboards/p-l-dashboard.mp4'%}" type="video/mp4">
+                    profit and loss dashboard
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class=" w-full lg:col-span-3 xl:col-span-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 px-5 xl:pr-24 gap-4">
+
+          <div class="flex flex-col justify-center ">
+            <div class="">
+              <h2 class="text-center text-[#1a3454] text-2xl lg:text-3xl font-semibold">Features</h2>
+            </div>
+            <div class="pt-1">
+              <div class="py-2 flex flex-col gap-2">
+                <h5 class="border bg-white flex items-center shadow-md rounded-md w-full py-2 px-5">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20">
+                    <path
+                      d="m89 807-49-36 188-300 119.571 140L507 353l109 162q-16 2-31 6.5T555 532l-45-69-152.557 249L236 571 89 807Zm788 209L743 882q-21 15-45.5 23t-50.5 8q-70.833 0-120.417-49.618Q477 813.765 477 742.882 477 672 526.618 622.5q49.617-49.5 120.5-49.5Q718 573 767.5 622.583 817 672.167 817 743q0 26-8.5 50.5T786 840.448L920 973l-43 43ZM646.859 853Q693 853 725 821.141q32-31.859 32-78T725.141 665q-31.859-32-78-32T569 664.859q-32 31.859-32 78T568.859 821q31.859 32 78 32ZM721 525q-15-6-31-8t-33-4l214-337 49 36-199 313Z" />
+                  </svg>
+                  &nbsp;&nbsp; Growing & Declining Products
+                </h5>
+                <h5 class="border bg-white flex items-center shadow-md rounded-md w-full py-2 px-5">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20">
+                    <path
+                      d="M120 216h330v330H120V216Zm60 59v188-188Zm330-59h330v330H510V216Zm83 59v188-188ZM120 606h330v330H120V606Zm60 81v189-189Zm465-81h60v135h135v60H705v135h-60V801H510v-60h135V606Zm-75-330v210h210V276H570Zm-390 0v210h210V276H180Zm0 390v210h210V666H180Z" />
+                  </svg>
+                  &nbsp;&nbsp; Customized dashboards
+                </h5>
+                <h5 class="border bg-white flex items-center shadow-md rounded-md w-full py-2 px-5">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960" width="20">
+                    <path
+                      d="M604 936V811H450V401h-93v130H80V216h277v125h247V216h276v315H604V401h-94v350h94V621h276v315H604ZM140 276v195-195Zm524 405v195-195Zm0-405v195-195Zm0 195h156V276H664v195Zm0 405h156V681H664v195ZM140 471h157V276H140v195Z" />
+                  </svg>
+                  &nbsp;&nbsp; Real-Time Data
+                </h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="border bg-white shadow-md justify-center rounded-md flex w-full flex-col py-2 px-5">
+            <div class="flex justify-between items-end text-4xl border-b-2 pb-2">
+              <h3 class="text-2xl px-2 text-[#1a3454] font-semibold">Pay Once</h3>
+              <div class="flex items-start">
+                <svg class="mt-1" fill="#1a3454" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 96 960 960"
+                  width="20">
+                  <path
+                    d="M451 936v-84q-57-10-93.5-43.5T305 724l56-23q17 48 49 71.5t77 23.5q48 0 79-24t31-66q0-44-27.5-68T466 589q-72-23-107.5-61T323 433q0-55 35.5-92t92.5-42v-83h60v83q45 5 77.5 29.5T638 391l-56 24q-14-32-37.5-46.5T483 354q-46 0-73 21t-27 57q0 38 30 61.5T524 542q68 21 100.5 60.5T657 702q0 63-37 101.5T511 853v83h-60Z" />
+                </svg>
+                <h3 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif"
+                  class="font-semibold text-[#1a3454]">1100</h3>
+              </div>
+            </div>
+
+            <div class="flex justify-between px-3 border-b-2 py-3">
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25"
+                  height="25" viewBox="0 0 630 630" version="1.1">
+                  <defs>
+                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                      <stop stop-color="#EBBB14" offset="0%" />
+                      <stop stop-color="#B25400" offset="100%" />
+                    </linearGradient>
+                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+                      <stop stop-color="#F9E583" offset="0%" />
+                      <stop stop-color="#DE9800" offset="100%" />
+                    </linearGradient>
+                    <path d="M346,604 L346,630 L320,630 L153,630
+                                      C138.640597,630 127,618.359403 127,604
+                                      L127,183 C127,168.640597 138.640597,157
+                                      153,157 L320,157 C334.359403,157
+                                      346,168.640597 346,183 L346,604 Z" id="path-3" />
+                    <filter x="-9.1%" y="-6.3%" width="136.5%" height="116.9%" filterUnits="objectBoundingBox"
+                      id="filter-4">
+                      <feOffset dx="20" dy="10" in="SourceAlpha" result="shadowOffsetOuter1" />
+                      <feGaussianBlur stdDeviation="10" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+                      <feColorMatrix values="0 0 0 0 0 0 0 0 0
+                                              0 0 0 0 0 0 0 0 0 0.0530211976 0" type="matrix" in="shadowBlurOuter1" />
+                    </filter>
+                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+                      <stop stop-color="#F9E68B" offset="0%" />
+                      <stop stop-color="#F3CD32" offset="100%" />
+                    </linearGradient>
+                  </defs>
+                  <g id="PBI-Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="Group" transform="translate(77.500000,
+                                                  0.000000)">
+                      <rect id="Rectangle" fill="url(#linearGradient-1)" x="256" y="0" width="219" height="630"
+                        rx="26" />
+                      <g id="Combined-Shape">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3" />
+                        <use fill="url(#linearGradient-2)" fill-rule="evenodd" xlink:href="#path-3" />
+                      </g>
+                      <path d="M219,604 L219,630
+                                                          L193,630 L26,630
+                                                          C11.6405965,630
+                                                          1.75851975e-15,618.359403
+                                                          0,604 L0,341
+                                                          C-1.75851975e-15,326.640597
+                                                          11.6405965,315 26,315
+                                                          L193,315 C207.359403,315
+                                                          219,326.640597 219,341
+                                                          L219,604 Z" id="Combined-Shape"
+                        fill="url(#linearGradient-5)" />
+                    </g>
+                  </g>
+                </svg>
+                <h1 class="text-2xl
+                            font-semibold">Power&nbsp;BI
+                </h1>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 191" width="80" height="30">
+                <circle cx="527.5" cy="118.4" r="72.4" fill="#888" />
+                <path d="M527.5 161.1c23.6 0
+                                            42.7-19.1
+                                            42.7-42.7s-19.1-42.7-42.7-42.7-42.7
+                                            19.1-42.7 42.7 19.1 42.7
+                                            42.7 42.7z" fill="#fff" />
+                <circle cx="374" cy="118.4" r="72.4" fill="#888" />
+                <path d="M374 161.1c23.6 0
+                                                42.7-19.1
+                                                42.7-42.7S397.6 75.7 374
+                                                75.7s-42.7 19.1-42.7
+                                                42.7 19.1 42.7 42.7
+                                                42.7z" fill="#fff" />
+                <path d="M294.9 117.8v.6c0
+                                                  40-32.4 72.4-72.4
+                                                  72.4s-72.4-32.4-72.4-72.4S182.5
+                                                  46 222.5 46c16.4 0
+                                                  31.5 5.5 43.7
+                                                  14.6V14.4A14.34 14.34
+                                                  0 0 1 280.6 0c7.9 0
+                                                  14.4 6.5 14.4
+                                                  14.4v102.7c0 .2 0
+                                                  .5-.1.7z" fill="#888" />
+                <circle cx="222.5" cy="118.4" r="42.7" fill="#fff" />
+                <circle cx="72.4" cy="118.2" r="72.4" fill="#9c5789" />
+                <circle cx="71.7" cy="118.5" r="42.7" fill="#fff" />
+              </svg>
+            </div>
+            <div class="py-4">
+              <h5 class="flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#2BBD6E" height="25" viewBox="0 96 960 960" width="25">
+                  <path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z" />
+                </svg>
+                &nbsp;Free installation
+              </h5>
+              <h5 class="flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#2BBD6E" height="25" viewBox="0 96 960 960" width="25">
+                  <path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z" />
+                </svg>
+                &nbsp;Free 6 months support
+              </h5>
+              <h5 class="flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#2BBD6E" height="25" viewBox="0 96 960 960" width="25">
+                  <path d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z" />
+                </svg>
+                &nbsp;Lifetime Access
+              </h5>
+            </div>
+
+            <div class="flex flex-col gap-3">
+              <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
+                class=" uppercase hover:border-[#6f9a37] hover:bg-[#6f9a37] rounded-md border border-[#82B440] bg-[#82B440] text-white font-semibold w-full py-3">Get
+                Dashboard
+              </button>
+              <a target="_blank" rel="noopener"
+                href="https://app.powerbi.com/view?r=eyJrIjoiN2QyMTUwZDQtOTQ0OC00ZGEyLTlkYzItMWE1NTg0NTA4YjVlIiwidCI6ImI2NzFmYmQxLWUyOTItNDVlZS05MGM2LTgzNjg3MzFlOTFiOCJ9"
+                class=" uppercase rounded-md text-center hover:bg-green-100 text-[#6f9a37] border border-[#6f9a37] bg-white font-semibold w-full py-3">Live
+                Preview
+              </a>
+            </div>
+
+            <p class="italic text-center text-xs font-semibold py-3">Price is in US dollars and includes all taxes</p>
+
+            <a class="flex justify-center gap-2 hover:underline" href="/#contacts">
+              <img class="h-[30px] block w-auto" src="{% static 'images/dashboards/chatroom.png'%}" alt="chat with us">
+              <p class="text-md text-center text-blue-800 font-semibold">Chat with our experts</p>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="mt-14">
+        <h2 class="text-center font-bold text-2xl lg:text-3xl uppercase text-[#1a3454] drop-shadow-md">Comparison</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-7 mt-12 px-3 lg:px-8">
+          <div class="lg:col-span-3 flex flex-col justify-between items-end lg:px-10">
+            <div class="flex flex-col w-full justify-center">
+              <h6 class="text-[#1a3454] text-center lg:text-left font-semibold py-1 px-2 text-xl">Odoo Profit and Loss
+                Report</h6>
+              <div class="image-frame">
+                <img loading="lazy" src="{% static 'images/dashboards/plreport.png'%}" alt="Profit loss reports">
+              </div>
+            </div>
+            <div class="mx-auto py-5 lg:pt-10 lg:px-10">
+              <img loading="lazy" class="" src="{% static 'images/dashboards/com-arrow.png'%}" alt="comparison arrow">
+            </div>
+            <div class="lg:hidden w-full">
+              <div>
+                <h6 class="text-[#1a3454] text-center font-semibold py-2 px-2 text-xl">Profit and Loss Dashboard</h6>
+                <div
+                  class="flex mx-auto items-center flex-col w-full sm:h-[380px] sm:w-[600px] lg:h-[400px] lg:w-[631px] relative border-sm">
+                  <div class="flex items-center flex-row rounded-t-md border w-full bg-white min-h-[20px] py-1.5 px-3">
+                    <div class="w-[12px] mr-2 h-[12px] rounded-full bg-red-500"></div>
+                    <div class="w-[12px] mr-2 h-[12px] rounded-full bg-yellow-500"></div>
+                    <div class="w-[12px] h-[12px] rounded-full bg-green-500"></div>
+                    <div class="flex-1 place-delf-stretch"></div>
+                  </div>
+                  <div class="border border-t-0 border-gray-200 relative h-full w-full rounded-b-sm">
+                    <div class="image-frame h-full">
+                      <img loading="lazy" src="{% static 'images/dashboards/image3.png'%}"
+                        alt="profit and loss dashboard features">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-10 lg:mt-0 lg:col-span-4 lg:px-3 lg:px-10">
+            <div>
+              <div class="bg-[#1a3454] text-white px-5  rounded-t-md">
+                <div class="grid grid-cols-5 font-bold">
+                  <div class="col-span-1 py-2 pr-5">Items</div>
+                  <div class="col-span-2 px-5 py-2">Odoo Report</div>
+                  <div class="col-span-2 py-2">Power BI Dashboard</div>
+                </div>
+              </div>
+              <div class="border-2 shadow-md  border-t-0">
+                <div class="grid grid-cols-5 px-5 border-b-2">
+                  <div class="col-span-1 py-2 font-bold pr-5">Data Source</div>
+                  <div class="col-span-2 py-2 px-5">Odoo reports are built based on multiple data tables connected in
+                    one
+                    or more ways.</div>
+                  <div class="col-span-2 py-2">Power BI dashboards are build on Odoo tables and transformed data as
+                    needed.</div>
+                </div>
+                <div class="grid grid-cols-5 bg-[#E9E9E9] border-b-2 px-5">
+                  <div class="col-span-1 py-2 font-bold pr-5 text-left">Number of Pages</div>
+                  <div class="col-span-2 py-2 px-5">Odoo reports are generally single page consolidate report. Hence, it
+                    shows important but few information on a single page.</div>
+                  <div class="col-span-2 py-2">Power BI dashboard shows important data in multiple interactive KPIs.
+                    Dashboards can be of multiple pages, allows user to get detailed intuitive understanding of the
+                    data.
+                  </div>
+                </div>
+                <div class="grid grid-cols-5 border-b-2 px-5">
+                  <div class="col-span-1 py-2 font-bold sm:hidden pr-5">Visual-<br>izations</div>
+                  <div class="col-span-1 py-2 font-bold hidden sm:block pr-5">Visualizations</div>
+                  <div class="col-span-2 py-2 px-5">Odoo reports shows text summary of data. This way of reporting is
+                    least intutive.</div>
+                  <div class="col-span-2 py-2">Power BI Dashboards concentrate on building insights into the data by
+                    using
+                    attractive visuals, graphs, charts, etc.</div>
+                </div>
+                <div class="grid grid-cols-5 px-5 bg-[#E9E9E9]">
+                  <div class="col-span-1 py-2 font-bold pr-5">Template</div>
+                  <div class="col-span-2 py-2 px-5">Odoo Reports generally have a set template. This pre-defined
+                    template
+                    is hard to alter and shows few to none visual KPIs.</div>
+                  <div class="col-span-2 py-2">Dashboards can have multiple templates. It is up to the creator to
+                    visualize the data to fit the needs of the business. Power BI dashboards are flexible to develop and
+                    easy to alter.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hidden lg:block">
+      <div class="w-full">
+        <div class="rounded-md w-full flex items-center justify-center px-3 lg:py-10 h-full ">
+
+          <div class="h-full w-[250px] flex flex-col justify-between">
+            <div class="flex flex-col items-end">
+              <div class="pr-10">
+                <h4 class="py-1 font-semibold text-xl text-gray-800">Income </h4>
+                <div class="h-[4px] rounded-full w-[100px] bg-[#F5A632]"></div>
+                <p class=" text-gray-500 pt-2"> Income a company makes from selling products or services throughout a
+                  given time frame.</p>
+              </div>
+              <svg class="rotate-180 mr-[-25px] z-10" xmlns="http://www.w3.org/2000/svg" width="200" height="100"
+                viewBox="0 0 502 206" fill="none">
+                <circle r="25.5" transform="matrix(-1 0 0 1 28.5 28)" stroke="#F5A632" stroke-width="5" />
+                <circle r="14.3" transform="matrix(-1 0 0 1 28.4998 28)" fill="#F5A632" stroke="#F5A632"
+                  stroke-width="5" />
+                <path
+                  d="M491.061 205.061C490.475 205.646 489.525 205.646 488.939 205.061L479.393 195.515C478.808 194.929 478.808 193.979 479.393 193.393C479.979 192.808 480.929 192.808 481.515 193.393L490 201.879L498.485 193.393C499.071 192.808 500.021 192.808 500.607 193.393C501.192 193.979 501.192 194.929 500.607 195.515L491.061 205.061ZM488.5 204V199.938H491.5V204H488.5ZM488.5 191.812V183.688H491.5V191.812H488.5ZM488.5 175.562V171.5H491.5V175.562H488.5ZM488.5 171.5C488.5 170.237 488.418 168.994 488.259 167.776L491.234 167.388C491.409 168.734 491.5 170.107 491.5 171.5H488.5ZM486.338 160.591C485.378 158.275 484.12 156.112 482.613 154.15L484.991 152.322C486.657 154.49 488.047 156.88 489.109 159.442L486.338 160.591ZM477.35 148.887C475.388 147.38 473.225 146.122 470.909 145.162L472.058 142.391C474.62 143.453 477.01 144.843 479.178 146.509L477.35 148.887ZM463.724 143.241C462.506 143.082 461.263 143 460 143V140C461.393 140 462.766 140.091 464.112 140.266L463.724 143.241ZM460 143H455.985V140H460V143ZM447.955 143H439.925V140H447.955V143ZM431.895 143H423.865V140H431.895V143ZM415.835 143H407.805V140H415.835V143ZM399.775 143H391.745V140H399.775V143ZM383.715 143H375.685V140H383.715V143ZM367.655 143H359.625V140H367.655V143ZM351.595 143H343.565V140H351.595V143ZM335.535 143H327.505V140H335.535V143ZM319.475 143H311.445V140H319.475V143ZM303.415 143H295.385V140H303.415V143ZM287.355 143H279.325V140H287.355V143ZM271.295 143H263.265V140H271.295V143ZM255.235 143H247.205V140H255.235V143ZM239.175 143H231.145V140H239.175V143ZM223.115 143H215.085V140H223.115V143ZM207.055 143H199.025V140H207.055V143ZM190.995 143H182.965V140H190.995V143ZM174.935 143H166.905V140H174.935V143ZM158.875 143H150.845V140H158.875V143ZM142.815 143H134.785V140H142.815V143ZM126.755 143H118.725V140H126.755V143ZM110.695 143H102.665V140H110.695V143ZM94.635 143H86.605V140H94.635V143ZM78.575 143H70.545V140H78.575V143ZM62.515 143H58.5V140H62.515V143ZM58.5 143C57.1069 143 55.7343 142.909 54.3877 142.734L54.7757 139.759C55.994 139.918 57.237 140 58.5 140V143ZM46.4418 140.609C43.8801 139.547 41.4896 138.157 39.3225 136.491L41.1505 134.113C43.1121 135.62 45.2748 136.878 47.5909 137.838L46.4418 140.609ZM33.5086 130.678C31.8433 128.51 30.4531 126.12 29.3908 123.558L32.162 122.409C33.1225 124.725 34.38 126.888 35.8874 128.85L33.5086 130.678ZM27.2662 115.612C27.0905 114.266 27 112.893 27 111.5H30C30 112.763 30.0821 114.006 30.241 115.224L27.2662 115.612ZM27 111.5V106.917H30V111.5H27ZM27 97.75V88.5833H30V97.75H27ZM27 79.4167V70.25H30V79.4167H27ZM27 61.0833V56.5H30V61.0833H27Z"
+                  fill="#313032" />
+              </svg>
+            </div>
+            <div class="flex flex-col items-end">
+              <svg class="" xmlns="http://www.w3.org/2000/svg" width="200" height="100" viewBox="0 0 501 206"
+                fill="none">
+                <circle cx="473" cy="28" r="25.5" stroke="#898789" stroke-width="5" />
+                <circle cx="473" cy="28" r="14.3" fill="#898789" stroke="#898789" stroke-width="5" />
+                <path
+                  d="M10.4393 205.061C11.0251 205.646 11.9749 205.646 12.5607 205.061L22.1066 195.515C22.6924 194.929 22.6924 193.979 22.1066 193.393C21.5208 192.808 20.5711 192.808 19.9853 193.393L11.5 201.879L3.01472 193.393C2.42893 192.808 1.47919 192.808 0.893398 193.393C0.307611 193.979 0.307611 194.929 0.893398 195.515L10.4393 205.061ZM13 204V199.938H10V204H13ZM13 191.812V183.688H10V191.812H13ZM13 175.562V171.5H10V175.562H13ZM13 171.5C13 170.237 13.0821 168.994 13.241 167.776L10.2662 167.388C10.0905 168.734 10 170.107 10 171.5H13ZM15.162 160.591C16.1225 158.275 17.38 156.112 18.8874 154.15L16.5086 152.322C14.8433 154.49 13.4531 156.88 12.3908 159.442L15.162 160.591ZM24.1505 148.887C26.1121 147.38 28.2748 146.122 30.5909 145.162L29.4418 142.391C26.8801 143.453 24.4896 144.843 22.3225 146.509L24.1505 148.887ZM37.7757 143.241C38.994 143.082 40.237 143 41.5 143V140C40.1069 140 38.7343 140.091 37.3877 140.266L37.7757 143.241ZM41.5 143H45.515V140H41.5V143ZM53.545 143H61.575V140H53.545V143ZM69.605 143H77.635V140H69.605V143ZM85.665 143H93.695V140H85.665V143ZM101.725 143H109.755V140H101.725V143ZM117.785 143H125.815V140H117.785V143ZM133.845 143H141.875V140H133.845V143ZM149.905 143H157.935V140H149.905V143ZM165.965 143H173.995V140H165.965V143ZM182.025 143H190.055V140H182.025V143ZM198.085 143H206.115V140H198.085V143ZM214.145 143H222.175V140H214.145V143ZM230.205 143H238.235V140H230.205V143ZM246.265 143H254.295V140H246.265V143ZM262.325 143H270.355V140H262.325V143ZM278.385 143H286.415V140H278.385V143ZM294.445 143H302.475V140H294.445V143ZM310.505 143H318.535V140H310.505V143ZM326.565 143H334.595V140H326.565V143ZM342.625 143H350.655V140H342.625V143ZM358.685 143H366.715V140H358.685V143ZM374.745 143H382.775V140H374.745V143ZM390.805 143H398.835V140H390.805V143ZM406.865 143H414.895V140H406.865V143ZM422.925 143H430.955V140H422.925V143ZM438.985 143H443V140H438.985V143ZM443 143C444.393 143 445.766 142.909 447.112 142.734L446.724 139.759C445.506 139.918 444.263 140 443 140V143ZM455.058 140.609C457.62 139.547 460.01 138.157 462.178 136.491L460.35 134.113C458.388 135.62 456.225 136.878 453.909 137.838L455.058 140.609ZM467.991 130.678C469.657 128.51 471.047 126.12 472.109 123.558L469.338 122.409C468.378 124.725 467.12 126.888 465.613 128.85L467.991 130.678ZM474.234 115.612C474.409 114.266 474.5 112.893 474.5 111.5H471.5C471.5 112.763 471.418 114.006 471.259 115.224L474.234 115.612ZM474.5 111.5V106.917H471.5V111.5H474.5ZM474.5 97.75V88.5833H471.5V97.75H474.5ZM474.5 79.4167V70.25H471.5V79.4167H474.5ZM474.5 61.0833V56.5H471.5V61.0833H474.5Z"
+                  fill="#313032" />
+              </svg>
+              <div class="pr-10">
+                <h4 class="py-1 font-semibold text-xl text-gray-800">OPEX (Operating Expenses)</h4>
+                <div class="h-[4px] rounded-full w-[100px] bg-[#898789] "></div>
+                <p class=" text-gray-500 pt-2">Routine costs associated with operating a firm, including rent, employee
+                  wages, and utility costs.</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h6 class="text-[#1a3454] text-center font-semibold py-2 px-2 text-xl">Profit and Loss Dashboard</h6>
+            <div
+              class="flex items-center flex-col h-[300px] w-full sm:h-[380px] sm:w-[600px] lg:h-[400px] lg:w-[631px] relative border-sm">
+              <div class="flex items-center flex-row rounded-t-md border w-full bg-white min-h-[20px] py-1.5 px-3">
+                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-red-500"></div>
+                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-yellow-500"></div>
+                <div class="w-[12px] h-[12px] rounded-full bg-green-500"></div>
+                <div class="flex-1 place-delf-stretch"></div>
+              </div>
+              <div class="border border-t-0 border-gray-200 relative h-full w-full rounded-b-sm">
+                <div class="image-frame h-full">
+                  <img loading="lazy" src="{% static 'images/dashboards/image2.png'%}"
+                    alt="profit and loss dashboard features">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="h-full w-[250px] flex flex-col justify-between">
+            <div class="">
+              <div class="pl-10">
+                <h4 class="py-1 text-xl font-semibold text-gray-800">EBITDA </h4>
+                <div class="h-[4px] rounded-full w-[100px] bg-[#373736]"></div>
+                <p class=" text-gray-500 pt-2">An indicator of a company's operating profitability, EBITDA (Earnings
+                  Before Interest, Taxes, Depreciation, and Amortization) measures earnings before deducting
+                  non-operating
+                  costs.</p>
+              </div>
+              <svg class="rotate-180 -ml-[25px]" xmlns="http://www.w3.org/2000/svg" width="200" height="100"
+                viewBox="0 0 501 206" fill="none">
+                <circle cx="473" cy="28" r="25.5" stroke="#898789" stroke-width="5" />
+                <circle cx="473" cy="28" r="14.3" fill="#898789" stroke="#898789" stroke-width="5" />
+                <path
+                  d="M10.4393 205.061C11.0251 205.646 11.9749 205.646 12.5607 205.061L22.1066 195.515C22.6924 194.929 22.6924 193.979 22.1066 193.393C21.5208 192.808 20.5711 192.808 19.9853 193.393L11.5 201.879L3.01472 193.393C2.42893 192.808 1.47919 192.808 0.893398 193.393C0.307611 193.979 0.307611 194.929 0.893398 195.515L10.4393 205.061ZM13 204V199.938H10V204H13ZM13 191.812V183.688H10V191.812H13ZM13 175.562V171.5H10V175.562H13ZM13 171.5C13 170.237 13.0821 168.994 13.241 167.776L10.2662 167.388C10.0905 168.734 10 170.107 10 171.5H13ZM15.162 160.591C16.1225 158.275 17.38 156.112 18.8874 154.15L16.5086 152.322C14.8433 154.49 13.4531 156.88 12.3908 159.442L15.162 160.591ZM24.1505 148.887C26.1121 147.38 28.2748 146.122 30.5909 145.162L29.4418 142.391C26.8801 143.453 24.4896 144.843 22.3225 146.509L24.1505 148.887ZM37.7757 143.241C38.994 143.082 40.237 143 41.5 143V140C40.1069 140 38.7343 140.091 37.3877 140.266L37.7757 143.241ZM41.5 143H45.515V140H41.5V143ZM53.545 143H61.575V140H53.545V143ZM69.605 143H77.635V140H69.605V143ZM85.665 143H93.695V140H85.665V143ZM101.725 143H109.755V140H101.725V143ZM117.785 143H125.815V140H117.785V143ZM133.845 143H141.875V140H133.845V143ZM149.905 143H157.935V140H149.905V143ZM165.965 143H173.995V140H165.965V143ZM182.025 143H190.055V140H182.025V143ZM198.085 143H206.115V140H198.085V143ZM214.145 143H222.175V140H214.145V143ZM230.205 143H238.235V140H230.205V143ZM246.265 143H254.295V140H246.265V143ZM262.325 143H270.355V140H262.325V143ZM278.385 143H286.415V140H278.385V143ZM294.445 143H302.475V140H294.445V143ZM310.505 143H318.535V140H310.505V143ZM326.565 143H334.595V140H326.565V143ZM342.625 143H350.655V140H342.625V143ZM358.685 143H366.715V140H358.685V143ZM374.745 143H382.775V140H374.745V143ZM390.805 143H398.835V140H390.805V143ZM406.865 143H414.895V140H406.865V143ZM422.925 143H430.955V140H422.925V143ZM438.985 143H443V140H438.985V143ZM443 143C444.393 143 445.766 142.909 447.112 142.734L446.724 139.759C445.506 139.918 444.263 140 443 140V143ZM455.058 140.609C457.62 139.547 460.01 138.157 462.178 136.491L460.35 134.113C458.388 135.62 456.225 136.878 453.909 137.838L455.058 140.609ZM467.991 130.678C469.657 128.51 471.047 126.12 472.109 123.558L469.338 122.409C468.378 124.725 467.12 126.888 465.613 128.85L467.991 130.678ZM474.234 115.612C474.409 114.266 474.5 112.893 474.5 111.5H471.5C471.5 112.763 471.418 114.006 471.259 115.224L474.234 115.612ZM474.5 111.5V106.917H471.5V111.5H474.5ZM474.5 97.75V88.5833H471.5V97.75H474.5ZM474.5 79.4167V70.25H471.5V79.4167H474.5ZM474.5 61.0833V56.5H471.5V61.0833H474.5Z"
+                  fill="#313032" />
+              </svg>
+            </div>
+            <div>
+              <svg class="" xmlns="http://www.w3.org/2000/svg" width="200" height="100" viewBox="0 0 502 206"
+                fill="none">
+                <circle r="25.5" transform="matrix(-1 0 0 1 28.5 28)" stroke="#97C222" stroke-width="5" />
+                <circle r="14.3" transform="matrix(-1 0 0 1 28.4998 28)" fill="#97C222" stroke="#97C222"
+                  stroke-width="5" />
+                <path
+                  d="M491.061 205.061C490.475 205.646 489.525 205.646 488.939 205.061L479.393 195.515C478.808 194.929 478.808 193.979 479.393 193.393C479.979 192.808 480.929 192.808 481.515 193.393L490 201.879L498.485 193.393C499.071 192.808 500.021 192.808 500.607 193.393C501.192 193.979 501.192 194.929 500.607 195.515L491.061 205.061ZM488.5 204V199.938H491.5V204H488.5ZM488.5 191.812V183.688H491.5V191.812H488.5ZM488.5 175.562V171.5H491.5V175.562H488.5ZM488.5 171.5C488.5 170.237 488.418 168.994 488.259 167.776L491.234 167.388C491.409 168.734 491.5 170.107 491.5 171.5H488.5ZM486.338 160.591C485.378 158.275 484.12 156.112 482.613 154.15L484.991 152.322C486.657 154.49 488.047 156.88 489.109 159.442L486.338 160.591ZM477.35 148.887C475.388 147.38 473.225 146.122 470.909 145.162L472.058 142.391C474.62 143.453 477.01 144.843 479.178 146.509L477.35 148.887ZM463.724 143.241C462.506 143.082 461.263 143 460 143V140C461.393 140 462.766 140.091 464.112 140.266L463.724 143.241ZM460 143H455.985V140H460V143ZM447.955 143H439.925V140H447.955V143ZM431.895 143H423.865V140H431.895V143ZM415.835 143H407.805V140H415.835V143ZM399.775 143H391.745V140H399.775V143ZM383.715 143H375.685V140H383.715V143ZM367.655 143H359.625V140H367.655V143ZM351.595 143H343.565V140H351.595V143ZM335.535 143H327.505V140H335.535V143ZM319.475 143H311.445V140H319.475V143ZM303.415 143H295.385V140H303.415V143ZM287.355 143H279.325V140H287.355V143ZM271.295 143H263.265V140H271.295V143ZM255.235 143H247.205V140H255.235V143ZM239.175 143H231.145V140H239.175V143ZM223.115 143H215.085V140H223.115V143ZM207.055 143H199.025V140H207.055V143ZM190.995 143H182.965V140H190.995V143ZM174.935 143H166.905V140H174.935V143ZM158.875 143H150.845V140H158.875V143ZM142.815 143H134.785V140H142.815V143ZM126.755 143H118.725V140H126.755V143ZM110.695 143H102.665V140H110.695V143ZM94.635 143H86.605V140H94.635V143ZM78.575 143H70.545V140H78.575V143ZM62.515 143H58.5V140H62.515V143ZM58.5 143C57.1069 143 55.7343 142.909 54.3877 142.734L54.7757 139.759C55.994 139.918 57.237 140 58.5 140V143ZM46.4418 140.609C43.8801 139.547 41.4896 138.157 39.3225 136.491L41.1505 134.113C43.1121 135.62 45.2748 136.878 47.5909 137.838L46.4418 140.609ZM33.5086 130.678C31.8433 128.51 30.4531 126.12 29.3908 123.558L32.162 122.409C33.1225 124.725 34.38 126.888 35.8874 128.85L33.5086 130.678ZM27.2662 115.612C27.0905 114.266 27 112.893 27 111.5H30C30 112.763 30.0821 114.006 30.241 115.224L27.2662 115.612ZM27 111.5V106.917H30V111.5H27ZM27 97.75V88.5833H30V97.75H27ZM27 79.4167V70.25H30V79.4167H27ZM27 61.0833V56.5H30V61.0833H27Z"
+                  fill="#313032" />
+              </svg>
+              <div class="pl-10">
+                <h4 class="py-1 text-xl text-gray-800 font-semibold">Gross Profit</h4>
+                <div class="h-[4px] rounded-full w-[100px] bg-[#97C222] "></div>
+                <p class=" text-gray-500 pt-2">A company's profit earned before deducting operational expenditures is
+                  known as gross profit, which is the difference between revenue and cost of products sold.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-12 mt-10 px-5 py-10">
+      <div>
+        <h2 class="text-center font-bold text-3xl uppercase text-[#1a3454] drop-shadow-md">Live Preview</h2>
+      </div>
+      <div
+        class="flex mx-auto items-center flex-col  h-[300px] w-full sm:h-[380px] sm:w-[600px] lg:h-[539px] lg:w-[850px] relative border-sm">
+        <div class="flex items-center flex-row  rounded-t-md border w-full bg-white min-h-[20px] py-1.5 px-3">
+          <div class="w-[12px] mr-2 h-[12px] rounded-full bg-red-500"></div>
+          <div class="w-[12px] mr-2 h-[12px] rounded-full bg-yellow-500"></div>
+          <div class="w-[12px] h-[12px] rounded-full bg-green-500"></div>
+          <div class="flex-1 -delf-stretch"></div>
+        </div>
+        <div class="border hidden border-t-0 border-gray-200 relative h-full w-full rounded-b-sm iframeDiv">
+
+          <iframe allow="accelerometer; autoplay; clipboard-write;  gyroscope;  web-share" allowfullscreen
+            frameborder="0" loading="lazy" title="Profit and loss dashboard" width="100%" height="100%"
+            src="https://app.powerbi.com/view?r=eyJrIjoiN2QyMTUwZDQtOTQ0OC00ZGEyLTlkYzItMWE1NTg0NTA4YjVlIiwidCI6ImI2NzFmYmQxLWUyOTItNDVlZS05MGM2LTgzNjg3MzFlOTFiOCJ9"></iframe>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="mt-12 px-5
+sm:px-16 lg:px-24
+lg:px-44">
+      <div>
+        <h2 class="text-center
+    font-bold text-2xl
+    lg:text-3xl uppercase
+    text-[#1a3454]
+    drop-shadow-md">Overview</h2>
+      </div>
+
+      <div class="lg:w-[60%]
+  mx-auto mt-10">
+        <div class="media-image">
+          <div class="image-frame">
+            <div class="image-ratio">
+              <img loading="lazy" src="{% static 'images/dashboards/image3.png'%}" alt="dashboard">
+            </div>
+            <span class="label
+        label-new">
+              Dashboard
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class=" mt-10 ">
+        <div class="mt-2 text-lg
+    text-justify">
+          <div class="space-y-4
+      ">
+            <p class="text-gray-700">
+              Budgeting,
+              accounting, and
+              revenue
+              forecasting are
+              just a few of the
+              complicated
+              financial data
+              that
+              organizations must
+              deal with as they
+              expand. Profit and
+              loss (P&L) is one
+              of these and is a
+              crucial aspect
+              of every firm; it
+              is important to
+              analyze the
+              factors that
+              contribute to it.
+              The P&L analysis
+              process is
+              made simpler for
+              organizations
+              using Techneith's
+              Profit and Loss
+              Dashboard for
+              Odoo.
+            </p>
+            <p class="text-gray-700">
+              Our Profit and
+              Loss Dashboard is
+              made to assist
+              companies in
+              evaluating their
+              financial
+              performance and
+              discovering areas
+              that need
+              improvement.
+              Insights into the
+              organization's
+              financial data are
+              provided by the
+              dashboard in
+              numerous
+              significant ways,
+              including:
+            </p>
+          </div>
+          <div class=" pt-5
+      space-y-8">
+            <div class="space-y-3">
+              <h3 class="text-lg
+          text-[#23456e]
+          font-bold">
+                Growing &
+                Declining
+                Products :-
+              </h3>
+              <p class="text-gray-700
+          px-1">
+                The dashboard
+                provides a
+                detailed
+                analysis of the
+                sales
+                performance of
+                each product.
+                This helps
+                organizations to
+                identify
+                products that
+                are performing
+                well and those
+                that are not.
+              </p>
+            </div>
+            <div class="space-y-3">
+              <h3 class="text-lg
+          font-bold
+          text-[#23456e]">
+                Customized
+                dashboards :-
+              </h3>
+              <p class="text-gray-700
+          px-1">
+                The
+                organization's
+                design and UI
+                templates are
+                reflected in the
+                way our
+                dashboard is
+                made. This makes
+                sure
+                that using and
+                navigating the
+                dashboard is
+                simple. Since we
+                create
+                dashboards from
+                scratch, we can
+                tailor
+                them to the
+                specific needs
+                of the
+                organization.
+              </p>
+            </div class="space-y-3">
+            <div>
+              <h3 class="text-lg
+          font-bold
+          text-[#23456e]">
+                Real-Time Data
+                :-
+              </h3>
+              <p class="text-gray-700
+          px-1">
+                The dashboard
+                can be refreshed
+                in a matter of
+                minutes,
+                ensuring that
+                the data
+                reflected is
+                precise to the
+                last detail.
+                This allows
+                organizations to
+                make informed
+                decisions based
+                on real-time
+                data.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+  </section>
+  <section class="px-5 sm:px-16
+lg:px-24 lg:px-44">
+    <div class="mt-24 w-full
+space-y-12">
+      <h2 class="text-center
+  font-bold text-2xl
+  lg:text-3xl uppercase
+  text-[#1a3454]
+  drop-shadow-md">Key KPIs
+        Used in
+        Profit and Loss
+        Dashboards</h2>
+      <div class="w-full
+  lg:w-[80%] mx-auto flex
+  justify-center">
+        <div class="media-image">
+          <div class="image-frame">
+            <div class="image-ratio">
+              <img loading="lazy" src="{% static 'images/dashboards/image1.png'%}" class="" alt="kpi used:-
+          Income, OPEX,
+          EBITDA, Gross
+          Profit, NET
+          Profit">
+            </div>
+            <span class="label
+        label-new">
+              KPI's
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <ul class="text-lg
+  sm:w-[85%] mx-auto
+  text-justify space-y-6
+  text-gray-700
+  font-normal ">
+        <li>
+          <b class="text-[#23456e]">
+            Income :-</b> Income
+          a company makes from
+          selling products or
+          services throughout
+          a given time frame.
+        </li>
+        <li>
+          <b class="text-[#23456e]">
+            OPEX (Operating
+            Expenses):-</b>
+          Routine costs
+          associated with
+          operating a firm,
+          including rent,
+          employee wages, and
+          utility costs.
+        </li>
+        <li>
+          <b class="text-[#23456e]">
+            EBITDA :-</b> An
+          indicator of a
+          company's operating
+          profitability, EBITDA
+          (Earnings Before
+          Interest, Taxes,
+          Depreciation, and
+          Amortization) measures
+          earnings before
+          deducting
+          non-operating costs.
+        </li>
+        <li>
+          <b class="text-[#23456e]">
+            Gross Profit :-</b>
+          A company's profit
+          earned before
+          deducting operational
+          expenditures is known
+          as gross profit, which
+          is the difference
+          between revenue and
+          cost of products sold.
+        </li>
+        <li>
+          <b class="text-[#23456e]">
+            NET Profit :-</b>
+          The profit earned by a
+          company after
+          subtracting all
+          expenses,
+          including taxes and
+          interest.
+        </li>
+      </ul>
+    </div>
+    <div>
+    </div>
+  </section>
+
+
+  {% comment %} <section>
+    <div class="px-5 sm:px-8
+    lg:mx-16 lg:mx-24 mt-24
+    space-y-8">
+      <div class="flex
+      justify-between
+      items-center">
+        <div class="space-y-3">
+          <h4 id="others" class="text-2xl
+          lg:text-3xl
+          drop-shadow-md
+          text-[#1a3454]
+          font-bold">Similar
+            Dashboards</h4>
+          <p class="text-gray-700">Customers
+            also viewed these
+            dashboards</p>
+        </div>
+        <a href="" class="text-gray-600
+        font-semibold">View
+          all →</a>
+      </div>
+      <div class="grid
+      grid-cols-1
+      lg:grid-cols-3 lg:px-5
+      gap-5">
+        <div class="h-[200px]
+        bg-slate-500">ew</div>
+        <div class="h-[200px]
+        bg-slate-500">ew</div>
+        <div class="h-[200px]
+        bg-slate-500">wer</div>
+      </div>
+    </div>
+  </section> {% endcomment %}
+  </div>
+
+  <footer id="contacts" class="flex flex-col mt-16 items-center relative justify-center w-full mt-6 rounded-lg">
+    <div
+      class="flex flex-col py-8 pb-2 gap-5 items-center px-5 xl:px-5 lg:px-10 md:px-20 sm:px-14 relative h-full w-full max-w-inner-content">
+      <div class="flex flex-col w-full py-6 pb-8">
+        <nav class="grid grid-cols-2 sm:grid-cols-4 gap-x-12 py-2 my-2">
+          <div class="flex flex-col justify-center">
+            <div onclick="window.location='/#home'" class="cursor-pointer">
+              <svg viewBox="0 0 1712 316">
+                <path
+                  d="M439.568 133.714V207.146C439.568 212.261 440.755 216.005 443.13 218.38C445.687 220.572 449.889 221.668 455.734 221.668H473.544V254H449.432C417.1 254 400.934 238.291 400.934 206.872V133.714H382.85V102.204H400.934V64.666H439.568V102.204H473.544V133.714H439.568ZM642.245 174.814C642.245 180.294 641.879 185.226 641.149 189.61H530.179C531.092 200.57 534.928 209.155 541.687 215.366C548.445 221.577 556.757 224.682 566.621 224.682C580.869 224.682 591.007 218.563 597.035 206.324H638.409C634.025 220.937 625.622 232.993 613.201 242.492C600.779 251.808 585.527 256.466 567.443 256.466C552.829 256.466 539.677 253.269 527.987 246.876C516.479 240.3 507.437 231.075 500.861 219.202C494.467 207.329 491.271 193.629 491.271 178.102C491.271 162.393 494.467 148.601 500.861 136.728C507.254 124.855 516.205 115.721 527.713 109.328C539.221 102.935 552.464 99.738 567.443 99.738C581.873 99.738 594.751 102.843 606.077 109.054C617.585 115.265 626.444 124.124 632.655 135.632C639.048 146.957 642.245 160.018 642.245 174.814ZM602.515 163.854C602.332 153.99 598.77 146.135 591.829 140.29C584.887 134.262 576.393 131.248 566.347 131.248C556.848 131.248 548.811 134.171 542.235 140.016C535.841 145.679 531.914 153.625 530.453 163.854H602.515ZM660.38 178.102C660.38 162.393 663.577 148.693 669.97 137.002C676.363 125.129 685.223 115.995 696.548 109.602C707.873 103.026 720.843 99.738 735.456 99.738C754.271 99.738 769.797 104.487 782.036 113.986C794.457 123.302 802.769 136.454 806.97 153.442H765.596C763.404 146.866 759.659 141.751 754.362 138.098C749.247 134.262 742.854 132.344 735.182 132.344C724.222 132.344 715.545 136.363 709.152 144.4C702.759 152.255 699.562 163.489 699.562 178.102C699.562 192.533 702.759 203.767 709.152 211.804C715.545 219.659 724.222 223.586 735.182 223.586C750.709 223.586 760.847 216.645 765.596 202.762H806.97C802.769 219.202 794.457 232.263 782.036 241.944C769.615 251.625 754.088 256.466 735.456 256.466C720.843 256.466 707.873 253.269 696.548 246.876C685.223 240.3 676.363 231.167 669.97 219.476C663.577 207.603 660.38 193.811 660.38 178.102ZM920.56 100.012C932.068 100.012 942.297 102.569 951.248 107.684C960.199 112.616 967.14 120.014 972.072 129.878C977.187 139.559 979.744 151.25 979.744 164.95V254H941.384V170.156C941.384 158.1 938.37 148.875 932.342 142.482C926.314 135.906 918.094 132.618 907.682 132.618C897.087 132.618 888.685 135.906 882.474 142.482C876.446 148.875 873.432 158.1 873.432 170.156V254H835.072V51.24H873.432V121.11C878.364 114.534 884.94 109.419 893.16 105.766C901.38 101.93 910.513 100.012 920.56 100.012ZM1100.34 100.012C1118.42 100.012 1133.04 105.766 1144.18 117.274C1155.32 128.599 1160.89 144.491 1160.89 164.95V254H1122.53V170.156C1122.53 158.1 1119.52 148.875 1113.49 142.482C1107.46 135.906 1099.24 132.618 1088.83 132.618C1078.24 132.618 1069.84 135.906 1063.62 142.482C1057.6 148.875 1054.58 158.1 1054.58 170.156V254H1016.22V102.204H1054.58V121.11C1059.7 114.534 1066.18 109.419 1074.04 105.766C1082.07 101.93 1090.84 100.012 1100.34 100.012ZM1338.48 174.814C1338.48 180.294 1338.12 185.226 1337.39 189.61H1226.42C1227.33 200.57 1231.17 209.155 1237.92 215.366C1244.68 221.577 1252.99 224.682 1262.86 224.682C1277.11 224.682 1287.24 218.563 1293.27 206.324H1334.65C1330.26 220.937 1321.86 232.993 1309.44 242.492C1297.02 251.808 1281.76 256.466 1263.68 256.466C1249.07 256.466 1235.92 253.269 1224.22 246.876C1212.72 240.3 1203.67 231.075 1197.1 219.202C1190.71 207.329 1187.51 193.629 1187.51 178.102C1187.51 162.393 1190.71 148.601 1197.1 136.728C1203.49 124.855 1212.44 115.721 1223.95 109.328C1235.46 102.935 1248.7 99.738 1263.68 99.738C1278.11 99.738 1290.99 102.843 1302.31 109.054C1313.82 115.265 1322.68 124.124 1328.89 135.632C1335.29 146.957 1338.48 160.018 1338.48 174.814ZM1298.75 163.854C1298.57 153.99 1295.01 146.135 1288.07 140.29C1281.13 134.262 1272.63 131.248 1262.58 131.248C1253.09 131.248 1245.05 134.171 1238.47 140.016C1232.08 145.679 1228.15 153.625 1226.69 163.854H1298.75ZM1385.94 84.12C1379.18 84.12 1373.51 82.0193 1368.95 77.818C1364.56 73.434 1362.37 68.0453 1362.37 61.652C1362.37 55.2587 1364.56 49.9613 1368.95 45.76C1373.51 41.376 1379.18 39.184 1385.94 39.184C1392.69 39.184 1398.27 41.376 1402.65 45.76C1407.22 49.9613 1409.5 55.2587 1409.5 61.652C1409.5 68.0453 1407.22 73.434 1402.65 77.818C1398.27 82.0193 1392.69 84.12 1385.94 84.12ZM1404.84 102.204V254H1366.48V102.204H1404.84ZM1487.4 133.714V207.146C1487.4 212.261 1488.59 216.005 1490.97 218.38C1493.52 220.572 1497.72 221.668 1503.57 221.668H1521.38V254H1497.27C1464.94 254 1448.77 238.291 1448.77 206.872V133.714H1430.69V102.204H1448.77V64.666H1487.4V102.204H1521.38V133.714H1487.4ZM1634.46 100.012C1645.97 100.012 1656.2 102.569 1665.15 107.684C1674.1 112.616 1681.04 120.014 1685.97 129.878C1691.09 139.559 1693.64 151.25 1693.64 164.95V254H1655.28V170.156C1655.28 158.1 1652.27 148.875 1646.24 142.482C1640.21 135.906 1631.99 132.618 1621.58 132.618C1610.99 132.618 1602.58 135.906 1596.37 142.482C1590.34 148.875 1587.33 158.1 1587.33 170.156V254H1548.97V51.24H1587.33V121.11C1592.26 114.534 1598.84 109.419 1607.06 105.766C1615.28 101.93 1624.41 100.012 1634.46 100.012Z"
+                  fill="#1B1A1A"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M174 307L0.794922 7H347.205L314.296 64H249.776L265.942 36H110.058L188 171L218.6 118H283.119L174 307Z"
+                  fill="#1B1A1A"></path>
+              </svg>
+            </div>
+            <ul class="flex flex-col justify-center items-center mt-4">
+              {% comment %}
+              <li>
+                <p class="text-center py-2 text-[#1a3454]">
+                  <span class="font-bold">Techneith</span> is a leading Odoo
+                  development company which creates Odoo ERP modules and
+                  dashboards with 5+ years of experience with top leading
+                  companies all over the globe
+                </p>
+              </li>
+              {% endcomment %}
+              <li>
+                <p>
+                  <span class="font-bold">Location:</span> Toronto, Canada
+                </p>
+              </li>
+              <li>
+                <span class="font-bold">Contact: </span>info@techneith.com
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col">
+            <h2 class="font-semibold text-xl text-[#1a3454] mb-4 uppercase">
+              Services
+            </h2>
+            <ul>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/about/">Odoo Customization</a>
+              </li>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/products/odoo_power_bi_direct_connector/">Power BI Dashboards</a>
+              </li>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/about/">Odoo Implementation</a>
+              </li>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/about/">Custom Odoo Modules</a>
+              </li>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/about/">IT Solutions</a>
+              </li>
+            </ul>
+          </div>
+          <div class="flex flex-col">
+            <h2 class="font-semibold text-xl text-[#1a3454] mb-4 uppercase">
+              Quick Links
+            </h2>
+            <ul>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/products/odoo_power_bi_direct_connector/">Power BI Odoo Direct Connector
+                </a>
+              </li>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/blogs">Blogs</a>
+              </li>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/products/">Products</a>
+              </li>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/about/">About Us</a>
+              </li>
+              {% comment %}
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="./products">Privacy Policy</a>
+              </li>
+              {% endcomment %}
+            </ul>
+          </div>
+          <div class="flex flex-col">
+            <h2 class="font-semibold text-xl text-[#1a3454] mb-4 uppercase">
+              Popular Links
+            </h2>
+            <ul>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/blogs/can-we-add-react-in-odoo/">Can we add react in Odoo?</a>
+              </li>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/blogs/how-to-connect-odoo-with-power-bi/">How to connect odoo with PowerBI?</a>
+              </li>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/blogs/business-intelligence-for-odoo-erp/">Business Intelligence for Odoo ERP</a>
+              </li>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/blogs/power-bi-dashboards-for-odoo-data/">PowerBI Dashboards for Odoo Data</a>
+              </li>
+              <li class="my-2 text-gray-700 listBorder relative pb-2 w-fit">
+                <a href="/blogs/buck-gardner-power-bi-dashboard-case-study/">Buck Gardner PowerBI Dashboard</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="w-full h-full -z-10 bottom-0 absolute footer-effect"></div>
+    <div class="w-full pt-4 flex flex-col bg-white flex justify-center items-centered py-2 socialLogin">
+      <div class="flex justify-center gap-3">
+        <a class="social-button" target="_blank" rel="noopener noreferrer" href="mailto:info@techneith.com"
+          title="Email">
+          <svg stroke="dimGray" fill="dimGray" stroke-width="0" viewBox="0 0 24 24" aria-hidden="true" focusable="false"
+            height="25" width="25" xmlns="http://www.w3.org/2000/svg">
+            <path fill="none" d="M0 0h24v24H0V0z"></path>
+            <path
+              d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z">
+            </path>
+          </svg>
+        </a>
+        <a class="social-button" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/techneith"
+          title="Instagram">
+          <svg stroke="dimGray" fill="dimGray" stroke-width="0" version="1.2" baseProfile="tiny" viewBox="0 0 24 24"
+            aria-hidden="true" focusable="false" height="25" width="25" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M18 3h-12c-1.7 0-3 1.3-3 3v12c0 1.7 1.3 3 3 3h12c1.7 0 3-1.3 3-3v-12c0-1.7-1.3-3-3-3zm-6 6c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3zm3.8-2c0-.7.6-1.2 1.2-1.2s1.2.6 1.2 1.2-.5 1.2-1.2 1.2-1.2-.5-1.2-1.2zm2.2 12h-12c-.6 0-1-.4-1-1v-6h2c0 2.8 2.2 5 5 5s5-2.2 5-5h2v6c0 .6-.4 1-1 1z">
+            </path>
+          </svg>
+        </a>
+        <a class="social-button" target="_blank" rel="noopener noreferrer" href="https://twitter.com/techneith"
+          title="Twitter">
+          <svg stroke="dimGray" fill="dimGray" stroke-width="0" version="1.2" baseProfile="tiny" viewBox="0 0 24 24"
+            aria-hidden="true" focusable="false" height="25" width="25" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M18.89 7.012c.808-.496 1.343-1.173 1.605-2.034-.786.417-1.569.703-2.351.861-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078-.715.717-1.076 1.588-1.076 2.605 0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388.549.676 1.254 1.107 2.115 1.291-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841.625.472 1.344.721 2.152.743-1.332 1.045-2.855 1.562-4.578 1.562-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974.784-1.564 1.172-3.192 1.172-4.892v-.468c.758-.57 1.371-1.212 1.84-1.921-.68.293-1.383.492-2.11.593z">
+            </path>
+          </svg>
+        </a>
+        <a class="social-button" target="_blank" rel="noopener noreferrer"
+          href="https://www.linkedin.com/company/techneith/" title="Linkedin">
+          <svg stroke="dimGray" fill="dimGray" stroke-width="0" version="1.2" baseProfile="tiny" viewBox="0 0 24 24"
+            aria-hidden="true" focusable="false" height="25" width="25" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M8 19h-3v-10h3v10zm11 0h-3v-5.342c0-1.392-.496-2.085-1.479-2.085-.779 0-1.273.388-1.521 1.165v6.262h-3s.04-9 0-10h2.368l.183 2h.062c.615-1 1.598-1.678 2.946-1.678 1.025 0 1.854.285 2.487 1.001.637.717.954 1.679.954 3.03v5.647z">
+            </path>
+            <ellipse cx="6.5" cy="6.5" rx="1.55" ry="1.5"></ellipse>
+          </svg>
+        </a>
+        <a class="social-button" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/techneith"
+          title="Facebook">
+          <svg stroke="dimGray" fill="dimGray" stroke-width="0" version="1.2" baseProfile="tiny" viewBox="0 0 24 24"
+            aria-hidden="true" focusable="false" height="25" width="25" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M13 10h3v3h-3v7h-3v-7h-3v-3h3v-1.255c0-1.189.374-2.691 1.118-3.512.744-.823 1.673-1.233 2.786-1.233h2.096v3h-2.1c-.498 0-.9.402-.9.899v2.101z">
+            </path>
+          </svg>
+        </a>
+      </div>
+      <div class="flex flex-col pt-2 pb-2 justify-center items-center">
+        <p class="text-gray-700 w-10/12 sm:w-full text-center">
+          © Copyright 2017-2023, Techneith. All Rights Reserved
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var iframeDiv = document.querySelector('.iframeDiv');
+    window.addEventListener('scroll', (event) => {
+      if (scrollY > 800) {
+        iframeDiv.style.display = "initial";
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+{% load static %} {% block content %}
+<!-- Feature Section -->
+<section id="feature" class="background-wrapper-one">
+  <div class="feature container">
+    <div class="feature-left-block">
+      <div>
+        <h1 class="feature-heading">Odoo Power BI Direct Connector</h1>
+      </div>
+      <div class="feature-content">
+        <h1>Connects your Odoo Directly to Power BI Desktop</h1>
+        <p>Direct Connect. No Export. Single Click Refresh.</p>
+      </div>
+      <a href="{% url 'bi_connector'  %}" class="feature-button custom-button">
+        Show Connector
+      </a>
+    </div>
+    <div class="feature-right-block">
+      <img src="https://raw.githubusercontent.com/techneithadmin/assets/main/biconnectorillustration.jpeg" alt="Odoo Power BI Connector for dashboard and reports by techneith" />
+    </div>
+  </div>
+</section>
+
+<div style="padding-top:10px; width:100%"></div>
+
+<section id="feature" class="background-wrapper-one">
+  <div class="feature container">
+    <div class="feature-left-block">
+      <div>
+        <h1 class="feature-heading">SKUCAST.AI</h1>
+      </div>
+      <div class="feature-content">
+        <h1>AI Powered Demand Forecasting and Inventory Management</h1>
+        <p>Powerful Inventory Management with Excel UI</p>
+      </div>
+      <a href="{% url 'skucast'  %}" class="feature-button custom-button">
+        Show Me More
+      </a>
+    </div>
+    <div class="feature-right-block">
+      <img src="{% static 'images/skucast_img/skucast.gif' %}" alt="skucast AI" />
+    </div>
+  </div>
+</section>
+{% endblock %}

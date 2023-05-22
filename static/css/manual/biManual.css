@@ -1,0 +1,19 @@
+#hero {
+    background: rgba(0, 0, 0, 0) url('../../images/manual/powerbiBg.webp') repeat fixed center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    background-position: bottom;
+}
+
+#hero::before {
+    background: #000 none repeat scroll 0 0;
+    content: "";
+    height: inherit;
+    left: 0;
+    z-index: 0;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}

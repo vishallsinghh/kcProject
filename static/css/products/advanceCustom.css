@@ -1,0 +1,154 @@
+.gradientback {
+
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 190px;
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255) 100%);
+    /* FF3.6+ */
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255) 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255) 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255) 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255) 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0089fff1', endColorstr='#000000', GradientType=0);
+    /* IE6-9 */
+
+}
+
+.viewPanel {
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+}
+
+.viewPanel>p:nth-child(2) {
+    display: none;
+}
+
+#carouselExampleCaptions svg {
+    color: #00368f;
+}
+
+.discussPanel>div {
+    display: none;
+}
+
+#id_display {
+    display: none;
+}
+
+.review_wrapper>div {
+    width: 60%;
+}
+
+.review_wrapper>div:nth-child(even) {
+    align-self: end;
+}
+
+.review-star>img {
+    width: 15px;
+    margin-right: 5px;
+}
+
+.white-button {
+    display: none;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    --tw-text-opacity: 1;
+    color: rgb(47 127 184 / var(--tw-text-opacity));
+    transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.white-button:hover {
+    --tw-bg-opacity: 1;
+    /* background-color: rgb(237 244 250 / var(--tw-bg-opacity)); */
+}
+
+@media (min-width: 1024px) {
+    .white-button {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
+
+.white-button {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px #2f7fb83b;
+}
+
+.discuss-card {
+    width: 60%;
+}
+
+@media screen and (max-width:480px) {
+    .discuss-card {
+        width: 90%;
+    }
+
+    .review_wrapper>div {
+        width: 100%;
+    }
+
+    .slide-track {
+        display: flex;
+        overflow: hidden;
+        width: calc(250px * 26);
+        animation: scroll2 40s linear infinite !important;
+    }
+
+}
+
+.footer-effect {
+    left: 50%;
+    transform: translate(-50%, 0);
+    max-width: 2000px;
+    background: rgb(255, 228, 207);
+    background: linear-gradient(120deg, #e2e6fc 0%, #e2e6fc 20%, #fbe1cc 80%, #fbe1cc 100%);
+}
+
+.bounceEffect {
+    transition: 0.3s all;
+
+    animation: bounce1 0.3s ease infinite alternate;
+}
+
+.bounceText {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.bounceEffect:hover {
+    transform: scale(1.03)
+}
+
+@keyframes bounce1 {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.04);
+    }
+}

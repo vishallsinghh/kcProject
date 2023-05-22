@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.home-effect {
+    background: rgb(255, 228, 207);
+    background: linear-gradient(100deg, #fbe1cc 0%, #d1d5f0 20%, #fbe1cc 100%);
+  }
+  .buttonshadow {
+    box-shadow: 0px 0px 20px #2f7fb83b;
+  }
+  html{
+    scroll-behavior: smooth;
+  }

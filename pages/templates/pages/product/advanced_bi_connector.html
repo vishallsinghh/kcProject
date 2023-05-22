@@ -1,0 +1,1675 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="{%  static 'favicon.ico' %}" />
+  <!-- resources import starts -->
+  <script defer src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+  <link rel="stylesheet" href="{% static 'css/products/bi_build.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/products/advancebi.css' %}" />
+  <!-- resources import starts -->
+
+  <title>{{product.name}} | Techneith</title>
+</head>
+
+<body class="relative w-full">
+  <script>
+    function Menu(e) {
+      let list = document.querySelector('ul');
+      e.name === 'menu' ? (e.name = "close", list.classList.add('top-[60px]'), list.classList.add('opacity-100')) : (e.name = "menu", list.classList.remove('top-[60px]'), list.classList.remove('opacity-100'))
+    }
+  </script>
+  <!-- feedback icon -->
+  {% comment %} <div
+    class="p-3 z-30 fixed bottom-[10px] right-[10px] sm:bottom-[20px] sm:right-[20px] h-[45px] w-[45px] rounded-full bg-[#3182CE]">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path
+        d="M8.964 4l6.073.011c3.846 0 6.963 3.13 6.963 6.99 0 3.617-2.74 6.594-6.251 6.952l-.243.02-3.2 3.683-1.509-1.312 3.784-4.355h.456c2.74 0 4.963-2.232 4.963-4.988 0-2.684-2.108-4.872-4.75-4.985l-.215-.005L8.962 6C6.222 6 4 8.232 4 10.988c0 2.687 2.11 4.883 4.747 4.996l.215.005h1.162v2H8.962C5.117 17.989 2 14.849 2 10.988c0-3.779 2.987-6.857 6.724-6.984L8.964 4zM12 10a1 1 0 110 1.998 1 1 0 010-1.999zm-4 0a1 1 0 110 1.998 1 1 0 010-1.999zm8 0a1 1 0 110 1.998 1 1 0 010-1.999z"
+        fill="#FFF" fill-rule="evenodd" />
+      <script xmlns="" />
+    </svg>
+  </div> {% endcomment %}
+  <!-- request trial modal -->
+
+  <div data-te-modal-init
+    class="fixed top-0 left-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+    id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div data-te-modal-dialog-ref
+      class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]">
+      <div
+        class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600">
+        <div
+          class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md bg-gray-800">
+          <h5 class="text-xl font-bold leading-normal text-white" id="exampleModalScrollableLabel">
+            Free Trial Form
+          </h5>
+          <button
+            class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+            data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body relative p-4 bg-white">
+          <!-- notification starts -->
+          <div class="w-full rounded-lg px-3 py-2 mb-3 bg-gradient-to-r from-cyan-500 to-indigo-500">
+            <p class="text-center text-white font-medium">Serious to buy but want to try? Send us the request using the
+              form
+              below and we might arrange a demo or send you the connector for a trial period.</p>
+          </div> <!-- notification ends -->
+
+          <!-- form starts -->
+          <form onsubmit="trialbuttonclicked()" method="post">
+            {% csrf_token %}
+            <div class="grid grid-cols-2 gap-4">
+              <div class="form-group mb-3">
+                <div>
+                  <label for="firstname" class="form-check-label inline-block text-gray-800">Name <span
+                      class="text-red-500">*</span></label>
+                  <input name="name" type="text" required class="form-control
+            block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="firstname"
+                    aria-describedby="emailHelp123" placeholder="First name">
+                </div>
+              </div>
+              <div class="form-group mb-3 flex items-end">
+                <input name="last_name" type="text" class="form-control
+            block
+            w-full
+            px-3
+            py-1.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput124"
+                  aria-describedby="emailHelp124" placeholder="Last name">
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label for="email" class="form-check-label inline-block text-gray-800">Email Id <span
+                  class="text-red-500">*</span></label>
+              <input name="email" type="email" required class="form-control block
+              w-full
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              border border-solid border-gray-300
+              rounded
+              transition
+              ease-in-out
+              m-0
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="email"
+                placeholder="Email Id">
+            </div>
+            <div class="grid grid-cols-2 gap-4 w-100">
+              <div class="form-group mb-3">
+                <label for="companyname" class="form-check-label inline-block text-gray-800">Company Name <span
+                    class="text-red-500">*</span></label>
+                <input name="company_name" type="text" required class="form-control block
+                w-full
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="companyname"
+                  placeholder="Company Name">
+              </div>
+              <div class="form-group mb-3">
+                <label for="version" class="form-check-label inline-block text-gray-800">Company Size</label>
+                <select name="company_size" id="version" class="form-select appearance-none text-gray-400
+                block
+                w-full
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding bg-no-repeat
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                focus:text-gray-700 focus:bg-white
+                focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                  <option value="">Company Size</option>
+                  <option value="1to10">1-10</option>
+                  <option value="11to50">11-50</option>
+                  <option value="51to100">51-100</option>
+                  <option value="100plus">100+</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label for="productname" class="form-check-label inline-block text-gray-800">Product Name</label>
+              <input name="odoo_product" readonly type="text" class="form-control block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="productname"
+                value="{{product.name}}">
+            </div>
+
+            <div
+              class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end px-4 border-gray-200 rounded-b-md">
+              <Button type="submit" id="free_trial_button" class="p-2 bg-[#3182CE] px-4 text-white rounded-md">Request
+                Free Trial</Button>
+
+              <button id="processing_button" disabled
+                class="hidden cursor-not-allowed items-center p-2 bg-[#3182CE] px-4 text-white rounded-md">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                  </path>
+                </svg>
+                &nbsp;Processing...
+              </button>
+            </div>
+          </form>
+          <!-- form ends -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Sidenav -->
+  <div class="relative">
+    <nav id="sidenav-5" class="fixed flex flex-col justify-between top-0 left-0 z-[1035] h-screen w-60 -translate-x-full 
+        overflow-hidden bg-[#1a3454] shadow-[0_4px_12px_0_rgba(0,0,0,1),_0_2px_4px_rgba(0,0,0,1)] 
+        data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800" data-te-sidenav-init
+      data-te-sidenav-hidden="true" data-te-sidenav-accordion="true">
+      <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
+        <li class="relative">
+          <a href="/" class="flexcursor-pointer 
+            items-center truncate rounded-[5px] w-full py-4 px-6 text-center
+            text-[1.8rem] text-white outline-none transition cursor-pointer
+            duration-300 ease-linear hover:bg-slate-50 hover:text-inherit
+             " data-te-sidenav-link-ref>
+            <span>
+              TECHNEITH
+            </span>
+          </a>
+        </li>
+        <li class="relative pt-5">
+          <a class="flex h-12 cursor-pointer items-center 
+            truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+            text-white outline-none transition duration-300 ease-linear 
+            " data-te-sidenav-link-ref>
+            <span>Products</span>
+            <span
+              class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+              data-te-sidenav-rotate-icon-ref>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
+          <ul class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+            data-te-sidenav-collapse-ref>
+            <li class="relative py-2">
+              <a href="/products/odoo_power_bi_direct_connector/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition 
+                duration-300 ease-linear " data-te-sidenav-link-ref>PowerBI Odoo <br> Direct
+                Connector</a>
+            </li>
+            <li class="relative py-2">
+              <a href="/products/tableau_direct_connector/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+                data-te-sidenav-link-ref>Tableau Odoo <br> Direct Connector</a>
+            </li>
+            <li class="relative py-2">
+              <a href="/dashboards/budget-dashboard/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+                data-te-sidenav-link-ref>Budget Sales <br> Dashboard</a>
+            </li>
+            <li class="relative py-2">
+              <a href="/products/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+                data-te-sidenav-link-ref>All Products</a>
+            </li>
+          </ul>
+        </li>
+        <li class="relative">
+          <a class="flex h-12 cursor-pointer items-center 
+            truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+            text-white outline-none transition duration-300 ease-linear 
+            " data-te-sidenav-link-ref>
+            <span>Services</span>
+            <span
+              class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+              data-te-sidenav-rotate-icon-ref>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
+          <ul class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+            data-te-sidenav-collapse-ref>
+            <li class="relative py-2">
+              <a href="/#dashboards" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+                data-te-sidenav-link-ref>Dashboard Services</a>
+            </li>
+            <li class="relative py-2">
+              <a href="/#contacts" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+                data-te-sidenav-link-ref>Odoo Services</a>
+            </li>
+            <li class="relative py-2">
+              <a href="/products/docket/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+                py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+                data-te-sidenav-link-ref>React Applications</a>
+            </li>
+          </ul>
+        </li>
+        <li class="relative">
+          <a href="/blogs" class="flex h-12 cursor-pointer items-center 
+            truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+            text-white outline-none transition duration-300 ease-linear 
+            data-[te-sidenav-state-active]:text-inherit 
+            data-[te-sidenav-state-focus]:outline-none" data-te-sidenav-link-ref>
+            <!-- <span class="mr-4 [&>svg]:h-4 [&>svg]:w-4 [&>svg]:text-gray-400 dark:[&>svg]:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
+                  <path fill-rule="evenodd"
+                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 01-.189-.866c0-.298.059-.605.189-.866zm2.023 6.828a.75.75 0 10-1.06-1.06 3.75 3.75 0 01-5.304 0 .75.75 0 00-1.06 1.06 5.25 5.25 0 007.424 0z"
+                    clip-rule="evenodd" />
+                </svg>
+              </span> -->
+            <span>Blogs</span>
+          </a>
+        </li>
+        <li class="relative">
+          <a href="/about" class="flex h-12 cursor-pointer items-center 
+            truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+            text-white outline-none transition duration-300 ease-linear 
+            data-[te-sidenav-state-active]:text-inherit 
+            data-[te-sidenav-state-focus]:outline-none" data-te-sidenav-link-ref>
+            <span>About Us</span>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+  </div>
+
+  <div id="main-wrapper">
+    <!-- Header -->
+    <header
+      class="z-50 fixed bg-[#ffffff2e] justify-between md:justify-evenly shadow-md backdrop-blur-lg top-0 mx-6 flex items-center w-full">
+      <div onclick="window.location='/#home'" class="cursor-pointer logo ml-6 w-auto flex justify-center items-center">
+        <img src="{%static 'images/techneith-logo.png'%}" alt="techneithLogo" width="180px" />
+      </div>
+      <nav class="hidden lg:flex items-center justify-center w-full relative">
+        <div class="flex w-full justify-center mx-2 px-2 rounded-md block backdrop-blur-sm sm:backdrop-blur-none">
+          <ul class="flex flex-row gap-2 sm:mt-0 sm:pl-5">
+            <li class="px-[20px] py-[20px]">
+              <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                href="/products">Products
+              </a>
+              <div class="megamenu">
+                <div class="bg-white flex flex-col justify-center py-4 px-6 rounded-lg">
+                  <div class="flex w-full">
+                    <h2 class="text-[#1a3454] text-2xl w-full font-semibold py-2 my-2 border-b-2">Featured Categories
+                    </h2>
+                  </div>
+                  <div class="flex justify-center gap-8">
+                    <div class="megamenuitems bg-[#1a3454] border-r-2 p-4 max-w-[310px] rounded-lg">
+                      <div class="pb-3 border-b-2 flex justify-between">
+                        <h3 class="text-lg text-white font-semibold ">Connectors</h3>
+                        <div class="bg-white rounded-lg p-[4px]">
+                          <img src="{% static '/images/plug.png'%}" alt="connector png" width="24px" />
+                        </div>
+
+                      </div>
+                      <ul class="text-white pl-4 ">
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a href="/products/odoo_power_bi_direct_connector/" class="cursor-pointer ">PowerBI Odoo
+                            Direct Connector</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a href="/products/tableau_direct_connector/" class="cursor-pointer ">Tableau Odoo
+                            Direct Connector</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a href="/products/odoo_power_bi_advanced_connector/" class="cursor-pointer ">PowerBI Advanced
+                            Odoo Connector</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a href="/products/inventory_planning_forecasting_odoo/" class="cursor-pointer ">Inventory
+                            Forecasting</a>
+                        </li>
+                        <li class="relative w-fit border-b-2 text-[#808080] !pl-0">
+                          <a href="/products/" class="cursor-pointer">See All Connectors →</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="megamenuitems p-4 max-w-[310px] rounded-lg">
+                      <div class="pb-3 border-b-2 border-[#1a3454] flex justify-between">
+                        <h3 class="text-lg text-[#1a3454] font-semibold">Dashboards</h3>
+                        <div class="bg-white rounded-lg p-[4px]">
+                          <img src="{% static '/images/dashboard.png'%}" alt="connector png" width="24px" />
+                        </div>
+
+                      </div>
+                      <ul class="text-[#333333] pl-4 ">
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/dashboards/budget-dashboard/">Budget Dashboard</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/dashboards/sale_dashboard/">Sale Dashboard</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/dashboards/odoo-profit-loss-dashboard-power-bi/">Profit &
+                            Loss Dashboard</a>
+                        </li>
+                        <li class="relative w-fit border-b-2 text-[#808080] !pl-0">
+                          <a class="cursor-pointer" href="/#dashboards">See All Dashboards →</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="megamenuitems border-r-2 p-4 max-w-[310px] rounded-lg">
+                      <h3 class="text-lg text-[#1a3454] font-semibold pb-3 border-[#1a3454] border-b-2">Resources
+                      </h3>
+                      <ul class="text-[#333333] pl-4 ">
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/resources/odoo-power-bi-connector-installation-guide/">Odoo
+                            PowerBI Connector Manual</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="{%static 'images/manual/Tableau-Manual.pdf'%}" download>Odoo
+                            Tableau Connector Manual</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/#contacts">Free Trial</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="megamenuitems flex flex-col justify-center 
+                     items-center mx-4 rounded-lg">
+                      <h3 class="text-lg font-semibold pb-3">Want to book a personal meeting?</h3>
+                      <img class="img-responsive mt-2" src="{% static 'images/chat.png' %}"
+                        alt="want to know more about us?" width="80px" />
+                      <a class="bg-[#1a3454] text-white py-2 px-4 rounded-full mt-2 shadow-lg" href="/#contacts">Contact
+                        Us</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+            <li class="px-[20px] py-[20px]">
+              <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                href="/" aria-current="page">Services</a>
+              <div class="megamenu">
+                <div class="bg-white flex flex-col justify-center py-4 px-6 rounded-lg">
+                  <div class="flex w-full">
+                    <h2 class="text-[#1a3454] text-2xl w-full font-semibold py-2 my-2 border-b-2">Top Services
+                    </h2>
+                  </div>
+                  <div class="flex justify-center gap-8 flex-wrap">
+                    {% comment %} <div class="megamenuitems flex flex-col justify-evenly items-center
+                     shadow-lg border-r-2 my-4 py-4 px-3 max-w-[290px] rounded-lg shadow-lg
+                     
+                     ">
+                      <img src="{% static 'images/service.png' %}" alt="connectorillustrator" width="50px" />
+                      <h2 class=" text-lg text-center py-3">5+ years of trustworthy service</h2>
+                      <a href="/about" class="bg-[#1a3454] rounded-lg py-2 px-4 text-white">Check all Services →</a>
+                    </div> {% endcomment %}
+                    <div class="megamenuitems p-4 max-w-[310px] rounded-lg">
+                      <div class="pb-3 border-b-2 border-[#1a3454] flex justify-between">
+                        <h3 class="text-lg text-[#1a3454] font-semibold ">Dashboard Services</h3>
+                      </div>
+                      <ul class="text-[#333333] pl-4 ">
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/#dashboards">Plug & Play Dashboards</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/#dashboards">Custom Power BI Dashboards</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/#contacts">Odoo Power BI Connection</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="megamenuitems p-4 max-w-[310px] rounded-lg">
+                      <h3 class="text-lg text-[#1a3454] font-semibold pb-3 border-[#1a3454] border-b-2">Odoo Services
+                      </h3>
+                      <ul class="text-[#333333] pl-4 ">
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/#contacts">Odoo Implementation</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/#contacts">Odoo Customization</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/products/">Odoo Connectors</a>
+                        </li>
+                        <li class="relative w-fit border-b-2 text-[#808080] !pl-0">
+                          <a class="cursor-pointer" href="/about/">Explore →</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="megamenuitems p-4 max-w-[310px] rounded-lg">
+                      <h3 class="text-lg text-[#1a3454] font-semibold pb-3 border-[#1a3454] border-b-2">React
+                      </h3>
+                      <ul class="text-[#333333] pl-4 ">
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/blogs/can-we-add-react-in-odoo/">React Applications on
+                            Odoo</a>
+                        </li>
+                        <li class="relative w-fit menulistBorder !pl-0">
+                          <a class="cursor-pointer " href="/products/docket/">React Projects</a>
+                        </li>
+                        <li class="relative w-fit border-b-2 text-[#808080] !pl-0">
+                          <a class="cursor-pointer" href="/#contacts/">Contact Us</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="flex justify-center items-center">
+                    <h3 class="text-lg font-semibold pr-4">Our Expertise </h3>
+                    <div class="flex justify-center items-center">
+                      <img class="img-responsive mr-4" src="{% static 'images/nav/odoo_logo.png' %}"
+                        alt="want to know more about us?" width="80px" />
+                      <img class="img-responsive mr-4" src="{% static 'images/nav/powerBi.png' %}"
+                        alt="want to know more about us?" width="80px" />
+                      <img class="img-responsive mr-4" src="{% static 'images/nav/tableauLogo.png' %}"
+                        alt="want to know more about us?" width="80px" />
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+            <li class="px-[20px] py-[20px]">
+              <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                href="/blogs">Blogs</a>
+              <div class="megamenu">
+                <div class="bg-white flex flex-col py-4 px-6 rounded-lg">
+                  <div class="flex w-full">
+                    <h2 class="text-[#1a3454] text-2xl w-full font-semibold py-2 my-2 border-b-2">Popular Blogs
+                    </h2>
+                  </div>
+                  <div class="justify-center gap-8 flex blogDiv">
+                    <a href="/blogs/how-to-connect-odoo-with-power-bi/">
+                      <div class="megamenuitems flex flex-col justify-evenly items-center
+                       shadow-lg border-r-2 my-4 py-4 px-3 max-w-[290px] rounded-lg shadow-lg
+                       hover:shadow-2xl navBlogCard
+                       ">
+                        <img src="{% static 'images/power_bi_connector/biconnectorillustration.jpeg' %}"
+                          alt="connectorillustrator" width="150px" />
+                        <h2 class=" text-lg text-center py-3">How to connect PowerBI with Odoo?</h2>
+                        <div class="bg-[#1a3454] rounded-lg py-2 px-4 text-white">Read Blog →</div>
+                      </div>
+                    </a>
+                    <a href="/blogs/can-we-add-react-in-odoo/">
+                      <div class="megamenuitems flex flex-col justify-evenly items-center
+                       shadow-lg border-r-2 my-4 py-4 px-3 max-w-[290px] rounded-lg shadow-lg
+                       hover:shadow-2xl navBlogCard
+                       ">
+                        <img src="{% static 'images/react.png' %}" alt="connectorillustrator" width="150px" />
+                        <h2 class=" text-lg text-center py-3">How to connect Odoo with React?</h2>
+                        <div class="bg-[#1a3454] rounded-lg py-2 px-4 text-white">Read
+                          Blog →</div>
+                      </div>
+                    </a>
+                    <a href="/blogs/business-intelligence-for-odoo-erp/">
+                      <div class="megamenuitems flex flex-col justify-evenly items-center
+                       shadow-lg border-r-2 my-4 py-4 px-3 max-w-[290px] rounded-lg shadow-lg
+                       hover:shadow-2xl navBlogCard
+                       ">
+                        <img src="https://www.techneith.com/media/images/Power_BI_Desktop_0TsHvb0.png"
+                          alt="connectorillustrator" width="150px" />
+                        <h2 class="text-lg text-center py-3">Business Intelligence for Odoo ERP</h2>
+                        <div class="bg-[#1a3454] rounded-lg py-2 px-4 text-white">Read Blog →</div>
+                      </div>
+                    </a>
+
+                    <div class="flex flex-col justify-center
+                      items-center mx-4">
+                      <!-- <h3 class="text-lg font-semibold pb-3">Read All Blogs</h3> -->
+                      <!-- <img class="img-responsive mt-2" src="{% static 'images/blog.png' %}"
+                         alt="want to know more about us?" width="80px" /> -->
+                      <a class="bg-[#1a3454] text-white py-2 px-4 rounded-md mt-2 shadow-lg" href="/blogs/">All
+                        Blogs →</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+            <li class="px-[20px] py-[20px]">
+              <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                href="/about">About&nbsp;Us</a>
+              <div class="dropdownMenu rounded-lg shadow-lg bg-white
+                 hover:shadow-2xl border-[#1a3454] hover:border-[#1a3454]
+                  hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6]">
+                <div class="justify-center flex flex-wrap rounded-lg">
+                  <div class="flex flex-col justify-evenly items-center
+                      py-4 px-5">
+                    <ul class="text-[#333333]">
+                      <li class="relative w-fit menulistBorder py-2 !pl-0">
+                        <a class="cursor-pointer " href="/about/#ceonote">Team</a>
+                      </li>
+                      <li class="relative w-fit menulistBorder py-2 !pl-0">
+                        <a class="cursor-pointer " href="/about/#slider">Our Clients</a>
+                      </li>
+                      <li class="relative w-fit menulistBorder py-2 !pl-0">
+                        <a class="cursor-pointer " href="/about/#different">Our Goals</a>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+            <li class="px-[20px] py-[20px]">
+              <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                href="/#contacts">Contact Us</a>
+            </li>
+            <li class="px-[20px] py-[20px]">
+              <a class="text-lg bg-slate-400 text-white rounded-md hover:text-gray-100 p-2 text-center sm:hidden"
+                href="/#contacts">Get In Touch</a>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
+      <div
+        class="invisible px-3 py-2 mr-2 rounded-full bg-gradient-to-r w-fit cursor-pointer from-[#F61B04] to-[#F58702] hover:bg-none ease-in transition-[1s] hover:bg-white text-white hover:text-[#184E73] w-[300px] hidden sm:flex relative">
+        <a class="flex h-full w-full items-center justify-center" href="/products/odoo_power_bi_direct_connector/">
+          <h3 id="typewriter-nav" class="text-center text-bold tracking-wide">Sale&nbsp;Ending&nbsp;Soon<h3
+              class="font-bold animate-bounce">&nbsp;↓</h3>
+          </h3>
+          <div class="absolute top-[0px] right-[0px]">
+            <span class="relative flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#184E73] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+            </span>
+          </div>
+        </a>
+      </div>
+      <section class="lg:hidden mr-6 relative flex min-h-full items-start justify-center overflow-y-hidden">
+
+
+        <!-- Toggler -->
+        <button class="inline-block rounded bg-[#1a3454] px-6 py-2.5 text-xs font-medium uppercase 
+           leading-tight text-white shadow-md transition duration-150 ease-in-out 
+           hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg" data-te-sidenav-toggle-ref
+          data-te-target="#sidenav-5" aria-controls="#sidenav-5" aria-haspopup="true">
+          <span class="block [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+              <path fill-rule="evenodd"
+                d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                clip-rule="evenodd" />
+            </svg>
+          </span>
+        </button>
+        <!-- Toggler -->
+      </section>
+    </header>
+    {% comment %} <header>
+      <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between">
+        <div class="flex justify-between items-center ">
+          <div onclick="window.location='/#home'" class="w-32 lg:w-40 cursor-pointer">
+            <img src="https://techneith.com/service/web-bi-connector" alt="techneith" />
+          </div>
+
+          <span class="text-3xl cursor-pointer mx-2 md:hidden block">
+            <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+          </span>
+        </div>
+
+        <ul
+          class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+          <li class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-xl hover:text-cyan-500 duration-500">HOME</a>
+          </li>
+          <li class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-xl hover:text-cyan-500 duration-500">SERVICE</a>
+          </li>
+          <li class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-xl hover:text-cyan-500 duration-500">ABOUT</a>
+          </li>
+          <li class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-xl hover:text-cyan-500 duration-500">CONTACT</a>
+          </li>
+          <li class="mx-4 my-6 md:my-0">
+            <a href="#" class="text-xl hover:text-cyan-500 duration-500">BLOG'S</a>
+          </li>
+
+          <button class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded ">
+            Get started
+          </button>
+          <h2 class=""></h2>
+        </ul>
+      </nav>
+    </header> {% endcomment %}
+    <!-- navbar ends -->
+
+    {% comment %} hero section starts from here {% endcomment %}
+    <section class="mt-[65px]" id="hero">
+      <div class="w-full h-[85vh]">
+        <div class="wrapper sm:px-10 md:px-10 lg:px-32 container-fluid h-full grid gap-2 grid-cols-1 md:grid-cols-2">
+          <div class="videocontainer flex justify-center items-center">
+            <div class="flex items-center flex-col relative w-100 border-sm">
+              <div class="flex items-center flex-row rounded-t-md border w-full bg-white min-h-[20px] py-1.5 px-3">
+                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-red-500"></div>
+                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-yellow-500"></div>
+                <div class="w-[12px] h-[12px] rounded-full bg-green-500"></div>
+                <div class="flex-1 place-delf-stretch"></div>
+              </div>
+              <div class="border-gray-200 relative h-full w-full rounded-b-sm">
+
+                <video alt="powerBi" autoplay loop muted src="https://www.techneith.com/media/tabluefile/powerBi_1.mp4"
+                  w="full" h="full"></video>
+              </div>
+            </div>
+          </div>
+          <div class="detailscontainer px-5 flex items-center">
+            <div class="wrapper sm:gap-1 lg:gap-5 flex flex-col">
+              <div class="flex flex-col lg:flex-row">
+                <h1 class="w-100 text-3xl sm:text-5xl mb-5 md:mb-2 py-2 font-bold ">
+                  {{product.name}}
+                </h1>
+                <div class="flex flex-row items-center gap-6 lg:gap-0 lg:flex-col lg:items-end">
+                  {% comment %} <p class="line-through font-medium text-lg ">USD780</p> {% endcomment %}
+                  <div class="flex items-center flex-row">
+                    <p class="text-xl">USD</p>
+                    <p class="text-3xl font-bold">{{product.price}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col justify-start start-2 sm:gap-5">
+                <div class="flex justify-start start-2">
+                  <div class="flex items-center">
+                    <div class="mr-1">
+                      <p class="">{{product.total_ratings_given}}</p>
+                    </div>
+                    <div class="px-1">
+                      <svg viewBox="0 0 576 512" fill="#ECC94B" stroke="#ECC94B" stroke-width="0"
+                        xmlns="http://www.w3.org/2000/svg" height="1.2em" width="1.2em" aria-hidden="true"
+                        focusable="false">
+                        <path
+                          d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
+                        </path>
+                      </svg>
+                    </div>
+                    <div class="">
+                      <svg viewBox="0 0 576 512" fill="#ECC94B" stroke="#ECC94B" stroke-width="0"
+                        xmlns="http://www.w3.org/2000/svg" height="1.2em" width="1.2em" aria-hidden="true"
+                        focusable="false">
+                        <path
+                          d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
+                        </path>
+                      </svg>
+                    </div>
+                    <div class="px-1">
+                      <svg viewBox="0 0 576 512" fill="#ECC94B" stroke="#ECC94B" stroke-width="0"
+                        xmlns="http://www.w3.org/2000/svg" height="1.2em" width="1.2em" aria-hidden="true"
+                        focusable="false">
+                        <path
+                          d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
+                        </path>
+                      </svg>
+                    </div>
+                    <div class="">
+                      <svg viewBox="0 0 576 512" fill="#ECC94B" stroke="#ECC94B" stroke-width="0"
+                        xmlns="http://www.w3.org/2000/svg" height="1.2em" width="1.2em" aria-hidden="true"
+                        focusable="false">
+                        <path
+                          d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
+                        </path>
+                      </svg>
+                    </div>
+                    <div class="px-1 ">
+                      <svg viewBox="0 0 576 512" fill="#ECC94B" stroke="#ECC94B" stroke-width="0"
+                        xmlns="http://www.w3.org/2000/svg" height="1.2em" width="1.2em" aria-hidden="true"
+                        focusable="false">
+                        <path
+                          d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z">
+                        </path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="flex">
+                    <a href="#reviews" class="text-blue-600">Show Reviews</a>
+                    <div class="flex mx-2">
+                      <button class="" title="sold" type="button">
+                        <svg viewBox="0 0 24 24" fill="" stroke="" stroke-width="0" xmlns="http://www.w3.org/2000/svg"
+                          height="16" width="16" style="color: #000" aria-hidden="true" focusable="false">
+                          <g>
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path
+                              d="M4 6.414L.757 3.172l1.415-1.415L5.414 5h15.242a1 1 0 0 1 .958 1.287l-2.4 8a1 1 0 0 1-.958.713H6v2h11v2H5a1 1 0 0 1-1-1V6.414zM6 7v6h11.512l1.8-6H6zm-.5 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z">
+                            </path>
+                          </g>
+                        </svg>
+                      </button>
+                      <p class="mx-2">{{product.total_sales}}</p>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-gray-700"><span class="text-black pr-2">Validity:</span> Lifetime</p>
+              </div>
+
+              <div class="flex gap-1">
+                <p class="py-1">Available Versions:</p>
+                <div class="flex py-1 gap-1">
+                  {% for i in product.form_parameters%}
+                  <p class="text-sm bg-[#EDF2F7] rounded-sm px-2 border font-medium">{{i}}</p>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="py-2 mt-3 flex gap-6">
+                <a href="/products/checkout/{{product.technical_name}}"
+                  class="p-2 bg-[#3182CE] px-4 text-white rounded-md" type="button">
+                  Buy Now
+                </a>
+                <a data-te-toggle="modal" data-te-target="#exampleModal" data-te-ripple-init
+                  data-te-ripple-color="light"
+                  class="py-[9.5px] px-4 cursor-pointer text-white rounded-md bg-[#38B2AC]">Request Free Trial</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% comment %} hero section ends here {% endcomment %}
+
+    {% comment %} product description starts here {% endcomment %}
+    <section class="mt-20" id="key_features">
+      <div class="px-2">
+        <div class="px-2 py-10 keyfeatureshadow rounded-t-[35px] bg-[#EDF2F7]">
+          <div class="flex justify-center flex-col items-center">
+            <div class="">
+              <h1 class="text-3xl text-center font-bold">
+                Odoo Power BI Direct Connector Advanced
+              </h1>
+              <h2 class="text-center my-2 font-light text-2xl">
+                Connects your Odoo directly to Power BI with Automatic Schedule Refresh
+                and SQL query feature
+              </h2>
+            </div>
+            <img class="my-10 inline-block w-full lg:w-[70%]"
+              src="https://www.techneith.com/static/images/power_bi_connector/top3images2.png" alt="powerbi" />
+          </div>
+          <h2 class="text-2xl md:text-3xl lg:text-4xl my-10 text-center font-bold">
+            Key Features
+          </h2>
+          <div class="my-5 gap-5 grid grid-cols-1 md:grid-cols-2 lg:px-16">
+            <div class="flex bg-white rounded-md items-center">
+              <div class="p-5">
+                <img class="block w-[80px]" src="https://www.techneith.com/media/tabluefile/oneTimePurchase.png"
+                  alt="One Time Purchase" />
+              </div>
+              <div class="flex flex-col px-2">
+                <h3 class="font-bold text-lg w-full">One Time Purchase</h3>
+                <h6 class="text-md text-[#77859B]">
+                  No yearly license model. Buy one time and use for unlimited
+                  users.
+                </h6>
+              </div>
+            </div>
+
+            <div class="flex bg-white rounded-md items-center">
+              <div class="p-5">
+                <img class="block w-[80px]" src="https://www.techneith.com/media/tabluefile/refresh.png"
+                  alt="Single Click Refresh" />
+              </div>
+              <div class="flex flex-col px-2">
+                <h3 class="font-bold text-lg text-xl">
+                  Automatic Schedule Refresh using gateway
+                </h3>
+                <h6 class="text-md text-[#77859B]">
+                  Automatic Refresh features for any data change in Odoo from Power BI Advanced Connector
+                </h6>
+              </div>
+            </div>
+
+            <div class="flex bg-white rounded-md items-center">
+              <div class="p-5">
+                <img class="block w-[80px]" src="https://www.techneith.com/media/tabluefile/gateway.jpg"
+                  alt="One Click Setup on Windows System" />
+              </div>
+              <div class="flex flex-col px-2">
+                <h3 class="font-bold text-lg w-full">
+                  One Click Setup on Windows System
+                </h3>
+                <h6 class="text-md text-[#77859B]">
+                  One click setup on Windows with Secure and Signed Connector EXE
+                </h6>
+              </div>
+            </div>
+
+            <div class="flex bg-white rounded-md items-center">
+              <div class="p-5">
+                <img class="block w-[80px]" src="https://www.techneith.com/media/tabluefile/getData.png"
+                  alt="Get all your Odoo data in Power BI" />
+              </div>
+              <div class="flex flex-col px-2">
+                <h3 class="font-bold text-lg w-full">
+                  Get all your Odoo data in Power BI
+                </h3>
+                <h6 class="text-md text-[#77859B]">
+                  You get to see ALL your Odoo data in Power BI (even custom
+                  modules data)
+                </h6>
+              </div>
+            </div>
+
+            <div class="flex bg-white rounded-md items-center">
+              <div class="p-5">
+                <img class="block w-[80px]" src="https://www.techneith.com/media/tabluefile/secureConnection.png"
+                  alt="Secure Connection" />
+              </div>
+              <div class="flex flex-col px-2">
+                <h3 class="font-bold text-lg w-full">Secure Connection</h3>
+                <h6 class="text-md text-[#77859B]">
+                  Unique token based connection with your Odoo, hence no
+                  security risk
+                </h6>
+              </div>
+            </div>
+
+            <div class="flex bg-white rounded-md items-center">
+              <div class="p-5">
+                <img class="block w-[80px]" src="https://www.techneith.com/media/tabluefile/tableSelection.png"
+                  alt="Flexible Table Selection" />
+              </div>
+              <div class="flex flex-col px-2">
+                <h3 class="font-bold text-lg w-full">
+                  Get data using complex SQL queries
+                </h3>
+                <h6 class="text-md text-[#77859B]">
+                  Retreive data using complex SQL queries as you want
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-16" id="live_demo">
+      <div class>
+        <h2 class="text-3xl md:text-4xl text-center font-bold">Live Demo</h2>
+        <div class="flex justify-center pt-3">
+          <div class="bg-blue-500 rounded-full w-[80px] h-[5px]"></div>
+        </div>
+        <h2 class="text-xl md:text-2xl lg:text-3xl py-2 font-light text-center">
+          Watch how to connect Odoo with PowerBI
+        </h2>
+        <div class="my-10 flex w-full items-center justify-center">
+          <div
+            class="flex items-center flex-col sm:h-[285px] sm:w-[450px] lg:h-[380px] lg:w-[600px] relative border-sm">
+            <div class="flex items-center flex-row rounded-t-md border w-full bg-white min-h-[20px] py-1.5 px-3">
+              <div class="w-[12px] mr-2 h-[12px] rounded-full bg-red-500"></div>
+              <div class="w-[12px] mr-2 h-[12px] rounded-full bg-yellow-500"></div>
+              <div class="w-[12px] h-[12px] rounded-full bg-green-500"></div>
+              <div class="flex-1 place-delf-stretch"></div>
+            </div>
+            <div class="border-gray-200 relative h-full w-full rounded-b-sm">
+              <iframe
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen frameborder="0" height="100%" src="https://www.youtube.com/embed/ZBpUEfKnvdc"
+                title="YouTube video player" width="100%"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% comment %} <section class="mt-16 bg-[#F8F8F8]" id="highlights">
+      <div class="pt-10">
+        <h2 class="text-3xl text-center font-bold">Highlights</h2>
+        <div class="flex justify-center pt-3">
+          <div class="bg-blue-500 rounded-full w-[60px] h-[5px]"></div>
+        </div>
+        <div class="carouselwrapper mt-10">
+
+          <div id="carouselExampleCaptions" class="carousel slide carousel-fade relative" data-bs-ride="carousel">
+            <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner relative py-10 overflow-hidden">
+              <div class="carousel-item active relative float-left w-full">
+                <video class="sm:h-[285px] lg:h-[380px] m-auto w-auto" autoplay loop muted>
+                  <source src="https://techneith.com/static/images/connector/getData.mp4" type="video/mp4" />
+                </video>
+                <div class="carousel-caption hidden opacity-70 text-black md:block absolute text-center">
+                  <h5 class="text-xl">Get Data From Odoo To Your Power Bi Desktop</h5>
+                </div>
+              </div>
+              <div class="carousel-item relative float-left w-full">
+                <video class="sm:h-[285px] lg:h-[380px] m-auto w-auto" autoplay loop muted>
+                  <source src="https://techneith.com/static/images/connector/publishDashboard.mp4" type="video/mp4" />
+                </video>
+                <div class="carousel-caption opacity-70 text-black hidden md:block absolute text-center">
+                  <h5 class="text-xl">Publish Beautiful Dashboards In MS Teams Or Publically</h5>
+                </div>
+              </div>
+              <div class="carousel-item relative float-left w-full">
+                <video class="sm:h-[285px] lg:h-[380px] m-auto w-auto" autoplay loop muted>
+                  <source src="https://techneith.com/static/images/connector/refresh.mp4" type="video/mp4" />
+                </video>
+                <div class="carousel-caption hidden opacity-70 text-black md:block absolute text-center">
+                  <h5 class="text-xl">Automatic Scheduled Refresh Of Live Dashboard</h5>
+
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev sm:bg-blue-100 absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+                type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon h-[50px] w-[50px] inline-block bg-no-repeat"
+                  aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next sm:bg-blue-100 absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+                type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon h-[50px] w-[50px] inline-block bg-no-repeat"
+                  aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section> {% endcomment %}
+
+    {% comment %} new highlight {% endcomment %}
+    <section class="pt-16 bg-[#F8F8F8]" id="highlight">
+      <div class="flex flex-col items-center justify-center">
+        <h2 class="text-3xl lg:text-4xl text-center font-bold">Highlights</h2>
+        <div class="flex justify-center mb-16 pt-3">
+          <div class="bg-blue-500 rounded-full w-[60px] h-[5px]"></div>
+        </div>
+        <div class="flex flex-col w-9/12">
+          <div class="flex flex-col items-center justify-center">
+            <h2 class="text-xl md:text-2xl lg:text-4xl py-2 font-medium text-center">Getting Data From Odoo To Your
+              Power BI
+              Desktop</h2>
+            <p class="text-xl md:text-2xl lg:text-2xl w-6/12 py-2 font-light text-center">Put your Connector URL and
+              Token in connector on your Power BI Desktop.
+              Click OK and Woah! you see all your Odoo tables in Power BI.</p>
+            <div
+              class="flex items-center my-10 flex-col sm:h-[285px] sm:w-[450px] lg:h-[380px] lg:w-[600px] relative border-sm">
+              <div class="flex items-center flex-row rounded-t-md border w-full bg-white min-h-[20px] py-1.5 px-3">
+                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-red-500"></div>
+                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-yellow-500"></div>
+                <div class="w-[12px] h-[12px] rounded-full bg-green-500"></div>
+                <div class="flex-1 place-delf-stretch"></div>
+              </div>
+              <div class="border border-t-0 border-gray-200 relative h-full w-full rounded-b-sm">
+                <video loading="lazy" w="full" h="full" autoplay="true" muted="muted" loop="loop" playsinline
+                  alt="power bi">
+                  <source src="{% static 'images/power_bi_connector/getdata1.mp4' %}" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+
+          </div>
+          <div class="flex flex-col items-center justify-center">
+            <h2 class="text-xl md:text-2xl lg:text-4xl py-2 font-medium text-center">Setting scheduled refresh</h2>
+            <p class="text-xl md:text-2xl lg:text-2xl w-6/12 py-2 font-light text-center">Use gateway to communicate
+              with Connector and Power BI Service. Setup refreshes
+              to be done automatically at scheduled intervals.</p>
+            <div
+              class="flex items-center my-10 flex-col sm:h-[285px] sm:w-[450px] lg:h-[380px] lg:w-[600px] relative border-sm">
+              <div class="flex items-center flex-row rounded-t-md border w-full bg-white min-h-[20px] py-1.5 px-3">
+                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-red-500"></div>
+                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-yellow-500"></div>
+                <div class="w-[12px] h-[12px] rounded-full bg-green-500"></div>
+                <div class="flex-1 place-delf-stretch"></div>
+              </div>
+              <div class="border border-t-0 border-gray-200 relative h-full w-full rounded-b-sm">
+                <video loading="lazy" w="full" h="full" autoplay="true" muted="muted" loop="loop" playsinline
+                  alt="power bi">
+                  <source src="{% static 'images/connector/publishDashboard.mp4' %}" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+
+          </div>
+          <div class="flex flex-col items-center justify-center">
+            <h2 class="text-xl md:text-2xl lg:text-4xl py-2 font-medium text-center">Automatic and Manual refresh of
+              live Dashboards</h2>
+            <p class="text-xl md:text-2xl lg:text-2xl w-6/12 py-2 font-light text-center">Live dashboards refreshed
+              automatically
+              and one click manual refresh of live dashboards.</p>
+            <div
+              class="flex items-center my-10 flex-col sm:h-[285px] sm:w-[450px] lg:h-[380px] lg:w-[600px] relative border-sm">
+              <div class="flex items-center flex-row rounded-t-md border w-full bg-white min-h-[20px] py-1.5 px-3">
+                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-red-500"></div>
+                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-yellow-500"></div>
+                <div class="w-[12px] h-[12px] rounded-full bg-green-500"></div>
+                <div class="flex-1 place-delf-stretch"></div>
+              </div>
+              <div class="border border-t-0 border-gray-200 relative h-full w-full rounded-b-sm">
+                <video loading="lazy" w="full" h="full" autoplay="true" muted="muted" loop="loop" playsinline
+                  alt="power bi">
+                  <source src="{% static 'images/connector/refresh.mp4' %}" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+  </div>
+  </section>
+  {% comment %} new highlight ends here {% endcomment %}
+  {% comment %} product description ends here {% endcomment %}
+
+  <!-- discuss section starts here -->
+  <section id="discuss" class="flex items-center mt-5 justify-center w-full">
+    <div class="flex flex-col mx-2 lg:mx-24 gap-5 items-center relative h-full w-full max-w-inner-content">
+      <div class="flex flex-col gap-3 sm:flex-row w-full justify-center">
+        <div class="flex flex-col items-center gap-1">
+          <h2 class="text-3xl lg:text-4xl  font-bold text-left">
+            Discuss
+          </h2>
+          <h3 class="text-center text-lg text-gray-700">
+            Discuss your doubts of this module here
+          </h3>
+
+        </div>
+      </div>
+
+      <div class="flex flex-col w-full justify-center items-center">
+        <div class=" flex flex-col justify-center items-center discuss-card">
+          <form onsubmit="commentbuttonclicked()" class="bg-white shadow-md rounded w-full p-4" method="post"
+            action="/comments/comment/{{product.technical_name}}/">
+            {% csrf_token %}
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                Name / Email
+              </label>
+              <input id="id_display" name="product_id" value="{{product.id}}" style="display: none" />
+              <input name="author"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="username" type="text" placeholder="Name/Email">
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                Title of your comment
+              </label>
+              <input name="title"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="username" type="text" placeholder="Title">
+            </div>
+            <div class="mb-6">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                Write your comment here
+              </label>
+              <textarea name="content" required=""
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Write your comment here"></textarea>
+            </div>
+            <div class="flex items-end justify-end">
+              <button id="comment_button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit">
+                Comment
+              </button>
+              <button id="processing_button1" disabled
+                class="hidden cursor-not-allowed items-center p-2 bg-[#3182CE] px-4 text-white rounded-md">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                  </path>
+                </svg>
+                &nbsp;Processing...
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <div class="flex flex-col justify-center items-center w-full">
+        <div class="rounded overflow-hidden shadow-lg mt-4 discussPanel" style="width:80%;">
+          {% for i in product.get_comments %}
+          <div class="border-b-2 px-4 py-4">
+            <div class="font-bold text-xl mb-4 ml-4">{{i.title}}</div>
+            <div>
+              <div class="px-2 flex flex-row">
+                <p>~</p>
+                <span
+                  class="inline-block bg-gray-200 flex items-center rounded-full px-3 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                  {{i.author}}</span>
+                <p> on {{i.created_at}} GMT</p>
+              </div>
+              <p class="text-gray-700 text-base ml-4">
+                {{i.content}}</p>
+            </div>
+            {% for r in i.replies%}
+
+
+            <div class="flex flex-col pl-6">
+              <h3 class="font-semibold text-l mt-2">Re: {{i.title}}</h3>
+              <div class="px-2 pb-2 flex flex-row">
+                <span
+                  class="inline-block sm:w-200px flex items-center bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 justify-center items-center flex">
+                  <img src="https://www.techneith.com/media/tabluefile/icons8-filled-bookmark-ribbon-32.png"
+                    alt="bookmark" style="height:16px;width:16px;" />
+
+                  by Author Techneith</span>
+                <p> on {{r.created_at}} GMT</p>
+              </div>
+              <p class="text-gray-700 text-base ml-4">
+                {{r.content}} </p>
+            </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+        {% if product.get_comments|length > 3 %}
+        <div class="gradientback">
+        </div>
+        <div class="viewPanel">
+          <p class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full cursor-pointer" onclick="showPanel(true)">
+            View More</p>
+          <p class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full cursor-pointer" onclick="showPanel(false)">
+            View Less</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+
+  </section>
+  {% comment %} product reviews starts here {% endcomment %}
+  <section class="pt-16 bg-[#F8F8F8]" id="reviews">
+    <div class="">
+      <h2 class="text-3xl text-center font-bold">Reviews</h2>
+
+      <div class="flex justify-center pt-3">
+        <div class="bg-blue-500 rounded-full w-[60px] h-[5px]">
+        </div>
+      </div>
+      <h2 class="text-xl md:text-2xl lg:text-3xl py-2 font-light text-center">
+        Certified buyers personal reviews
+      </h2>
+      <div
+        class="reviewcontainer keyfeatureshadow w-full bg-[#EDF2F7] rounded-t-[35px] mt-8 pt-16 flex justify-center py-10 items-center">
+        <div class="review_wrapper w-full sm:w-[90vw] md:w-[80vw] lg:w-[70vw] flex flex-col gap-2 mx-2">
+          <div class="sm:mx-2 p-3 px-5 rounded-lg bg-white">
+            <h3 class="text-lg font-medium">Great Support</h3>
+            <div class="flex w-full mb-2 review-star">
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+            </div>
+            <h6 class="text-sm text-[#77859B]">
+              Their customer service is great. They can solve all your questions quickly and simply. Thank you!
+            </h6>
+            <div class="flex flex-col items-end">
+              <p class="text-md">~Alexa, </p>
+              <p class="text-xs"><i>FSL AYNI</i></p>
+            </div>
+          </div>
+
+          <div class="sm:mx-2 p-3 px-5 rounded-lg bg-white">
+            <h3 class="text-lg font-medium">Excellent Service and App</h3>
+            <div class="flex w-full mb-2 review-star">
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+            </div>
+            <h6 class="text-sm text-[#77859B]">
+
+              Super helpful support team and the app works extremely efficiently.
+
+            </h6>
+            <div class="flex flex-col items-end">
+              <p class="text-md">~Xiao Yu, </p>
+              <p class="text-xs"><i>VIATechnik</i></p>
+            </div>
+          </div>
+
+          <div class="sm:mx-2 p-3 px-5 rounded-lg bg-white">
+            <h3 class="text-lg font-medium">Great app & support</h3>
+            <div class="flex w-full mb-2 review-star">
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+
+            </div>
+            <h6 class="text-sm text-[#77859B]">
+              Great app and very quick and helpful support.
+            </h6>
+            <div class="flex flex-col items-end">
+              <p class="text-md">~Oscar Bettello, </p>
+              <p class="text-xs"><i> Thema USA</i></p>
+            </div>
+          </div>
+
+          <div class="sm:mx-2 p-3 px-5 rounded-lg bg-white">
+            <h3 class="text-lg font-medium">We needed an API to connect ODOO with PowerBi and this was just it.</h3>
+            <div class="flex w-full mb-2 review-star">
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+            </div>
+            <h6 class="text-sm text-[#77859B]">
+
+              It works great and it has been really useful for our business. Nikhil helped us exactly at the moment we
+              needed some advice and he even agreed to have a call with us to get the best of the API.We would really
+              recommend this connector and for sure we will be getting some more products from Techneit in the near
+              future. Thanks!
+
+            </h6>
+            <div class="flex flex-col items-end">
+              <p class="text-md">~Chris Baker, </p>
+              <p class="text-xs"><i>Generator Rentals, Coast Group</i></p>
+            </div>
+          </div>
+
+          <div class="sm:mx-2 p-3 px-5 rounded-lg bg-white">
+            <h3 class="text-lg font-medium">Best product to find</h3>
+            <div class="flex w-full mb-2 review-star">
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+
+            </div>
+            <h6 class="text-sm text-[#77859B]">
+              I have used this connector for one of my custom CRM applications and its serves the purpose.
+              Great connector to have with my app.
+            </h6>
+            <div class="flex flex-col items-end">
+              <p class="text-md">~Guillaume, </p>
+              <p class="text-xs"><i> Groupe Randolph Inc.</i></p>
+            </div>
+          </div>
+
+          <div class="sm:mx-2 p-3 px-5 rounded-lg bg-white">
+            <h3 class="text-lg font-medium">Great product! Awesome Tool.</h3>
+            <div class="flex w-full mb-2 review-star">
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+              <img src="{% static 'images/power_bi_connector/blackStar.svg' %}" alt="star" />
+            </div>
+            <h6 class="text-sm text-[#77859B]">
+
+              It was an excellent purchase. I consider it to be the best Power BI connector on the market.
+              Even better has been the customer service given by Nikhil, always available to answer any questions.
+              Recommended product.
+            </h6>
+            <div class="flex flex-col items-end">
+              <p class="text-md">~Muhammad Syed, </p>
+              <p class="text-xs"><i>THH</i></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  {% comment %} product reviews ends here {% endcomment %}
+  <section id="pricing" class="pt-16 bg-[#F8F8F8]">
+    <h2 class="text-3xl text-center font-bold">Pricing</h2>
+    <div class="flex justify-center pt-3">
+      <div class="bg-blue-500 rounded-full w-[60px] h-[5px]"></div>
+    </div>
+    <div class=" flex flex-wrap gap-5 items-start justify-center">
+
+      <div class="bg-white mt-5 flex rounded-lg p-5 shadow-md w-100 sm:w-[280px] flex-col ">
+        <h3 class="text-xl font-bold">USD <span>470</span></h3>
+        <h2 class="text-lg my-2 font-medium">Power BI Direct Connector</h2>
+        <div class="py-2 flex flex-col gap-2">
+          <div class="flex items-center">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="15" width="15" style="color: #00ff84" color="#00ff84">
+              <g>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </g>
+            </svg>
+            <p class=" px-3">Lifetime Access</p>
+          </div>
+          <div class="flex items-center">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="15" width="15" style="color: #00ff84" color="#00ff84">
+              <g>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </g>
+            </svg>
+            <p class="px-3">Access to all data</p>
+          </div>
+          <div class="flex items-center">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="15" width="15" style="color: #00ff84" color="#00ff84">
+              <g>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </g>
+            </svg>
+            <p class="px-3">One click setup</p>
+          </div>
+          <div class="flex items-center">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="15" width="15" style="color: #00ff84" color="#00ff84">
+              <g>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </g>
+            </svg>
+            <p class="px-3">Flexible table selection</p>
+          </div>
+          <div class="flex items-center">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="15" width="15" style="color: #00ff84" color="#00ff84">
+              <g>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </g>
+            </svg>
+            <p class="px-3">Secure Odoo connection</p>
+          </div>
+          <div class="flex items-center">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="15" width="15" style="color: #00ff84" color="#00ff84">
+              <g>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </g>
+            </svg>
+            <p class="px-3">Real Time Data Refresh</p>
+          </div>
+        </div>
+        <div class="mt-5">
+          <a class="bg-[#3182CE] text-sm p-2 px-4 rounded-md text-white"
+            href="/products/odoo_power_bi_direct_connector/" rel="noopener">View Product</a>
+        </div>
+      </div>
+
+      <div class="bg-[#3182CE] mt-5 flex rounded-lg p-5 shadow-md w-100 sm:w-[280px] flex-col text-white">
+        <h3 class="text-xl font-bold">USD <span>{{product.price}}</span></h3>
+        <h2 class="text-lg my-2 font-medium">
+          OdooPower BI Advance Connector
+        </h2>
+        <div class="py-2 flex flex-col gap-2">
+          <div class="flex items-center">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="15" width="15" style="color: #00ff84" color="#00ff84">
+              <g>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </g>
+            </svg>
+            <p class=" px-3">Everything in basic +</p>
+          </div>
+          <div class="flex items-center">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="15" width="15" style="color: #00ff84" color="#00ff84">
+              <g>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </g>
+            </svg>
+            <p class="px-3">Schedule Automatic Refresh</p>
+          </div>
+          <div class="flex items-center">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="15" width="15" style="color: #00ff84" color="#00ff84">
+              <g>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </g>
+            </svg>
+            <p class="px-3">Configure Gateway & Publish Dashboards</p>
+          </div>
+          <div class="flex items-center">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="15" width="15" style="color: #00ff84" color="#00ff84">
+              <g>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </g>
+            </svg>
+            <p class="px-3">Custom SQL query</p>
+          </div>
+        </div>
+        <div class="mt-5">
+          <a class="bg-[#38B2AC] text-white text-sm p-2 px-4 rounded-md"
+            href="/products/checkout/{{product.technical_name}}" rel="noopener">Buy Now</a>
+          <button data-te-toggle="modal" data-te-target="#exampleModal" data-te-ripple-init data-te-ripple-color="light"
+            class="bg-[#7BAFE0] text-sm text-white p-2 px-4 rounded-md" href="/#contacts" rel="noopener"
+            target="_blank">Book Demo</button>
+        </div>
+      </div>
+
+      <div class="bg-white mt-5 flex rounded-lg p-5 shadow-md w-100 sm:w-[280px] flex-col">
+        <h3 class="text-xl font-bold">Custom</h3>
+        <h2 class="text-lg my-2 font-medium">
+          Looking for Something Else? We can help!
+        </h2>
+        <div class="mt-5">
+          <a class="bg-[#3182CE] text-sm text-white p-2 px-4 rounded-md" href="/#contacts" rel="noopener"
+            target="_blank">Contact Us</a>
+        </div>
+      </div>
+    </div>
+    <!-- ------------------------------- -->
+    <!-- detailed comparison -->
+    <!-- ------------------------------- -->
+  </section>
+  <!-- related products goes here-->
+  <section class="pt-16 bg-[#F8F8F8]" id="get_in_touch">
+    <!-- mobile hidden -->
+    <div class="bg-white p-5">
+      <div class="flex flex-col md:flex-row md:justify-around items-center">
+        <div class="flex items-center gap-5">
+          <div class="hidden md:block">
+            <svg viewBox="0 0 48 48" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="120" width="120" version="1" enable-background="new 0 0 48 48">
+              <path
+                d="M29,43v-4.6l2.6,0.5c2.9,0.6,5.6-1.5,5.8-4.4L38,28l2.9-1.2c1-0.4,1.4-1.6,0.8-2.6L38,18 c-0.6-7.6-4.9-15-16-15C10.6,3,5,11.4,5,20c0,3.7,1.3,6.9,3.3,9.6c1.8,2.5,2.7,5.5,2.7,8.5l0,4.8H29z"
+                fill="#FFB74D"></path>
+              <polygon points="29,43 29,38.4 22,37 22,43" fill="#FF9800"></polygon>
+              <circle cx="33.5" cy="21.5" fill="#784719" r="1.5"></circle>
+              <path
+                d="M21.4,3C12.3,3,5,10.3,5,19.4c0,11.1,6,11.4,6,18.6l2.6-0.9c2.1-0.7,3.9-2.3,4.7-4.4l2.8-6.8L27,23v-6 c0,0,7-3.8,7-10.3C31,4.2,25.7,3,21.4,3z"
+                fill="#FF5722"></path>
+              <g fill="#546E7A">
+                <path d="M21,2.1c-0.6,0-1,0.4-1,1v13.9c0,0.6,0.4,1,1,1s1-0.4,1-1V3.1C22,2.5,21.6,2.1,21,2.1z"></path>
+                <path
+                  d="M36.9,31.9c-7.9,0-10.3-4.9-10.4-5.1c-0.2-0.5-0.8-0.7-1.3-0.5c-0.5,0.2-0.7,0.8-0.5,1.3 c0.1,0.3,3,6.3,12.2,6.3c0.6,0,1-0.4,1-1S37.4,31.9,36.9,31.9z">
+                </path>
+              </g>
+              <circle cx="37" cy="33" fill="#37474F" r="2"></circle>
+              <circle cx="21" cy="23" fill="#37474F" r="7"></circle>
+              <circle cx="21" cy="23" fill="#546E7A" r="4"></circle>
+            </svg>
+          </div>
+          <div class=" flex flex-col items-center md:items-start">
+            <h3 class="text-center text-xl sm:text-2xl sm:text-3xl font-bold">Get In Touch</h3>
+            <p class="text-center text-sm sm:text-md md:text-lg py-3">
+              We are eager to discuss your bussiness needs, and answer any
+              question you may have.
+            </p>
+          </div>
+        </div>
+        <a class="p-2 mt-2 px-5 border border-[#3182CE] rounded-md bg-white text-[#3182CE]" href="/#contacts">Contact
+          Us</a>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <footer>
+    <div class="bg-[#3182CE] text-white">
+      <div class="p-5 flex mx-16 flex-col md:flex-row md:items-center md:justify-between">
+        <p class="text-center md:text-lg">Get connected with us on Social networks!</p>
+
+        <div class="flex gap-2 pt-2 justify-center">
+          <a class="p-1 border border-white rounded-md" href="mailto:info@techneith.com" rel="noopener"
+            target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="20" width="20" aria-hidden="true" focusable="false">
+              <path d="M0 0h24v24H0V0z" fill="none"></path>
+              <path
+                d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z">
+              </path>
+            </svg></a><a class="p-1 border border-white rounded-md" href="https://www.instagram.com/techneith"
+            rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor"
+              stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20" width="20" aria-hidden="true"
+              focusable="false" baseProfile="tiny" version="1.2">
+              <path
+                d="M18 3h-12c-1.7 0-3 1.3-3 3v12c0 1.7 1.3 3 3 3h12c1.7 0 3-1.3 3-3v-12c0-1.7-1.3-3-3-3zm-6 6c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3zm3.8-2c0-.7.6-1.2 1.2-1.2s1.2.6 1.2 1.2-.5 1.2-1.2 1.2-1.2-.5-1.2-1.2zm2.2 12h-12c-.6 0-1-.4-1-1v-6h2c0 2.8 2.2 5 5 5s5-2.2 5-5h2v6c0 .6-.4 1-1 1z">
+              </path>
+            </svg></a><a class="p-1 border border-white rounded-md" href="https://twitter.com/techneith" rel="noopener"
+            target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"
+              xmlns="http://www.w3.org/2000/svg" height="20" width="20" aria-hidden="true" focusable="false"
+              baseProfile="tiny" version="1.2">
+              <path
+                d="M18.89 7.012c.808-.496 1.343-1.173 1.605-2.034-.786.417-1.569.703-2.351.861-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078-.715.717-1.076 1.588-1.076 2.605 0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388.549.676 1.254 1.107 2.115 1.291-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841.625.472 1.344.721 2.152.743-1.332 1.045-2.855 1.562-4.578 1.562-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974.784-1.564 1.172-3.192 1.172-4.892v-.468c.758-.57 1.371-1.212 1.84-1.921-.68.293-1.383.492-2.11.593z">
+              </path>
+            </svg></a><a class="p-1 border border-white rounded-md" href="https://www.linkedin.com/company/techneith/"
+            rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor"
+              stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20" width="20" aria-hidden="true"
+              focusable="false" baseProfile="tiny" version="1.2">
+              <path
+                d="M8 19h-3v-10h3v10zm11 0h-3v-5.342c0-1.392-.496-2.085-1.479-2.085-.779 0-1.273.388-1.521 1.165v6.262h-3s.04-9 0-10h2.368l.183 2h.062c.615-1 1.598-1.678 2.946-1.678 1.025 0 1.854.285 2.487 1.001.637.717.954 1.679.954 3.03v5.647z">
+              </path>
+              <ellipse cx="6.5" cy="6.5" rx="1.55" ry="1.5"></ellipse>
+            </svg></a><a class="p-1 border border-white rounded-md" href="https://www.facebook.com/techneith"
+            rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor"
+              stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20" width="20" aria-hidden="true"
+              focusable="false" baseProfile="tiny" version="1.2">
+              <path
+                d="M13 10h3v3h-3v7h-3v-7h-3v-3h3v-1.255c0-1.189.374-2.691 1.118-3.512.744-.823 1.673-1.233 2.786-1.233h2.096v3h-2.1c-.498 0-.9.402-.9.899v2.101z">
+              </path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- scripts -->
+  <script type="text/javascript">
+    function trialbuttonclicked() {
+      let processing = document.getElementById('processing_button')
+      let freetrial = document.getElementById('free_trial_button')
+      freetrial.style.display = 'none'
+      processing.style.display = 'flex'
+    }
+
+    function commentbuttonclicked() {
+      console.log("comment button clicked")
+      let processing = document.getElementById('processing_button1');
+      let commentButton = document.getElementById('comment_button');
+      commentButton.style.display = 'none'
+      processing.style.display = 'flex'
+    }
+
+    //function to show more/less for discussion tab
+    var panel = document.querySelectorAll(".discussPanel>div");
+    var showButtons = document.querySelectorAll(".viewPanel>p");
+    var gradient = document.querySelector(".gradientback");
+    function initialShow() {
+      for (var i = 0; i < 3; i++) {
+        panel[i].style.display = "flex";
+        panel[i].style.flexDirection = "column";
+      }
+    }
+    initialShow();
+    function showPanel(bool) {
+      if (bool) {
+        showButtons[0].style.display = "none";
+        showButtons[1].style.display = "initial";
+        gradient.style.display = "none";
+
+        for (var i = 3; i < panel.length; i++) {
+          panel[i].style.display = "flex";
+          panel[i].style.flexDirection = "column";
+        }
+      }
+      else {
+        showButtons[0].style.display = "initial";
+        showButtons[1].style.display = "none";
+        gradient.style.display = "initial";
+
+        for (var i = 3; i < panel.length; i++) {
+          panel[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+  {% comment %} js for navbar click {% endcomment %}
+  <script defer src="{% static 'js/hs-ui.bundle.js' %}"></script>
+  {% comment %} tw-elements dependency {% endcomment %}
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/success.css'%}" />
+    <title>Payment Failed</title>
+  </head>
+  <body style="margin: 0; padding: 0; box-sizing: border-box">
+    <div class="main-wrapper">
+    <header class="fixed w-full backdrop-blur-xl brightness-95 z-10 h-16 flex justify-center" style="top: 0">
+      <div id="headerbar" class="h-full w-full flex justify-center transition">
+        <div class="h-full w-full max-w-inner-content relative px-5 flex justify-between items-center">
+
+          <div class="w-32 lg:w-40">
+            <a href="/#home">
+              <svg viewBox="0 0 1712 316">
+                <path
+                  d="M439.568 133.714V207.146C439.568 212.261 440.755 216.005 443.13 218.38C445.687 220.572 449.889 221.668 455.734 221.668H473.544V254H449.432C417.1 254 400.934 238.291 400.934 206.872V133.714H382.85V102.204H400.934V64.666H439.568V102.204H473.544V133.714H439.568ZM642.245 174.814C642.245 180.294 641.879 185.226 641.149 189.61H530.179C531.092 200.57 534.928 209.155 541.687 215.366C548.445 221.577 556.757 224.682 566.621 224.682C580.869 224.682 591.007 218.563 597.035 206.324H638.409C634.025 220.937 625.622 232.993 613.201 242.492C600.779 251.808 585.527 256.466 567.443 256.466C552.829 256.466 539.677 253.269 527.987 246.876C516.479 240.3 507.437 231.075 500.861 219.202C494.467 207.329 491.271 193.629 491.271 178.102C491.271 162.393 494.467 148.601 500.861 136.728C507.254 124.855 516.205 115.721 527.713 109.328C539.221 102.935 552.464 99.738 567.443 99.738C581.873 99.738 594.751 102.843 606.077 109.054C617.585 115.265 626.444 124.124 632.655 135.632C639.048 146.957 642.245 160.018 642.245 174.814ZM602.515 163.854C602.332 153.99 598.77 146.135 591.829 140.29C584.887 134.262 576.393 131.248 566.347 131.248C556.848 131.248 548.811 134.171 542.235 140.016C535.841 145.679 531.914 153.625 530.453 163.854H602.515ZM660.38 178.102C660.38 162.393 663.577 148.693 669.97 137.002C676.363 125.129 685.223 115.995 696.548 109.602C707.873 103.026 720.843 99.738 735.456 99.738C754.271 99.738 769.797 104.487 782.036 113.986C794.457 123.302 802.769 136.454 806.97 153.442H765.596C763.404 146.866 759.659 141.751 754.362 138.098C749.247 134.262 742.854 132.344 735.182 132.344C724.222 132.344 715.545 136.363 709.152 144.4C702.759 152.255 699.562 163.489 699.562 178.102C699.562 192.533 702.759 203.767 709.152 211.804C715.545 219.659 724.222 223.586 735.182 223.586C750.709 223.586 760.847 216.645 765.596 202.762H806.97C802.769 219.202 794.457 232.263 782.036 241.944C769.615 251.625 754.088 256.466 735.456 256.466C720.843 256.466 707.873 253.269 696.548 246.876C685.223 240.3 676.363 231.167 669.97 219.476C663.577 207.603 660.38 193.811 660.38 178.102ZM920.56 100.012C932.068 100.012 942.297 102.569 951.248 107.684C960.199 112.616 967.14 120.014 972.072 129.878C977.187 139.559 979.744 151.25 979.744 164.95V254H941.384V170.156C941.384 158.1 938.37 148.875 932.342 142.482C926.314 135.906 918.094 132.618 907.682 132.618C897.087 132.618 888.685 135.906 882.474 142.482C876.446 148.875 873.432 158.1 873.432 170.156V254H835.072V51.24H873.432V121.11C878.364 114.534 884.94 109.419 893.16 105.766C901.38 101.93 910.513 100.012 920.56 100.012ZM1100.34 100.012C1118.42 100.012 1133.04 105.766 1144.18 117.274C1155.32 128.599 1160.89 144.491 1160.89 164.95V254H1122.53V170.156C1122.53 158.1 1119.52 148.875 1113.49 142.482C1107.46 135.906 1099.24 132.618 1088.83 132.618C1078.24 132.618 1069.84 135.906 1063.62 142.482C1057.6 148.875 1054.58 158.1 1054.58 170.156V254H1016.22V102.204H1054.58V121.11C1059.7 114.534 1066.18 109.419 1074.04 105.766C1082.07 101.93 1090.84 100.012 1100.34 100.012ZM1338.48 174.814C1338.48 180.294 1338.12 185.226 1337.39 189.61H1226.42C1227.33 200.57 1231.17 209.155 1237.92 215.366C1244.68 221.577 1252.99 224.682 1262.86 224.682C1277.11 224.682 1287.24 218.563 1293.27 206.324H1334.65C1330.26 220.937 1321.86 232.993 1309.44 242.492C1297.02 251.808 1281.76 256.466 1263.68 256.466C1249.07 256.466 1235.92 253.269 1224.22 246.876C1212.72 240.3 1203.67 231.075 1197.1 219.202C1190.71 207.329 1187.51 193.629 1187.51 178.102C1187.51 162.393 1190.71 148.601 1197.1 136.728C1203.49 124.855 1212.44 115.721 1223.95 109.328C1235.46 102.935 1248.7 99.738 1263.68 99.738C1278.11 99.738 1290.99 102.843 1302.31 109.054C1313.82 115.265 1322.68 124.124 1328.89 135.632C1335.29 146.957 1338.48 160.018 1338.48 174.814ZM1298.75 163.854C1298.57 153.99 1295.01 146.135 1288.07 140.29C1281.13 134.262 1272.63 131.248 1262.58 131.248C1253.09 131.248 1245.05 134.171 1238.47 140.016C1232.08 145.679 1228.15 153.625 1226.69 163.854H1298.75ZM1385.94 84.12C1379.18 84.12 1373.51 82.0193 1368.95 77.818C1364.56 73.434 1362.37 68.0453 1362.37 61.652C1362.37 55.2587 1364.56 49.9613 1368.95 45.76C1373.51 41.376 1379.18 39.184 1385.94 39.184C1392.69 39.184 1398.27 41.376 1402.65 45.76C1407.22 49.9613 1409.5 55.2587 1409.5 61.652C1409.5 68.0453 1407.22 73.434 1402.65 77.818C1398.27 82.0193 1392.69 84.12 1385.94 84.12ZM1404.84 102.204V254H1366.48V102.204H1404.84ZM1487.4 133.714V207.146C1487.4 212.261 1488.59 216.005 1490.97 218.38C1493.52 220.572 1497.72 221.668 1503.57 221.668H1521.38V254H1497.27C1464.94 254 1448.77 238.291 1448.77 206.872V133.714H1430.69V102.204H1448.77V64.666H1487.4V102.204H1521.38V133.714H1487.4ZM1634.46 100.012C1645.97 100.012 1656.2 102.569 1665.15 107.684C1674.1 112.616 1681.04 120.014 1685.97 129.878C1691.09 139.559 1693.64 151.25 1693.64 164.95V254H1655.28V170.156C1655.28 158.1 1652.27 148.875 1646.24 142.482C1640.21 135.906 1631.99 132.618 1621.58 132.618C1610.99 132.618 1602.58 135.906 1596.37 142.482C1590.34 148.875 1587.33 158.1 1587.33 170.156V254H1548.97V51.24H1587.33V121.11C1592.26 114.534 1598.84 109.419 1607.06 105.766C1615.28 101.93 1624.41 100.012 1634.46 100.012Z"
+                  fill="#1B1A1A"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M174 307L0.794922 7H347.205L314.296 64H249.776L265.942 36H110.058L188 171L218.6 118H283.119L174 307Z"
+                  fill="#1B1A1A"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-auto text-sm">
+            <nav class="relative w-full mx-auto sm:flex sm:items-center sm:justify-between" aria-label="Global">
+              <div class="sm:hidden flex justify-end">
+                <button type="button"
+                  class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none transition-all text-sm"
+                  data-hs-collapse="#navbar-with-collapse" aria-controls="navbar-with-collapse"
+                  aria-label="Toggle navigation">
+                  <svg class="hs-collapse-open:hidden w-4 h-4" width="16" height="16" fill="dimGray"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                  </svg>
+                  <svg class="hs-collapse-open:block hidden w-4 h-4" width="16" height="16" fill="dimGray"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                  </svg>
+                </button>
+              </div>
+
+              <div id="navbar-with-collapse"
+                class="absolute right-0 sm:right-5 px-2 top-10 sm:top-1 lg:top-1 rounded-md py-2 sm:py-0 hidden basis-full sm:block w-[150px] backdrop-blur-sm sm:backdrop-blur-none bg-slate-100 sm:bg-transparent">
+                <div class="flex flex-col gap-2 sm:gap-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5">
+                  <a class="text-[16px] no-underline hover:underline hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                    href="/#home" aria-current="page">Home</a>
+                  <!-- <a class="text-[16px] no-underline hover:underline hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                    href="/#services">Services</a> -->
+                  <a class="text-[16px] no-underline hover:underline hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                    href="/blogs">Blog</a>
+
+                </div>
+              </div>
+            </nav>
+
+            <a href="https://techneith.com/#contacts"
+              class="white-button hidden sm:flex justify-center sm:min-w-[120px] lg:min-w-[140px]">
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div
+      style="
+        width: 100vw;
+        height: 100vh;
+        background-color: #f8f8f8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+    <div
+      style="
+        width: 100vw;
+        height: 100vh;
+        background-color: #f8f8f8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div style="width: 100px; margin-bottom: 50px; margin-top: 50px">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.27 90.27">
+          <defs>
+            <style>
+              .circle-2 {
+                fill: #ff1b0b;
+              }
+              .x {
+                opacity: 0.5;
+              }
+              .x-single {
+                fill: #fff;
+              }
+            </style>
+          </defs>
+          <title>icon-error</title>
+          <circle class="circle-2" cx="45.14" cy="45.14" r="45.14" />
+          <g class="x">
+            <rect
+              class="x-single"
+              x="21.77"
+              y="43.49"
+              width="46.74"
+              height="3.36"
+              transform="translate(-18.72 45.15) rotate(-45)"
+            />
+            <rect
+              class="x-single"
+              x="43.47"
+              y="21.81"
+              width="3.36"
+              height="46.74"
+              transform="translate(-18.72 45.16) rotate(-45)"
+            />
+          </g>
+        </svg>
+      </div>
+      <h1>Payment Failed!</h1>
+      <div class="text-wrapper">
+      <h2>Unfortunately your payment was not successful. If this payment method is not working for you, contact directly us at info@techneith.com </h2>
+      <a href="/products">Back to Products</a>
+    </div>
+    </div>
+
+  </body>
+</html>

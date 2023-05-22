@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/640.07e694c3.chunk.css","mappings":"AAAA,aACE,0BACF,CACA,aAEI,aAAc,CACd,aAAc,CAFd,yBAGJ","sources":["components/Home2/style.css"],"sourcesContent":[".css-10571rv{\r\n  position:inherit !important;\r\n}\r\n#poweranchor{\r\n    text-decoration: underline;\r\n    color: #2b6cb0;\r\n    padding: 0 5px;\r\n}"],"names":[],"sourceRoot":""}

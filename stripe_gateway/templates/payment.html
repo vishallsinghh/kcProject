@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}" />
+    <title>Payment Portal</title>
+  </head>
+  <body style="margin: 0; padding: 0">
+    <div
+      style="
+        width: 100vw;
+        height: 100vh;
+        background-color: #f8f8f8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div id="form-base">
+        <image src="{% static 'logo.png' %}" alt="Techneith Logo" id="logo" />
+        <form method="post" action="{% url 'checkout' %}">
+          {% csrf_token %}
+          <label for="name">Name</label>
+          <input class="field" type="text" id="name" name="name" />
+          <label for="Amount">Email</label>
+          <input class="field" type="email" id="email" name="email" />
+          <label for="appservice">App or Service</label>
+          <select
+            class="select"
+            name="app_or_service"
+            id="appservice"
+            onChange="updateSelect()"
+          >
+          <option >Choose</option>
+          {% for app in apps %}
+          <option value="{{app.id}}">{{app.name}}</option>
+          {% endfor %}
+          </select>
+          <label id="amount-label" for="amount">Amount</label>
+          <input class="field" type="number" id="amount" name="service_amount" />
+          <label id="description-label" for="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Add basic description"
+          ></textarea>
+          <input id="payment-button" type="submit" value="Proceed To Payment" />
+        </form>
+      </div>
+    </div>
+    <script>
+      function updateSelect() {
+        const appservice = document.getElementById('appservice')
+        var v = appservice.options[appservice.selectedIndex].value
+        var amount = document.getElementById('amount')
+        var amountLabel = document.getElementById('amount-label')
+        var description = document.getElementById('description')
+        var descriptionLabel = document.getElementById('description-label')
+
+        if (v === '{{service_id}}') {
+          amount.style.display = 'block'
+          amountLabel.style.display = 'block'
+          description.style.display = 'block'
+          descriptionLabel.style.display = 'block'
+        } else {
+          amount.style.display = 'none'
+          amountLabel.style.display = 'none'
+          description.style.display = 'none'
+          descriptionLabel.style.display = 'none'
+        }
+      }
+    </script>
+  </body>
+</html>

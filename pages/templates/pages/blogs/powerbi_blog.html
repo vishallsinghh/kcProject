@@ -1,0 +1,1112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Basic meta tags -->
+    <meta name="title" content="Odoo, Power BI and the Eternal Struggle
+  to Integrate Data" />
+    <meta name="description" content="A user organization can securely connect to the Power BI system using Power BI Data Connectors.
+   The firm may then execute comprehensive analytics, produce visually appealing Power BI reports, and perform other Power BI activities using this secure connection.
+    Power BI is a suite of business analytics tools to analyze data and share insights." />
+    <meta name="author" content="Techneith" />
+    <meta property="image" content="{% static 'images/power_bi_connector/biconnectorillustration.jpeg' %}" />
+
+    <!-- Facebook meta tags -->
+    <meta name="og:title" content="Odoo, Power BI and the Eternal Struggle
+  to Integrate Data" />
+    <meta name="og:description" content="A user organization can securely connect to the Power BI system using Power BI Data Connectors.
+  The firm may then execute comprehensive analytics, produce visually appealing Power BI reports, and perform other Power BI activities using this secure connection.
+   Power BI is a suite of business analytics tools to analyze data and share insights." />
+    <meta name="og:author" content="Techneith" />
+    <meta property="og:image" content="{% static 'images/power_bi_connector/biconnectorillustration.jpeg' %}" />
+
+    <!-- Twtitter meta tags -->
+    <meta name="twitter:title" content="Odoo, Power BI and the Eternal Struggle
+  to Integrate Data" />
+    <meta name="twitter:description" content="A user organization can securely connect to the Power BI system using Power BI Data Connectors.
+  The firm may then execute comprehensive analytics, produce visually appealing Power BI reports, and perform other Power BI activities using this secure connection.
+   Power BI is a suite of business analytics tools to analyze data and share insights." />
+    <meta name="twitter:author" content="Techneith" />
+    <meta property="twitter:image" content="{% static 'images/power_bi_connector/biconnectorillustration.jpeg' %}" />
+
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/blogs/powerbiBuild.css' %}">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src='https://www.googletagmanager.com/gtag/js?id=G-47QLHS22VC'></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-47QLHS22VC');
+    </script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <title>How to Connect Odoo With Power BI</title>
+</head>
+
+<body class="w-full">
+    <!-- Sidenav -->
+    <nav id="sidenav-5"
+        class="fixed left-0 top-0 z-[1035] h-screen w-60 -translate-x-full overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
+        data-te-sidenav-init data-te-sidenav-hidden="true" data-te-sidenav-accordion="true">
+        <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
+            <li class="relative">
+                <a href="/" class="flexcursor-pointer 
+          items-center truncate rounded-[5px] w-full py-4 px-6 text-center
+          text-[1.8rem] text-white outline-none transition cursor-pointer
+          duration-300 ease-linear hover:bg-slate-50 hover:text-inherit
+           " data-te-sidenav-link-ref>
+                    <span>
+                        TECHNEITH
+                    </span>
+                </a>
+            </li>
+            <li class="relative">
+                <a class="flex h-12 cursor-pointer items-center 
+          truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+          text-white outline-none transition duration-300 ease-linear 
+          " data-te-sidenav-link-ref>
+                    <span>Connectors</span>
+                    <span
+                        class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+                        data-te-sidenav-rotate-icon-ref>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                            <path fill-rule="evenodd"
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                </a>
+                <ul class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+                    data-te-sidenav-collapse-ref>
+                    <li class="relative py-2">
+                        <a href="/products/odoo_power_bi_direct_connector/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+              py-6 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+                            data-te-sidenav-link-ref>PowerBI Odoo <br> Direct Connector</a>
+                    </li>
+                    <li class="relative py-2">
+                        <a href="/products/tableau_direct_connector/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+              py-6 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+                            data-te-sidenav-link-ref>Tableau Odoo <br> Direct Connector</a>
+                    </li>
+                    <li class="relative py-2">
+                        <a href="/dashboards/budget-dashboard/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+              py-6 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+                            data-te-sidenav-link-ref>Advanced PowerBI <br> Direct Connector</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="relative">
+                <a class="flex h-12 cursor-pointer items-center 
+          truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+          text-white outline-none transition duration-300 ease-linear 
+          " data-te-sidenav-link-ref>
+                    <span>Services</span>
+                    <span
+                        class="absolute right-0 ml-auto mr-[0.8rem] transition-transform duration-300 ease-linear motion-reduce:transition-none [&>svg]:text-gray-600 dark:[&>svg]:text-gray-300"
+                        data-te-sidenav-rotate-icon-ref>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                            <path fill-rule="evenodd"
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                </a>
+                <ul class="!visible relative m-0 hidden list-none p-0 data-[te-collapse-show]:block "
+                    data-te-sidenav-collapse-ref>
+                    <li class="relative py-2">
+                        <a href="/#dashboards" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+              py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+                            data-te-sidenav-link-ref>Dashboard Services</a>
+                    </li>
+                    <li class="relative py-2">
+                        <a href="/#contacts" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+              py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+                            data-te-sidenav-link-ref>Odoo Services</a>
+                    </li>
+                    <li class="relative py-2">
+                        <a href="/products/docket/" class="flex h-6 cursor-pointer items-center truncate rounded-[5px] 
+              py-4 pl-[3.4rem] pr-6 text-[0.9rem] text-white outline-none transition duration-300 ease-linear"
+                            data-te-sidenav-link-ref>React Applications</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="relative">
+                <a href="/products/" class="flex h-12 cursor-pointer items-center 
+          truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+          text-white outline-none transition duration-300 ease-linear 
+          data-[te-sidenav-state-active]:text-inherit 
+          data-[te-sidenav-state-focus]:outline-none" data-te-sidenav-link-ref>
+                    <span>All Products</span>
+                </a>
+            </li>
+            <li class="relative">
+                <a href="/blogs" class="flex h-12 cursor-pointer items-center 
+          truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+          text-white outline-none transition duration-300 ease-linear 
+          data-[te-sidenav-state-active]:text-inherit 
+          data-[te-sidenav-state-focus]:outline-none" data-te-sidenav-link-ref>
+                    <span>Blogs</span>
+                </a>
+            </li>
+            <li class="relative">
+                <a href="/about" class="flex h-12 cursor-pointer items-center 
+          truncate rounded-[5px] py-4 px-6 text-[1.2rem] font-semibold
+          text-white outline-none transition duration-300 ease-linear 
+          data-[te-sidenav-state-active]:text-inherit 
+          data-[te-sidenav-state-focus]:outline-none" data-te-sidenav-link-ref>
+                    <span>About Us</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header
+            class=" bg-white justify-between md:justify-evenly shadow-md backdrop-blur-lg top-0 flex items-center w-full">
+            <div onclick="window.location='/#home'"
+                class="cursor-pointer logo ml-6 w-auto flex justify-center items-center">
+                <img src="{%static 'images/techneith-logo.png'%}" alt="techneithLogo" width="180px" />
+            </div>
+            <nav class="hidden lg:flex items-center justify-center w-full relative">
+                <div
+                    class="flex w-full justify-center mx-2 px-2 rounded-md block backdrop-blur-sm sm:backdrop-blur-none">
+                    <ul class="flex flex-row gap-2 sm:mt-0 sm:pl-5">
+                        <li class="px-[20px] py-[20px]">
+                            <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                                href="/products">Products
+                            </a>
+                            <div class="megamenu">
+                                <div class="bg-white flex flex-col justify-center py-4 px-6 rounded-lg">
+                                    <div class="flex w-full">
+                                        <h2 class="text-[#1a3454] text-2xl w-full font-semibold py-2 my-2 border-b-2">
+                                            Featured Categories
+                                        </h2>
+                                    </div>
+                                    <div class="flex justify-center gap-8">
+                                        <div class="megamenuitems bg-[#1a3454] border-r-2 p-4 max-w-[310px] rounded-lg">
+                                            <div class="pb-3 border-b-2 flex justify-between">
+                                                <h3 class="text-lg text-white font-semibold ">Connectors</h3>
+                                                <div class="bg-white rounded-lg p-[4px]">
+                                                    <img src="{% static '/images/plug.png'%}" alt="connector png"
+                                                        width="24px" />
+                                                </div>
+
+                                            </div>
+                                            <ul class="text-white pl-4 ">
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a href="/products/odoo_power_bi_direct_connector/"
+                                                        class="cursor-pointer ">PowerBI Odoo
+                                                        Direct Connector</a>
+                                                </li>
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a href="/products/tableau_direct_connector/"
+                                                        class="cursor-pointer ">Tableau Odoo
+                                                        Direct Connector</a>
+                                                </li>
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a href="/products/odoo_power_bi_advanced_connector/"
+                                                        class="cursor-pointer ">PowerBI Advanced
+                                                        Odoo Connector</a>
+                                                </li>
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a href="/products/inventory_planning_forecasting_odoo/"
+                                                        class="cursor-pointer ">Inventory
+                                                        Forecasting</a>
+                                                </li>
+                                                <li class="relative w-fit border-b-2 text-[#808080] !pl-0">
+                                                    <a href="/products/" class="cursor-pointer">See All Connectors →</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="megamenuitems p-4 max-w-[310px] rounded-lg">
+                                            <div class="pb-3 border-b-2 border-[#1a3454] flex justify-between">
+                                                <h3 class="text-lg text-[#1a3454] font-semibold">Dashboards</h3>
+                                                <div class="bg-white rounded-lg p-[4px]">
+                                                    <img src="{% static '/images/dashboard.png'%}" alt="connector png"
+                                                        width="24px" />
+                                                </div>
+
+                                            </div>
+                                            <ul class="text-[#333333] pl-4 ">
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer "
+                                                        href="/dashboards/budget-dashboard/">Budget Dashboard</a>
+                                                </li>
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer " href="/dashboards/sale_dashboard/">Sale
+                                                        Dashboard</a>
+                                                </li>
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer "
+                                                        href="/dashboards/odoo-profit-loss-dashboard-power-bi/">Profit &
+                                                        Loss Dashboard</a>
+                                                </li>
+                                                <li class="relative w-fit border-b-2 text-[#808080] !pl-0">
+                                                    <a class="cursor-pointer" href="/#dashboards">See All Dashboards
+                                                        →</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="megamenuitems border-r-2 p-4 max-w-[310px] rounded-lg">
+                                            <h3
+                                                class="text-lg text-[#1a3454] font-semibold pb-3 border-[#1a3454] border-b-2">
+                                                Resources
+                                            </h3>
+                                            <ul class="text-[#333333] pl-4 ">
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer "
+                                                        href="/resources/odoo-power-bi-connector-installation-guide/">Odoo
+                                                        PowerBI Connector Manual</a>
+                                                </li>
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer "
+                                                        href="{%static 'images/manual/Tableau-Manual.pdf'%}"
+                                                        download>Odoo
+                                                        Tableau Connector Manual</a>
+                                                </li>
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer " href="/#contacts">Free Trial</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="megamenuitems flex flex-col justify-center 
+                      items-center mx-4 rounded-lg">
+                                            <h3 class="text-lg font-semibold pb-3">Want to book a personal meeting?</h3>
+                                            <img class="img-responsive mt-2" src="{% static 'images/chat.png' %}"
+                                                alt="want to know more about us?" width="80px" />
+                                            <a class="bg-[#1a3454] text-white py-2 px-4 rounded-full mt-2 shadow-lg"
+                                                href="/#contacts">Contact
+                                                Us</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="px-[20px] py-[20px]">
+                            <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                                href="/" aria-current="page">Services</a>
+                            <div class="megamenu">
+                                <div class="bg-white flex flex-col justify-center py-4 px-6 rounded-lg">
+                                    <div class="flex w-full">
+                                        <h2 class="text-[#1a3454] text-2xl w-full font-semibold py-2 my-2 border-b-2">
+                                            Top Services
+                                        </h2>
+                                    </div>
+                                    <div class="flex justify-center gap-8 flex-wrap">
+                                        {% comment %} <div class="megamenuitems flex flex-col justify-evenly items-center
+                      shadow-lg border-r-2 my-4 py-4 px-3 max-w-[290px] rounded-lg shadow-lg
+                      
+                      ">
+                                            <img src="{% static 'images/service.png' %}" alt="connectorillustrator"
+                                                width="50px" />
+                                            <h2 class=" text-lg text-center py-3">5+ years of trustworthy service</h2>
+                                            <a href="/about" class="bg-[#1a3454] rounded-lg py-2 px-4 text-white">Check
+                                                all Services →</a>
+                                        </div> {% endcomment %}
+                                        <div class="megamenuitems p-4 max-w-[310px] rounded-lg">
+                                            <div class="pb-3 border-b-2 border-[#1a3454] flex justify-between">
+                                                <h3 class="text-lg text-[#1a3454] font-semibold ">Dashboard Services
+                                                </h3>
+                                            </div>
+                                            <ul class="text-[#333333] pl-4 ">
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer " href="/#dashboards">Plug & Play
+                                                        Dashboards</a>
+                                                </li>
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer " href="/#dashboards">Custom Power BI
+                                                        Dashboards</a>
+                                                </li>
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer " href="/#contacts">Odoo Power BI
+                                                        Connection</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="megamenuitems p-4 max-w-[310px] rounded-lg">
+                                            <h3
+                                                class="text-lg text-[#1a3454] font-semibold pb-3 border-[#1a3454] border-b-2">
+                                                Odoo Services
+                                            </h3>
+                                            <ul class="text-[#333333] pl-4 ">
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer " href="/#contacts">Odoo Implementation</a>
+                                                </li>
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer " href="/#contacts">Odoo Customization</a>
+                                                </li>
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer " href="/products/">Odoo Connectors</a>
+                                                </li>
+                                                <li class="relative w-fit border-b-2 text-[#808080] !pl-0">
+                                                    <a class="cursor-pointer" href="/about/">Explore →</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="megamenuitems p-4 max-w-[310px] rounded-lg">
+                                            <h3
+                                                class="text-lg text-[#1a3454] font-semibold pb-3 border-[#1a3454] border-b-2">
+                                                React
+                                            </h3>
+                                            <ul class="text-[#333333] pl-4 ">
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer "
+                                                        href="/blogs/can-we-add-react-in-odoo/">React Applications on
+                                                        Odoo</a>
+                                                </li>
+                                                <li class="relative w-fit menulistBorder !pl-0">
+                                                    <a class="cursor-pointer " href="/products/docket/">React
+                                                        Projects</a>
+                                                </li>
+                                                <li class="relative w-fit border-b-2 text-[#808080] !pl-0">
+                                                    <a class="cursor-pointer" href="/#contacts/">Contact Us</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-center items-center">
+                                        <h3 class="text-lg font-semibold pr-4">Our Expertise </h3>
+                                        <div class="flex justify-center items-center">
+                                            <img class="img-responsive mr-4"
+                                                src="{% static 'images/nav/odoo_logo.png' %}"
+                                                alt="want to know more about us?" width="80px" />
+                                            <img class="img-responsive mr-4" src="{% static 'images/nav/powerBi.png' %}"
+                                                alt="want to know more about us?" width="80px" />
+                                            <img class="img-responsive mr-4"
+                                                src="{% static 'images/nav/tableauLogo.png' %}"
+                                                alt="want to know more about us?" width="80px" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="px-[20px] py-[20px]">
+                            <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                                href="/blogs">Blogs</a>
+                            <div class="megamenu">
+                                <div class="bg-white flex flex-col py-4 px-6 rounded-lg">
+                                    <div class="flex w-full">
+                                        <h2 class="text-[#1a3454] text-2xl w-full font-semibold py-2 my-2 border-b-2">
+                                            Popular Blogs
+                                        </h2>
+                                    </div>
+                                    <div class="justify-center gap-8 flex blogDiv">
+                                        <a href="/blogs/how-to-connect-odoo-with-power-bi/">
+                                            <div class="megamenuitems flex flex-col justify-evenly items-center
+                        shadow-lg border-r-2 my-4 py-4 px-3 max-w-[290px] rounded-lg shadow-lg
+                        hover:shadow-2xl navBlogCard
+                        ">
+                                                <img src="{% static 'images/power_bi_connector/biconnectorillustration.jpeg' %}"
+                                                    alt="connectorillustrator" width="150px" />
+                                                <h2 class=" text-lg text-center py-3">How to connect PowerBI with Odoo?
+                                                </h2>
+                                                <div class="bg-[#1a3454] rounded-lg py-2 px-4 text-white">Read Blog →
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="/blogs/can-we-add-react-in-odoo/">
+                                            <div class="megamenuitems flex flex-col justify-evenly items-center
+                        shadow-lg border-r-2 my-4 py-4 px-3 max-w-[290px] rounded-lg shadow-lg
+                        hover:shadow-2xl navBlogCard
+                        ">
+                                                <img src="{% static 'images/react.png' %}" alt="connectorillustrator"
+                                                    width="150px" />
+                                                <h2 class=" text-lg text-center py-3">How to connect Odoo with React?
+                                                </h2>
+                                                <div class="bg-[#1a3454] rounded-lg py-2 px-4 text-white">Read
+                                                    Blog →</div>
+                                            </div>
+                                        </a>
+                                        <a href="/blogs/business-intelligence-for-odoo-erp/">
+                                            <div class="megamenuitems flex flex-col justify-evenly items-center
+                        shadow-lg border-r-2 my-4 py-4 px-3 max-w-[290px] rounded-lg shadow-lg
+                        hover:shadow-2xl navBlogCard
+                        ">
+                                                <img src="https://www.techneith.com/media/images/Power_BI_Desktop_0TsHvb0.png"
+                                                    alt="connectorillustrator" width="150px" />
+                                                <h2 class="text-lg text-center py-3">Business Intelligence for Odoo ERP
+                                                </h2>
+                                                <div class="bg-[#1a3454] rounded-lg py-2 px-4 text-white">Read Blog →
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <div class="flex flex-col justify-center
+                       items-center mx-4">
+                                            <!-- <h3 class="text-lg font-semibold pb-3">Read All Blogs</h3> -->
+                                            <!-- <img class="img-responsive mt-2" src="{% static 'images/blog.png' %}"
+                          alt="want to know more about us?" width="80px" /> -->
+                                            <a class="bg-[#1a3454] text-white py-2 px-4 rounded-md mt-2 shadow-lg"
+                                                href="/blogs/">All
+                                                Blogs →</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="px-[20px] py-[20px]">
+                            <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                                href="/about">About&nbsp;Us</a>
+                            <div class="dropdownMenu rounded-lg shadow-lg bg-white
+                  hover:shadow-2xl border-[#1a3454] hover:border-[#1a3454]
+                   hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6]">
+                                <div class="justify-center flex flex-wrap rounded-lg">
+                                    <div class="flex flex-col justify-evenly items-center
+                       py-4 px-5">
+                                        <ul class="text-[#333333]">
+                                            <li class="relative w-fit menulistBorder py-2 !pl-0">
+                                                <a class="cursor-pointer " href="/about/#ceonote">Team</a>
+                                            </li>
+                                            <li class="relative w-fit menulistBorder py-2 !pl-0">
+                                                <a class="cursor-pointer " href="/about/#slider">Our Clients</a>
+                                            </li>
+                                            <li class="relative w-fit menulistBorder py-2 !pl-0">
+                                                <a class="cursor-pointer " href="/about/#different">Our Goals</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="px-[20px] py-[20px]">
+                            <a class="text-[16px] no-underline transition-all ease-in border-b-2 border-transparent hover:border-[#1a3454] hover:underline-offset-1 hover:decoration-2 hover:decoration-[#5782b6] font-medium hover:transition-all ease-in-out delay-450 text-[#1a3454] hover:text-[#31537c] p-1"
+                                href="/#contacts">Contact Us</a>
+                        </li>
+                        <li class="px-[20px] py-[20px]">
+                            <a class="text-lg bg-slate-400 text-white rounded-md hover:text-gray-100 p-2 text-center sm:hidden"
+                                href="/#contacts">Get In Touch</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+            <div
+                class="px-3 invisible py-2 mr-2 rounded-full bg-gradient-to-r w-fit cursor-pointer from-[#F61B04] to-[#F58702] hover:bg-none ease-in transition-[1s] hover:bg-white text-white hover:text-[#184E73] w-[300px] hidden sm:flex relative">
+                <a class="flex h-full w-full items-center justify-center"
+                    href="/products/odoo_power_bi_direct_connector/">
+                    <h3 id="typewriter-nav" class="text-center text-bold tracking-wide">Sale&nbsp;Ending&nbsp;Soon<h3
+                            class="font-bold animate-bounce">&nbsp;↓</h3>
+                    </h3>
+                    <div class="absolute top-[0px] right-[0px]">
+                        <span class="relative flex h-3 w-3">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#184E73] opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+                        </span>
+                    </div>
+                </a>
+            </div>
+            <section class="lg:hidden mr-6 relative flex min-h-full items-start justify-center overflow-y-hidden">
+
+
+                <!-- Toggler -->
+                <button class="inline-block rounded bg-[#1a3454] px-6 py-2.5 text-xs font-medium uppercase 
+            leading-tight text-white shadow-md transition duration-150 ease-in-out 
+            hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg"
+                    data-te-sidenav-toggle-ref data-te-target="#sidenav-5" aria-controls="#sidenav-5"
+                    aria-haspopup="true">
+                    <span class="block [&>svg]:h-5 [&>svg]:w-5 [&>svg]:text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                            <path fill-rule="evenodd"
+                                d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                </button>
+                <!-- Toggler -->
+            </section>
+        </header>
+
+        <div
+            class="z-50 sticky shadow-md bg-transparent backdrop-blur-lg px-2 flex items-center gap-3 justify-center h-[60px] top-0">
+            <a href="/products/odoo_power_bi_direct_connector/" target="_blank"
+                class="text-[#1A3454] font-medium text-lg lg:text-2xl drop-shadow-md hover:drop-shadow-xl cursor-pointer">Checkout
+                Odoo Power BI Direct Connector</a>
+            <a class="hover:drop-shadow-xl drop-shadow-md" target="_blank"
+                href="/products/odoo_power_bi_direct_connector/">
+                <svg xmlns="http://www.w3.org/2000/svg" height="30" fill="#1A3454" viewBox="0 96 960 960" width="30">
+                    <path
+                        d="M191.724 936.696q-29.618 0-51.019-21.401t-21.401-51.019V704.651h70.029v162.016h581.334v-522.61H189.333v161.349h-70.029V287.724q0-29.684 21.401-51.132 21.401-21.447 51.019-21.447h576.552q29.684 0 51.132 21.447 21.447 21.448 21.447 51.132v576.552q0 29.618-21.447 51.019-21.448 21.401-51.132 21.401H191.724ZM460 779.898l-50.543-50.956 86.623-87.624H119.304v-72.579H496.08l-86.623-87.797L460 430.159l175.116 174.783L460 779.898Z" />
+                </svg>
+            </a>
+        </div>
+
+        <header class="z-20 mt-[40px] px-6 sm:px-16 md:px-24 lg:px-40 xl:px-72 w-full font-bold">
+            <div class="flex flex-col gap-3 sm:flex-row">
+                <div class="tags flex gap-2">
+
+                    <div class="bg-[#e1f2fa] px-2 py-1/2 text-[#464646] rounded-md font-normal">Odoo</div>
+
+                    <div class="bg-[#e1f2fa] px-2 py-1/2 text-[#464646] rounded-md font-normal">Power BI</div>
+
+                    <div class="bg-[#e1f2fa] px-2 py-1/2 text-[#464646] rounded-md font-normal">Connector</div>
+
+                </div>
+                <div class="flex">
+                    <span class="mx-2 hidden sm:block" aria-hidden="true"> . </span>
+                    <div class="font-light">
+                        <p>February 18, 2023</p>
+                    </div>
+                    <span class="mx-2" aria-hidden="true"> . </span>
+                    <div class="font-light">
+                        <p>6 min Read</p>
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-4xl sm:text-4xl lg:text-6xl mt-10  text-black">How to Connect Odoo With Power BI</h1>
+        </header>
+
+        <section class="lg:mt-[10px]" id="hero">
+            <div class="w-full">
+                <div class="wrapper px-6 sm:px-16 md:px-24 lg:px-40 xl:px-72 container-fluid h-full">
+                    <div class="image w-full flex pt-6">
+                        <img class="h-[340px] block w-auto" height="" width=""
+                            src="{% static 'images/blogs/0_vectorconnector.png' %}" alt="vector connecting">
+                    </div>
+                    <div class="content pt-10 ">
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl  mb-6 text-[#1A3454] font-bold">Odoo, Power BI and
+                            the
+                            Eternal Struggle
+                            to Integrate Data</h2>
+                        <p class="text-lg text-[#2E475D]">The integration of Odoo and Power BI has been a challenge for
+                            many
+                            organizations, as it can be difficult to connect the data between the two.
+                            The Odoo PowerBI Connector is designed to make the process of
+                            connecting data between Odoo and Power BI easier and more efficient, but
+                            many organizations are still struggling to make the connection. In this blog
+                            post, we will explore the common problems faced when connecting Odoo
+                            and Power BI, and how the Odoo Power BI Connector can help
+                            organizations find success.</p>
+
+                    </div>
+                    <div class="mt-10">
+                        <a class="bg-white border border-[#2F7FB8] inline-flex items-center font-medium py-2 px-5 buttonshadow rounded-full text-[#2F7FB8]"
+                            href="#solutions">Go Directly To Solution
+                            <svg xmlns="http://www.w3.org/2000/svg" class="rotate-180" height="20" fill="#2F7FB8"
+                                viewBox="0 96 960 960" width="20">
+                                <path
+                                    d="M441.001 919.999V373.152l-56.386 57.77-54.768-54.768L480 226.001l150.153 150.153-54.768 54.768-56.386-57.77v546.847h-77.998Z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-10" id="insight_to_odoo">
+            <div class="w-full ">
+                <div class="px-6 sm:px-16 md:px-24 lg:px-40 xl:px-72">
+                    <div class="content flex flex-col justify-center">
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl  my-6 text-[#1A3454] font-bold">An Insight in ODOO
+                        </h2>
+                        <p class="text-lg text-[#2E475D]"><a class="font-medium text-[#2F7FB8]" target="_blank"
+                                href="https://www.odoo.com/">Odoo</a> is a collection of open source business
+                            applications
+                            that may be used
+                            for anything your business requires, including project management, CRM,
+                            eCommerce, accounting, and other functions. Odoo combines
+                            user-friendliness and a broad range of capabilities for efficient business
+                            administration. For managing all commercial operations of the firm,
+                            including manufacturing, sales, warehouse management, shipping,
+                            accounting, reporting, and more, the platform offers a wide range of
+                            practical solutions.</p>
+                    </div>
+                    <!-- <div class="image flex justify-end">
+          <img height="" width="" class="h-auto block w-[500px]" src="/odoo_feature.png" alt="odoo">
+        </div> -->
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12 lg:mt-16" id="insight_in_powerbi">
+            <div class="w-full ">
+                <div class="px-6 sm:px-16 md:px-24 lg:px-40 xl:px-72">
+
+                    <!-- <div class="image">
+          <img height="" width="" class="h-auto block w-[500px]" src="{% static 'images/power_bi_connector/biconnectorillustration.jpeg' %}" alt="bi connector">
+        </div> -->
+                    <div class=" flex flex-col justify-center">
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl  mb-6 text-[#1A3454] font-bold">An Insight in Power
+                            BI
+                        </h2>
+                        <p class="text-lg text-[#2E475D]">A user organization can securely connect to the <a
+                                class="font-medium text-[#2F7FB8]" target="_blank" href="https://app.powerbi.com/">Power
+                                BI</a> system using
+                            Power BI Data Connectors. The firm may then execute comprehensive
+                            analytics, produce visually appealing Power BI reports, and perform other
+                            Power BI activities using this secure connection. Power BI is a suite of
+                            business analytics tools to analyze data and share insights.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-14 lg:mt-20" id="problems_while_connectng">
+            <div class="w-full ">
+                <div class="px-6 sm:px-16 md:px-24 lg:px-40 xl:px-72 flex flex-col">
+                    <div class=" flex flex-col mb-10">
+                        <h2 class="text-2xl sm:text-3xl lg:text-4xl leading-none  my-6 text-black font-bold">Challenges
+                            in
+                            Manually Connecting Odoo With Power BI Dashboards</h2>
+
+                        <p class="text-xl mb-6  font-normal text-gray-800">There are some problems which users has to
+                            face
+                            while connecting Odoo
+                            with Power BI:</p>
+                        <ul role="list" class="flex px-5 sm:px-10 list-disc flex-col gap-3">
+
+                            <li class="text-lg text-[#2E475D]">Manual download of data tables to feed it to power BI. It
+                                is
+                                a hassle to download the data and upload it on the Power Bi</li>
+
+
+                            <li class="text-lg text-[#2E475D]">Manual import of exported data in power bi is not
+                                developer's
+                                favourite thing to do. Transferring Data into power BI is a complex and a
+                                tedious process.</li>
+
+                            <li class="text-lg text-[#2E475D]">When dashboard is ready with exported data, the data is
+                                no
+                                longer new (up-to-date). Data needs to be refreshed in a regular interval of time.</li>
+
+                            <li class="text-lg text-[#2E475D]">Manual connection of Odoo to Power Bi is such a long
+                                process
+                                that developers spend more time connecting the both instead of developing a
+                                dashboard/report.
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-16" id="solutions">
+            <div class="w-full px-6 sm:px-16 md:px-24 lg:px-40 xl:px-72">
+                <div class="flex mt-10 flex-col my-3">
+                    <h2 class="text-2xl sm:text-4xl lg:text-5xl leading-none  my-6 text-black font-bold">Ways to Connect
+                        Power Bi with Odoo Data</h2>
+                    <p class="text-xl my-3  font-normal text-gray-800">There are two effective solutions for connecting
+                        Power BI with Odoo data: </p>
+                </div>
+                <div class="sol1 lg:pl-5 flex flex-col">
+                    <h3 class="text-2xl  text-black  sm:text-3xl font-bold my-1">Solution 1 - The Tedious approach</h3>
+                    <p class="text-lg font-normal  mt-6 text-gray-800">The first option is to directly download data
+                        using
+                        KPIs (Key Performance
+                        Indicators) to view it in power BI. This is the manual download of the data tables we need for
+                        making a power bi report. Adding data in power bi from this manual export is the conventional
+                        way
+                        many are doing for making power bi reports.</p>
+                    <div class="grid pt-6">
+                        <div>
+                            <h4 class="font-bold text-[#1A3454]  text-lg">Benefits of manual connections using exports -
+                            </h4>
+                            <ul role="list" class="text-lg px-5 sm:px-10 list-disc flex flex-col gap-2 my-2">
+
+                                <li class="text-[#2E475D]">It is relatively easily to plan out the KPI’s which
+                                    you want to visualize.</li>
+
+                                <li class="text-[#2E475D]">It is relatively an approach which requires less preparation
+                                    time.</li>
+
+
+                            </ul>
+
+                        </div>
+                        <div class="mt-5">
+                            <h4 class="font-bold text-[#1A3454]  text-lg">Drawbacks of manual connections using exports
+                                -
+                            </h4>
+                            <ul role="list" class="text-lg px-5 sm:px-10 list-disc flex flex-col gap-3 my-2">
+
+                                <li class="text-[#2E475D]">It is a mechanism with lots of steps ivolved.</li>
+
+                                <li class="text-[#2E475D]">It is relatively harder to refresh your dataset as you have
+                                    to
+                                    start from
+                                    scratch.</li>
+
+                                <li class="text-[#2E475D]">It is a manual process which requires constant human
+                                    intervention.</li>
+
+                                <li class="text-[#2E475D]">Deviation from original planned dashboard means starting
+                                    whole
+                                    process again.</li>
+
+                                <li class="text-[#2E475D]">If your data changes frequently then your dashboard is always
+                                    out-of-date.</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sol2 lg:pl-5 mt-10 flex flex-col">
+                    <h3 class="text-2xl  text-black  sm:text-3xl font-bold my-1">Solution 2 - Odoo Power BI Direct
+                        Connector
+                    </h3>
+                    <P class="text-lg font-normal  mt-6 text-gray-800">Techneith's <a class="font-medium text-[#2F7FB8]"
+                            target="_blank" href="https://techneith.com/products/odoo_power_bi_direct_connector/">Odoo
+                            Power
+                            BI Connector</a> is direct connection of odoo to power bi. No need
+                        to download any data. Just Connect your Power bi with our Power BI data
+                        connector. For Linking your data you have to follow five simple steps :</P>
+                    <ol role="list" class="flex flex-col px-5 sm:px-10 list-decimal gap-3 text-lg mt-6">
+
+                        <li class="text-[#2E475D]">&nbsp; Install connector module in your Odoo. This generates unique
+                            credentials to connect with Power BI securely.</li>
+
+                        <li class="text-[#2E475D]">&nbsp; Run exe on your windows to setup connector. This setups
+                            Techneith
+                            Odoo Power BI Direct Connector on your windows machine in just one click.</li>
+
+                        <li class="text-[#2E475D]">&nbsp; Generate secure token from your Odoo Connector settings.</li>
+
+                        <li class="text-[#2E475D]">&nbsp; Put generated creds in your power bi data connector.</li>
+
+                        <li class="text-[#2E475D]">&nbsp; Done! You see all the odoo tables in your power bi. Even
+                            custom
+                            modules data ;)</li>
+
+
+                    </ol>
+
+                    <P class="text-lg font-normal  mt-6 text-gray-800">To see how Odoo Power BI Direct connector works
+                        check
+                        this youtube video. This video explains how to get data from Odoo to Power BI with just few
+                        clicks.
+                    </P>
+                    <div class="w-full flex justify-center pt-16">
+                        <div
+                            class="flex items-center flex-col sm:h-[285px] sm:w-[450px] lg:h-[380px] lg:w-[600px] relative border-sm">
+                            <div
+                                class="flex items-center flex-row rounded-t-md border w-full bg-white min-h-[20px] py-1.5 px-3">
+                                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-red-500"></div>
+                                <div class="w-[12px] mr-2 h-[12px] rounded-full bg-yellow-500"></div>
+                                <div class="w-[12px] h-[12px] rounded-full bg-green-500"></div>
+                                <div class="flex-1 place-delf-stretch"></div>
+                            </div>
+                            <div class="border border-t-0 border-gray-200 relative h-full w-full rounded-b-sm">
+                                <iframe
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen frameborder="0" loading="lazy" height="100%"
+                                    src="https://www.youtube.com/embed/AJw4fMPk6Rs&autoplay=1"
+                                    srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/AJw4fMPk6Rs?autoplay=1><img loading='lazy' src='{% static 'images/power_bi_connector/biconnectorillustration.jpeg' %}' alt='Power BI Direct Connector'><span>▶</span></a>"
+                                    title="YouTube video player" width="100%"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-16 lg:mt-24" id="">
+            <div class="w-full flex flex-col text-lg items-center">
+                <div class="flex flex-col w-full px-6 sm:px-16 md:px-24 lg:px-40 xl:px-72 pb-10">
+                    <h2 class="text-2xl  sm:text-3xl lg:text-4xl leading-none mb-10 text-[#1A3454] font-bold">Features
+                        of
+                        Odoo Power BI Direct Connector</h2>
+                    <div class="flex gap-3 lg:pl-5 flex-col">
+                        <ul role="list" class="flex flex-col px-5 gap-3 list-disc smpx-10">
+
+                            <li class="text-[#2E475D]">&nbsp; It is a direct connection where you won't need to export
+                                dataset
+                                numerous times manually.</li>
+
+
+                            <li class="text-[#2E475D]">&nbsp; Single click setup on windows system.</li>
+
+                            <li class="text-[#2E475D]">&nbsp; One click refresh to update your report with latest data.
+                            </li>
+
+                            <li class="text-[#2E475D]">&nbsp; Unique token based secure connection.</li>
+
+                            <li class="text-[#2E475D]">&nbsp; Can fetch millions of data with no problem.</li>
+
+                            <li class="text-[#2E475D]">&nbsp; Get all Odoo tables in Power BI. Even custom module
+                                tables.
+                            </li>
+
+
+                            <li class="text-[#2E475D]">&nbsp; Automatic scheduled refresh for live dashboards using Data
+                                Gateway (available in advance version)**</li>
+
+
+
+
+
+                            <li class="text-[#2E475D]">&nbsp; Easily Access data using Complex SQL Query (available in
+                                advance version)**</li>
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-16 lg:pt-24" id="why">
+            <div class="w-full px-6 sm:px-16 md:px-24 lg:px-40 xl:px-72 flex flex-col">
+                <h2 class="text-2xl  sm:text-3xl lg:text-4xl  leading-none mb-10 text-[#1A3454] font-bold">Why Techneith
+                    Odoo Power BI Direct connector?</h2>
+                <div class="flex text-lg md:pl-5 items-center gap-3">
+                    <p class="my-4 text-[#2E475D]">No Dataset Export Required and Other connectors have limited
+                        capabilities for exporting datasets and moving them to power bi
+                        whereas the techneith connector provides a smooth transition of data
+                        from OODO to Power - BI.</p>
+                </div>
+                <div class="flex md:pl-5 text-lg items-center gap-3">
+                    <p class="my-4 text-[#2E475D]">Due to our pagination-based API mechanism, large data odoo is no
+                        longer a problem whereas it is a persistent problem which exists in
+                        other connectors. If you work with large datasets in Odoo, the export
+                        methodology may also fail but Techneith connector ensures that this
+                        does not occur.</p>
+                </div>
+                <div class="flex md:pl-5 text-lg items-center gap-3">
+                    <p class="my-4 text-[#2E475D]">With the Techneith connector, you can use power query to bring in
+                        filtered results on the fly rather than loading the entire data set, which
+                        leads to improved performance. Many other connectors on the
+                        market do not provide power query feature, and among those that do,
+                        Techneith is the most cost efficient.</p>
+                </div>
+                <div class="flex md:pl-5 text-lg items-center gap-3">
+                    <p class="my-4 text-[#2E475D]">Technieth Connector is a Feature-rich connector with functionalities
+                        such as direct access to ALL odoo data, Power Query, Automatic
+                        Scheduled Refresh, Relationship mapping between tables, and no
+                        manual intervention.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- discuss section starts here -->
+        <section id="discuss" class="flex flex-col items-center px-4 mt-5 justify-center w-full">
+            <div class="flex flex-col mx-2 lg:mx-24 gap-5 items-center relative h-full w-full max-w-inner-content">
+                <div class="flex flex-col gap-3 sm:flex-row w-full justify-center">
+                    <div class="flex flex-col items-center gap-1">
+                        <h2 class="text-3xl lg:text-4xl font-bold text-center">
+                            Discuss with Techneith's Technical Team
+                        </h2>
+                        <h2 class="text-xl md:text-2xl lg:text-2xl py-2 font-light text-center">
+                            Techneith welcomes all comments and willing to discuss any query
+                            you have
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-center items-center w-full">
+                    <div class="rounded overflow-hidden shadow-lg mt-4 discussPanel w-4/5">
+                        {% for i in article.get_comments %}
+                        <div class="border-b-2 px-4 py-4 bg-white px-8 py-4">
+                            {% comment %}
+                            <div class="font-bold text-xl ml-4 text-extrabold capitalize">
+                                <span>Q: </span>{{i.title}}
+                            </div>
+                            {% endcomment %}
+                            <div class="flex flex-col md:flex-row fit-content mb-2">
+                                <p class="font-bold">Comment:</p>
+
+                                <div>
+                                    <div class="flex flex-col">
+                                        <p class="font-bold text-md text-[#1a3454] ml-4 capitalize">
+                                            {{i.title}}
+                                        </p>
+                                        <p class="text-md ml-4">{{i.content}}</p>
+                                    </div>
+                                    <div class="ml-4 text-gray-500 flex flex-row text-black items-center mt-4 text-sm">
+                                        <span class="font-bold"> {{i.author}} </span>
+
+                                        <p class="px-2">On {{i.created_at}} GMT</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% for r in i.replies%}
+
+                            <div class="flex flex-col md:flex-row relative items-center mt-4">
+                                <p class="font-semibold self-start">Reply:</p>
+
+                                <div class="flex flex-col pl-8 ml-6 w-full bg-[#efefef] px-2 py-4 rounded-xl replyBox">
+                                    <p class="text-black text-md px-2">{{r.content}}</p>
+                                    <div class="flex flex-col md:flex-row mt-2 items-center">
+                                        <span
+                                            class="inline-block bg-[#3b659c] rounded-xl py-1 w-fit px-3 text-sm font-bold text-white mr-2 justify-center items-center flex">
+                                            Techneith
+                                        </span>
+                                        <p class="font-semibold text-sm">On {{r.created_at}} GMT</p>
+                                    </div>
+                                </div>
+
+                                {% comment %}
+                                <img class="img-responsive absolute left-0" src="{%  static 'favicon.ico' %}"
+                                    alt="techneith-logo" />
+                                {% endcomment %}
+                            </div>
+
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% if article.get_comments|length > 3 %}
+                    <div class="gradientback"></div>
+                    <div class="viewPanel">
+                        <p class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full cursor-pointer"
+                            onclick="showPanel(true)">
+                            View More
+                        </p>
+                        <p class="bg-blue-500 text-white font-bold py-2 px-4 rounded-full cursor-pointer"
+                            onclick="showPanel(false)">
+                            View Less
+                        </p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="flex flex-col w-full justify-center items-center mt-6">
+                <div class="flex flex-col gap-3 sm:flex-row w-full justify-center">
+                    <div class="flex flex-col items-center gap-1">
+                        <h2 class="text-xl md:text-2xl lg:text-2xl py-4 font-light text-center">
+                            Leave us a comment down
+                            here
+                        </h2>
+                    </div>
+                </div>
+                <h1>{{article.slug}}</h1>
+                <div class="flex flex-col justify-center items-center discuss-card w-4/5">
+                    <form onsubmit="commentbuttonclicked()" class="bg-white rounded w-full p-4 discussForm"
+                        method="post" action="/comments/comment/{{article.slug}}/">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label class="block text-black text-sm font-medium mb-2" for="username">
+                                Name / Email
+                            </label>
+                            <input id="id_display" style="display: none" name="product_id" value="{{article.id}}" />
+                            <input name="author"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="username" type="text" placeholder="Name/Email" />
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-black text-sm font-medium mb-2" for="username">
+                                Title of your comment
+                            </label>
+                            <input name="title"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="username" type="text" placeholder="Title" />
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-black text-sm font-medium mb-2" for="password">
+                                Write your comment here
+                            </label>
+                            <textarea name="content" required
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                                placeholder="Write your comment here"></textarea>
+                        </div>
+                        <div class="flex items-end justify-end" style="justify-content:end;">
+                            <button id="comment_button"
+                                class="text-white hover:scale-105 transition-all bg-[#3b82f6] font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                type="submit" style="background: #3b82f6;">
+                                Comment
+                            </button>
+                            <button id="processing_button1" disabled
+                                class="hidden cursor-not-allowed items-center p-2 bg-[#3182CE] px-4 text-white rounded-md">
+                                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor"
+                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                    </path>
+                                </svg>
+                                &nbsp;Processing...
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-10" id="product">
+            <div class="w-full lg:px-72 flex justify-center">
+                <a class="px-5 flex items-center gap-2 py-3 rounded-md  bg-blue-700 text-white" target="_blank"
+                    href="/products/odoo_power_bi_direct_connector/">Checkout Product
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" height="20" viewBox="0 96 960 960" width="20">
+                        <path
+                            d="M220 903q-27.637 0-47.319-19.681Q153 863.622 153 836V316q0-27.622 19.681-47.319Q192.363 249 220 249h257v67H220v520h520V579h67v257q0 27.622-19.681 47.319T740 903H220Zm168.5-188L341 667.5 692.5 316H568v-67h239v239h-67V363.5L228.5 715Z" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <footer class="mt-16">
+        <div class="bg-[#3182CE] text-white">
+            <div class="p-5 flex mx-16 flex-col md:flex-row md:items-center md:justify-between">
+                <p class="text-center md:text-lg">Get connected with us on Social networks!</p>
+
+                <div class="flex gap-2 pt-2 justify-center">
+                    <a class="p-1 border border-white rounded-md" href="mailto:info@techneith.com" rel="noopener"
+                        aria-label="email" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"
+                            stroke="currentColor" stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20"
+                            width="20" aria-hidden="true" focusable="false">
+                            <path d="M0 0h24v24H0V0z" fill="none"></path>
+                            <path
+                                d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z">
+                            </path>
+                        </svg></a><a class="p-1 border border-white rounded-md"
+                        href="https://www.instagram.com/techneith" aria-label="techneith" rel="noopener"
+                        target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor"
+                            stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20" width="20"
+                            aria-hidden="true" focusable="false" baseProfile="tiny" version="1.2">
+                            <path
+                                d="M18 3h-12c-1.7 0-3 1.3-3 3v12c0 1.7 1.3 3 3 3h12c1.7 0 3-1.3 3-3v-12c0-1.7-1.3-3-3-3zm-6 6c1.7 0 3 1.3 3 3s-1.3 3-3 3-3-1.3-3-3 1.3-3 3-3zm3.8-2c0-.7.6-1.2 1.2-1.2s1.2.6 1.2 1.2-.5 1.2-1.2 1.2-1.2-.5-1.2-1.2zm2.2 12h-12c-.6 0-1-.4-1-1v-6h2c0 2.8 2.2 5 5 5s5-2.2 5-5h2v6c0 .6-.4 1-1 1z">
+                            </path>
+                        </svg></a><a class="p-1 border border-white rounded-md" href="https://twitter.com/techneith"
+                        rel="noopener" aria-label="twitter" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"
+                            stroke="currentColor" stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20"
+                            width="20" aria-hidden="true" focusable="false" baseProfile="tiny" version="1.2">
+                            <path
+                                d="M18.89 7.012c.808-.496 1.343-1.173 1.605-2.034-.786.417-1.569.703-2.351.861-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078-.715.717-1.076 1.588-1.076 2.605 0 .309.039.585.117.819-3.076-.105-5.622-1.221-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.228.549.676 1.254 1.107 2.115 1.291-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841.625.472 1.344.721 2.152.743-1.332 1.045-2.855 1.562-4.578 1.562-.422 0-.721-.006-.902-.022 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974.784-1.564 1.172-3.192 1.172-4.892v-.468c.758-.57 1.371-1.212 1.84-1.921-.68.293-1.223.492-2.11.593z">
+                            </path>
+                        </svg></a><a class="p-1 border border-white rounded-md"
+                        href="https://www.linkedin.com/company/techneith/" aria-label="linkedin" rel="noopener"
+                        target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor"
+                            stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20" width="20"
+                            aria-hidden="true" focusable="false" baseProfile="tiny" version="1.2">
+                            <path
+                                d="M8 19h-3v-10h3v10zm11 0h-3v-5.342c0-1.392-.496-2.085-1.479-2.085-.779 0-1.273.228-1.521 1.165v6.262h-3s.04-9 0-10h2.368l.183 2h.062c.615-1 1.598-1.678 2.946-1.678 1.025 0 1.854.285 2.487 1.001.637.717.954 1.679.954 3.03v5.647z">
+                            </path>
+                            <ellipse cx="6.5" cy="6.5" rx="1.55" ry="1.5"></ellipse>
+                        </svg></a><a class="p-1 border border-white rounded-md"
+                        href="https://www.facebook.com/techneith" aria-label="facebook" rel="noopener"
+                        target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor"
+                            stroke-width="0" xmlns="http://www.w3.org/2000/svg" height="20" width="20"
+                            aria-hidden="true" focusable="false" baseProfile="tiny" version="1.2">
+                            <path
+                                d="M13 10h3v3h-3v7h-3v-7h-3v-3h3v-1.255c0-1.189.374-2.691 1.118-3.512.744-.823 1.673-1.233 2.786-1.233h2.096v3h-2.1c-.498 0-.9.402-.9.899v2.101z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+
+</body>
+
+</html>

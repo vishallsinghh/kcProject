@@ -1,0 +1,214 @@
+.listBorder:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    border-bottom: solid 2px #1a3454;
+}
+
+.listBorder:hover.listBorder:after {
+    animation: listBorderAnim 0.2s linear forwards;
+}
+
+@keyframes listBorderAnim {
+
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.flagImage {
+    width: 30px;
+    height: auto;
+}
+
+.flagImage img {
+    object-fit: fill;
+}
+
+.socialLogin {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.odooHomepage {
+    background-image: url('http://127.0.0.1:8000/static/images/odooHomepage.png');
+}
+
+.firstAnim img {
+    animation: firstAnim 2s forwards;
+    opacity: 0;
+}
+
+@keyframes firstAnim {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* mega menu styles by vishal */
+
+#main-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdownMenu {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    justify-content: flex-start;
+    top: 100%;
+    transition: 0.2s all;
+
+}
+
+.dropdownMenu>div {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+nav ul li:hover .dropdownMenu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.megamenu {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transition: 0.2s all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.megamenu>div {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+nav ul li:hover .megamenu {
+    opacity: 1;
+    visibility: visible;
+    animation: footAnim 0.1s all;
+}
+
+nav ul li:hover footer {
+    z-index: -1;
+}
+
+.megamenuitems ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.megamenuitems ul li {
+    list-style: none;
+    padding: 7px;
+}
+
+#navbar-div {
+    height: inherit !important;
+    display: flex;
+    align-items: center;
+}
+
+.menulistBorder:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    border-bottom: solid 2px #4f4f4f;
+}
+
+.menulistBorder:hover.menulistBorder {
+    animation: translat 0.2s all;
+}
+
+.menulistBorder:hover.menulistBorder:after {
+    animation: listBorderAnim 0.2s linear forwards;
+}
+
+@keyframes translat {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(2);
+
+    }
+}
+
+.navBlogCard {
+    transition: 0.2s all ease-in-out;
+}
+
+.navBlogCard:hover {
+    background: #1a3454;
+    transform: translateY(-5px);
+}
+
+.navBlogCard:hover.navBlogCard>a {
+    background: #ffffff;
+    color: #1a3454;
+}
+
+.navBlogCard:hover.navBlogCard>h2 {
+    color: #ffffff;
+}
+
+@media screen and (max-width: 1200px) {
+    .megamenuitems {
+        flex-basis: 30%;
+    }
+}
+
+#triangle-left {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-right: 40px solid white;
+    border-bottom: 20px solid transparent;
+  }
+  .computer {
+    position: relative;
+    opacity: 1;
+
+    z-index: 0;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.computer #gif {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    width: 72%;
+
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: -10;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+
+}
+.computer img {
+    z-index: 1;
+}

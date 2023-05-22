@@ -1,0 +1,55 @@
+{% block style %}
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+/>
+
+{% endblock %} {% block content %}
+
+<section id="work" class="background-wrapper-two work-wrapper">
+  <div class="work container">
+    <h2 class="section-title">Products</h2>
+    <div class="work-img">
+      <img src="static/images/svg/odoo.svg" alt="Odoo" />
+    </div>
+    <div class="slider owl-carousel">
+      {% for work in works %}
+      <a href="{{work.link}}" class="card">
+        <div class="img">
+          <img src="{{MEDIA_URL}}{{work.image.url}}" alt="{{work.title}}" />
+        </div>
+        <div class="content">
+          <div class="title">{{work.title}}</div>
+          <p>{{work.description}}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %} {% block js %}
+<script>
+  $('.slider').owlCarousel({
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      785: {
+        items: 2,
+      },
+      1100: {
+        items: 3,
+      },
+    },
+  })
+
+</script>
+
+{% endblock %}

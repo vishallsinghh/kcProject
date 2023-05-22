@@ -1,0 +1,132 @@
+{% extends 'pages/blog_base.html' %} {% load static %} {% block start %}
+<section class="main">
+  <h1 class="text-3xl sm:text-4xl lg:text-5xl text-[#1a3454] font-bold">
+    Blogs
+  </h1>
+  <div class="blogs-container">
+    {% for article in articles %}
+    <a class="blog-card" href="{{article.slug}}">
+      <div class="blog-card-image-container">
+        <img
+          class="blog-card-image"
+          src="{{article.header_image.url}}"
+          alt="{{article.heading}}"
+        />
+      </div>
+      <div class="blog-card-content">
+        <header class="blog-card-header">
+          <div class="tags">
+            {% for tag in article.tags.all %}
+            <div class="tag">{{tag.tag_name}}</div>
+            {% endfor %}
+          </div>
+          <span class="stop" aria-hidden="true"> . </span>
+          <div class="publish-date"><p>{{article.datepublished}}</p></div>
+          <span class="stop" aria-hidden="true"> . </span>
+          <div class="read-time"><p>{{article.read_time}}</p></div>
+        </header>
+        <h2>{{article.heading}}</h2>
+
+        <p class="main-content">{{article.description}}</p>
+      </div>
+    </a>
+    {% endfor %} {% comment %}
+
+    <a class="blog-card" href="https://techneith.com/">
+      <div class="blog-card-image-container">
+        <img
+          class="blog-card-image"
+          src="https://raw.githubusercontent.com/techneithadmin/assets/main/Articles/embedding-react-in-odoo.png"
+          alt="blog-1"
+        />
+      </div>
+      <div class="blog-card-content">
+        <header class="blog-card-header">
+          <div class="tags">
+            <div class="tag">ODOO</div>
+            <div class="tag">ReactJS</div>
+          </div>
+          <span class="stop" aria-hidden="true"> . </span>
+          <div class="publish-date"><p>May 20, 2022</p></div>
+          <span class="stop" aria-hidden="true"> . </span>
+          <div class="read-time"><p>5 min read</p></div>
+        </header>
+        <h2>How to build a custom WordPress</h2>
+
+        <p class="main-content">
+          Lorem ipsum dolor sit amet. Et quia aliquid eos Quis pariatur sit
+          rerum ipsum et quod asperiores. Ut neque itaque qui possimus maxime
+          non architecto velit sit officia consequatur et possimus iure. Lorem
+          ipsum dolor sit amet. Et quia aliquid eos Quis pariatur sit rerum
+          ipsum et quod asperiores. Ut neque itaque qui possimus maxime non
+          architecto velit sit officia consequatur et possimus iure.
+        </p>
+      </div>
+    </a>
+
+    <a class="blog-card" href="https://techneith.com/">
+      <div class="blog-card-image-container">
+        <img
+          class="blog-card-image"
+          src="https://raw.githubusercontent.com/techneithadmin/assets/main/Articles/embedding-react-in-odoo.png"
+          alt="blog-1"
+        />
+      </div>
+      <div class="blog-card-content">
+        <header class="blog-card-header">
+          <div class="tags">
+            <div class="tag">ODOO</div>
+            <div class="tag">ReactJS</div>
+          </div>
+          <span class="stop" aria-hidden="true"> . </span>
+          <div class="publish-date"><p>May 20, 2022</p></div>
+          <span class="stop" aria-hidden="true"> . </span>
+          <div class="read-time"><p>5 min read</p></div>
+        </header>
+        <h2>How to build a custom WordPress theme from scratch</h2>
+
+        <p class="main-content">
+          Lorem ipsum dolor sit amet. Et quia aliquid eos Quis pariatur sit
+          rerum ipsum et quod asperiores. Ut neque itaque qui possimus maxime
+          non architecto velit sit officia consequatur et possimus iure. Lorem
+          ipsum dolor sit amet. Et quia aliquid eos Quis pariatur sit rerum
+          ipsum et quod asperiores. Ut neque itaque qui possimus maxime non
+          architecto velit sit officia consequatur et possimus iure.
+        </p>
+      </div>
+    </a>
+    <a class="blog-card" href="https://techneith.com/">
+      <div class="blog-card-image-container">
+        <img
+          class="blog-card-image"
+          src="https://raw.githubusercontent.com/techneithadmin/assets/main/Articles/embedding-react-in-odoo.png"
+          alt="blog-1"
+        />
+      </div>
+      <div class="blog-card-content">
+        <header class="blog-card-header">
+          <div class="tags">
+            <div class="tag">ODOO</div>
+            <div class="tag">ReactJS</div>
+          </div>
+          <span class="stop" aria-hidden="true"> . </span>
+          <div class="publish-date"><p>May 20, 2022</p></div>
+          <span class="stop" aria-hidden="true"> . </span>
+          <div class="read-time"><p>5 min read</p></div>
+        </header>
+        <h2>How to build a custom WordPress theme from scratch</h2>
+
+        <p class="main-content">
+          Lorem ipsum dolor sit amet. Et quia aliquid eos Quis pariatur sit
+          rerum ipsum et quod asperiores. Ut neque itaque qui possimus maxime
+          non architecto velit sit officia consequatur et possimus iure. Lorem
+          ipsum dolor sit amet. Et quia aliquid eos Quis pariatur sit rerum
+          ipsum et quod asperiores. Ut neque itaque qui possimus maxime non
+          architecto velit sit officia consequatur et possimus iure.
+        </p>
+      </div>
+    </a>
+    {% endcomment %}
+  </div>
+</section>
+{% endblock %}

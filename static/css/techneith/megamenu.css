@@ -1,0 +1,121 @@
+.blogDiv>a>div {
+    height: 280px;
+}
+
+
+/* mega menu styles by vishal */
+
+.dropdownMenu {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    justify-content: flex-start;
+    top: 100%;
+    transition: 0.2s all;
+
+}
+
+.dropdownMenu>div {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+nav ul li:hover .dropdownMenu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.megamenu {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transition: 0.2s all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.megamenu>div {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+nav ul li:hover .megamenu {
+    opacity: 1;
+    visibility: visible;
+    animation: footAnim 0.1s all;
+}
+
+nav ul li:hover footer {
+    z-index: -1;
+}
+
+.megamenuitems ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.megamenuitems ul li {
+    list-style: none;
+    padding: 7px;
+}
+
+#navbar-div {
+    height: inherit !important;
+    display: flex;
+    align-items: center;
+}
+
+.menulistBorder:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    border-bottom: solid 2px #4f4f4f;
+}
+
+.menulistBorder:hover.menulistBorder {
+    animation: translat 0.2s all;
+}
+
+.menulistBorder:hover.menulistBorder:after {
+    animation: listBorderAnim 0.2s linear forwards;
+}
+
+@keyframes translat {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(2);
+
+    }
+}
+
+.navBlogCard {
+    transition: 0.2s all ease-in-out;
+}
+
+.navBlogCard:hover {
+    background: #1a3454;
+    transform: translateY(-5px);
+}
+
+.navBlogCard:hover.navBlogCard>a {
+    background: #ffffff;
+    color: #1a3454;
+}
+
+.navBlogCard:hover.navBlogCard>h2 {
+    color: #ffffff;
+}
+
+@media screen and (max-width: 1200px) {
+    .megamenuitems {
+        flex-basis: 30%;
+    }
+}
